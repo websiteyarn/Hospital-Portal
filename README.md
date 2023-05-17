@@ -3,7 +3,7 @@ This is a comprehensive web portal that will serve as an interface between patie
 
 
 # Branch Introduction
-This is a consolidation branch made for merging the updates of the website for the subject Web Development
+This is the master branch for the finale output of this repository
 
 ## Branch Description
 The languages being used in this course is Hypertext Markup Language (HTML), Cascading Style Sheets (CSS), and Javascript (JS). This is a consolidation branch for merging updates.
