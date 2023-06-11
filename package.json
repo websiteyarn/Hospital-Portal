@@ -1,0 +1,15 @@
+{
+  "name": "hospital-portal",
+  "version": "1.0.0",
+  "description": "This is a comprehensive web portal that will serve as an interface between patients, their families, and healthcare providers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}
