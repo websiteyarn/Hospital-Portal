@@ -12,7 +12,7 @@
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
         <!-- SIDEBAR NAV -->
-        <div class="sticky lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
+        <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
             <img src="/assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
 
@@ -50,12 +50,12 @@
         </div>
 
         <!-- MAIN CONTENT  -->
-        <div class="flex-col flex-grow ml-[60px]">
+        <div class="flex-col flex-grow lg:ml-[60px]">
 
             <!-- TOP ITEMS (SEARCHBAR AND USER-DROPDOWN) -->
-            <div class="flex flex-row">
+            <div class="flex lg:flex-row">
                 <!-- SEARCH BAR -->
-                <div class="flex flex-grow h-min m b-4 text-xs mt-[30px]">
+                <div class="flex flex-grow h-min mb-4 text-xs mt-[30px]">
                     <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
                         <input
                         class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
@@ -75,11 +75,25 @@
                 
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 rounded-lg"> 
-                    <button class="flex flex-row w-28 h-12 bg-white justify-center items-center"> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-10 h-10"> 
+                    <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center items-center"> 
+                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
                         <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
+                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <hr>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                    </ul>
+                </div>
+
+                <!-- USER PROFILE MOBILE  -->
+                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
+                    <button class=""> 
+                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
+                    </button> 
+                    <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
@@ -92,37 +106,45 @@
 
             <div class="flex flex-col">
                 <!-- UPPER BOXES  -->
-                <div class="flex flex-row">
+                <div class="flex flex-col lg:flex-row">
                     <!-- PROFILE SECTION -->
-                    <div class="lg:w-[483px] lg:h-[274px] mt-[30px] rounded-3xl shadow-custom mr-7">
+                    <div class="w-full h-[179px] lg:w-[483px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7">
 
                     </div>
 
                     <!-- DIAGNOSIS SECTION -->
-                    <div class="lg:w-[638px] lg:h-[274px] mt-[30px] rounded-3xl shadow-custom mr-7">
+                    <div class="w-full h-[224px] lg:w-[638px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7">
 
                     </div>
 
-                    <!-- DIAGNOSIS SECTION -->
-                    <div class="lg:w-[451px] lg:h-[274px] mt-[30px] rounded-3xl shadow-custom mr-7">
+                    <!-- NOTES SECTION -->
+                    <div class="w-full h-[112px] lg:w-[451px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7">
 
                     </div>
                 </div>
                 
                 <!-- LOWER BOXES  -->
-                <div class="flex flex-row">
+                <div class="flex flex-col lg:flex-row">
                     <!-- NOTIFICATIONS SECTION -->
-                    <div class="lg:w-[483px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom mr-7">
-
+                    <div class="w-full h-[282px] lg:w-[483px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom lg:mr-7 overflow-auto">
+                        <div class="w-full h-[50px] bg-blue-500"></div>
+                        <div class="w-full h-[130px] bg-black"></div>
+                        <div class="w-full h-[130px] bg-green-500"></div>
+                        <div class="w-full h-[130px] bg-red-500"></div>
+                        <div class="w-full h-[130px] bg-pink-500"></div>
+                        <div class="w-full h-[130px] bg-black"></div>
+                        <div class="w-full h-[130px] bg-green-500"></div>
+                        <div class="w-full h-[130px] bg-red-500"></div>
+                        <div class="w-full h-[130px] bg-pink-500"></div>
                     </div>
 
                     <!-- APPOINTMENTS SECTION -->
-                    <div class="lg:w-[471px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom mr-7">
+                    <div class="w-full h-[189px] lg:w-[471px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom lg:mr-7">
 
                     </div>
 
                     <!-- LABORATORY RESULTS SECTION -->
-                    <div class="lg:w-[620px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom mr-7">
+                    <div class="w-full h-[182px] lg:w-[620px] lg:h-[530px] mt-[18px] rounded-3xl shadow-custom lg:mr-7">
 
                     </div>
                 </div>
