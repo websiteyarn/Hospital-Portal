@@ -51,23 +51,44 @@
 
         <!-- MAIN CONTENT  -->
         <div class="flex-col flex-grow ml-[60px]">
-            <!-- SEARCH BAR -->
-            <div class="flex flex-grow h-min m b-4 text-xs mt-[30px]">
-                <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
-                    <input
-                      class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                      type="search"
-                      name="search"
-                      placeholder="Search"
-                    >
-                    <div class="absolute top-2 left-0 flex items-center justify-center pl-3">
-                      <svg class="w-5 h-5 text-search-bar" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 12C9.53757 12 12 9.53757 12 6.5C12 3.46243 9.53757 1 6.5 1C3.46243 1 1 3.46243 1 6.5C1 9.53757 3.46243 12 6.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14.0001 14L11.0001 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+
+            <!-- TOP ITEMS (SEARCHBAR AND USER-DROPDOWN) -->
+            <div class="flex flex-row">
+                <!-- SEARCH BAR -->
+                <div class="flex flex-grow h-min m b-4 text-xs mt-[30px]">
+                    <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
+                        <input
+                        class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                        type="search"
+                        name="search"
+                        placeholder="Search"
+                        >
+                        <div class="absolute top-2 left-0 flex items-center justify-center pl-3">
+                        <svg class="w-5 h-5 text-search-bar" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 12C9.53757 12 12 9.53757 12 6.5C12 3.46243 9.53757 1 6.5 1C3.46243 1 1 3.46243 1 6.5C1 9.53757 3.46243 12 6.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.0001 14L11.0001 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        </div>
                     </div>
                 </div>
+                
+                
+                <!-- USER PROFILE -->
+                <div id="dropdown-button" class="w-28 h-10 mr-3 mt-6 rounded-lg bg-white"> 
+                    <button class="flex flex-row justify-center items-center"> 
+                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-10 h-10 ml-3"> 
+                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                    </button> 
+                    <!--profile dropdown-->                
+                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <hr>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                    </ul>
+                </div>
             </div>
+           
 
             <div class="flex flex-col">
                 <!-- UPPER BOXES  -->
@@ -109,5 +130,7 @@
 
         </div> 
     </div>
+
+    <script src="/dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
