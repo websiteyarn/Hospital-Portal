@@ -8,6 +8,7 @@ module.exports = {
         "side-navbar": "#3D98AA", // bg-side-navbar
         "side-navbar-active-text": "#3D98AA", // text-side-navbar-active-text
         "search-bar": "#2EB9B9", // bg-search-bar
+        "gray-text": "5C5C5C", // text-gray-text
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
