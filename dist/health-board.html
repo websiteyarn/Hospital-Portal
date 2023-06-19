@@ -74,8 +74,8 @@
                 
                 
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="mr-3 mt-6 rounded-lg z-50"> 
-                    <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center items-center"> 
+                <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
+                    <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
                         <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
                         <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
@@ -110,7 +110,27 @@
                     <!-- PROFILE SECTION -->
                     <a href="#">
                         <div class="w-full h-[179px] lg:w-[483px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7 hover:scale-105 transform transition-transform duration-300">
+                            
+                            <!-- USER NAME AND ICON  -->
+                            <div class="flex flex-col justify-center items-center w-full h-[50%]">
+                                <img src="/assets/profilesample.jpg" alt="user" class="absolute w-24 h-24 rounded-full -mt-[100px] left-[190px]">
+                                <h1 class="mt-[60px] text-2xl">Jane Doe</h1>
+                                <span class="text-gray-text">21 years old</span>
+                            </div>  
 
+                            <!-- USER WEIGHT, HEIGHT, BLOOD  -->
+                            <div class="flex w-full h-fit mt-5 justify-around">
+                                <span class="text-side-navbar">Blood</span>
+                                <span class="text-side-navbar">Height</span>
+                                <span class="text-side-navbar">Weight</span>
+                            </div>
+
+                            <!-- USER WEIGHT, HEIGHT, BLOOD VALUES -->                            
+                            <div class="flex w-full h-fit justify-around mt-4">
+                                <span class="text-2xl">O+</span>
+                                <span class="text-2xl">174cm</span>
+                                <span class="text-2xl">65kg</span>
+                            </div>
                         </div>
                     </a>
 
