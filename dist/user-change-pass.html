@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
-       <!-- SIDEBAR NAV -->
+        <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
             <img src="/assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
@@ -95,122 +95,72 @@
 
             <!-- MAIN CONTENT -->
             <div class="flex flex-col">
+                <!-- TOP CONTENT  -->
                 <div class="mt-4">
-                    <h1 class="text-3xl text-sidebar-text-bold">Personal Data</h1>
+                    <h1 class="text-3xl text-sidebar-text-bold">Change Password</h1>
                 </div>
 
-                <!-- PROFILE BOX  -->
-                <div class="flex flex-col w-[1636px] h-[530px] mt-[45px] bg-white rounded-[30px] shadow-custom">
+                <!-- CHANGE PASSWORD BOX  -->
+                <div class="flex flex-col w-[1636px] h-[310px] mt-[45px] bg-white rounded-[30px] shadow-custom">
+                    <!-- OLD PASSWORD -->
+                    <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
+                        <span class="text-lg text-side-navbar-active-text">Old Password</span>
 
-                    <!-- The profile box includes the left items (profile, patient, name, birthdate, and sex) as well 
-                    as the right items (email, mobile number, address, contact person, and contact mobile number).
-                    Below the left and right items are the bottom items (honest clause and edit button). -->
-                    
-                    <div class="flex flex-row w-full h-full">
-
-                        <!-- LEFT ITEMS  -->
-                        <div class="w-[40%] h-full">
-
-                            <!-- PROFILE PIC  -->
-                            <div class="w-fit h-fit ml-10 z-50">
-                                <img src="/assets/profilesample.jpg" alt="user-profile" class="rounded-full lg:w-[203px] lg:h-[203px] -mt-8">
-                            </div>
-
-                            <!-- PATIENT NUMBER  -->
-                            <div class="w-full h-fit ml-10 mt-14">
-                                <span class="text-lg text-side-navbar-active-text">Patient Number</span>
-
-                                <!-- PATIENT NUMBER VALUE -->
-                                <span class="text-lg font-medium ml-[160px]">00-000-000</span>
-                            </div>
-
-                            <!-- NAME  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Name</span>
-
-                                <!-- NAME VALUE -->
-                                <span class="text-lg font-medium ml-[244px]">Jane Doe</span>
-                            </div>
-
-                            <!-- DATE OF BIRTH  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Date of Birth</span>
-
-                                <!-- DATE OF BIRTH VALUE -->
-                                <span class="text-lg font-medium ml-[184px]">November 9, 2001</span>
-                            </div>
-
-                            <!-- SEX  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Sex</span>
-
-                                <!-- SEX VALUE -->
-                                <span class="text-lg font-medium ml-[260px]">Female</span>
-                            </div>
-                            
-                        </div>
-
-                        <!-- RIGHT ITEMS  -->
-                        <div class="w-[60%] h-full">
-                            <!-- EMAIL -->
-                            <div class="w-fit h-fit ml-10 mt-14">
-                                <span class="text-lg text-side-navbar-active-text">Email</span>
-
-                                <!-- EMAIL VALUE -->
-                                <span class="text-lg font-medium ml-[200px]">janedoe@google.com</span>
-                            </div>
-
-                            <!-- MOBILE NUMBER  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Mobile Number</span>
-
-                                <!-- MOBILE NUMBER VALUE -->
-                                <span class="text-lg font-medium ml-[118px]">0999 0000 000</span>
-                            </div>
-
-                            <!-- ADDRESS  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Address</span>
-
-                                <!-- ADDRESS VALUE -->
-                                <span class="text-lg font-medium ml-[180px]">1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila</span>
-                            </div>
-
-                            <!-- CONTACT PERSON  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Contact Person</span>
-
-                                <!-- CONTACT VALUE -->
-                                <span class="text-lg font-medium ml-[120px]">John Doe</span>
-                            </div>
-
-                            <!-- CONTACT MOBILE NUMBER  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
-                                <span class="text-lg text-side-navbar-active-text">Contact Mobile No.</span>
-
-                                <!-- CONTACT MOBILE VALUE -->
-                                <span class="text-lg font-medium ml-[88px]">0999 0000 000</span>
-                            </div>
-                        </div>
+                        <!-- OLD PASSWORD INPUT -->
+                        <input
+                            class="w-[774px] h-[42px] ml-[88px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                            type="edit"
+                            name="old-password"
+                            placeholder=""
+                        >
                     </div>
-                    
+
+                    <!-- NEW PASSWORD -->
+                    <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
+                        <span class="text-lg text-side-navbar-active-text">New Password</span>
+
+                        <!-- NEW PASSWORD INPUT -->
+                        <input
+                            class="w-[774px] h-[42px] ml-[80px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                            type="edit"
+                            name="new-password"
+                            placeholder=""
+                        >
+                    </div>
+
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
+                        <span class="text-lg text-side-navbar-active-text">Confirm Password</span>
+
+                        <!-- CONFIRM PASSWORD INPUT -->
+                        <input
+                            class="w-[774px] h-[42px] ml-[50px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                            type="edit"
+                            name="new-password"
+                            placeholder=""
+                        >
+                    </div>
+
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-fit h-20 ml-10">
-                        <img src="/assets/Rectangle-yellow.png" alt="honest-clause" class="w-1 h-10 mt-5">
-                        <span class="mt-7 ml-2 italic">I hereby certify that all the information provided are true and correct to the best of my knowledge.</span>
-                        
+                        <!-- CANCEL BTN  -->
                         <a href="#">
-                            <button class="flex w-[90px] h-[45px] mt-3 ml-[750px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <img src="/assets/edit-btn.png" alt="user-profile-edit">
-                                <span class="ml-1 text-gray-text text-lg">Edit</span>
+                            <button class="flex w-[90px] h-[45px] mt-3 ml-[1350px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Cancel</span>
+                            </button>
+                        </a>
+                        
+                        <!-- SAVE BTN  -->
+                        <a href="#">
+                            <button class="flex w-[90px] h-[45px] bg-save-button mt-3 ml-[30px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Save</span>
                             </button>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
-    
+    </div>
     <script src="/dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
@@ -17,36 +18,45 @@
             <img src="/assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
 
             <!-- nav -->
-            <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3">
-                <a href="#">
+            <!-- HEALTH BOARD  -->
+            <a href="">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="/assets/sidebar/health-board-active.png" alt="health-board-active">
-                </a>
-                <h1 class="text-side-navbar-active-text">Health Board</h1> 
-            </div>
-            <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3">
-                <a href="#">
+                    <h1 class="text-side-navbar-active-text">Health Board</h1> 
+                </div>
+            </a>
+
+            <!-- MEDICINE  -->
+            <a href="">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="/assets/sidebar/medicine.png" alt="medicine">
-                </a>
-                <h1 class="text-white">Medicine</h1> 
-            </div>
-            <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3">
-                <a href="#">
+                    <h1 class="text-white">Medicine</h1> 
+                </div>
+            </a>
+            
+            <!-- APPOINTMENT  -->
+            <a href="">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="/assets/sidebar/appointment.png" alt="appointment">
-                </a>
-                <h1 class="text-white">Appointment</h1> 
-            </div>
-            <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3">
-                <a href="#">
+                    <h1 class="text-white">Appointment</h1> 
+                </div>
+            </a>
+
+            <!-- MESSAGE  -->
+            <a href="">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="/assets/sidebar/message.png" alt="message">
-                </a>
-                <h1 class="text-white">Message</h1> 
-            </div>
-            <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3">
-                <a href="#">
+                    <h1 class="text-white">Message</h1> 
+                </div>
+            </a>
+           
+            <!-- FINANCE  -->
+            <a href="">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="/assets/sidebar/finance.png" alt="finance">
-                </a>
-                <h1 class="text-white">Finance</h1> 
-            </div>
+                    <h1 class="text-white">Finance</h1> 
+                </div>
+            </a>    
         </div>
 
         <!-- MAIN CONTENT -->
@@ -149,7 +159,7 @@
                                 <!-- EMAIL VALUE -->
                                 <!-- <span class="text-lg font-medium ml-[200px]">janedoe@google.com</span> -->
                                 <input
-                                    class="w-[500px] h-[42px] ml-[200px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    class="w-[500px] h-[42px] ml-[200px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit"
                                     name="email-edit"
                                     placeholder="janedoe@google.com"
@@ -163,7 +173,7 @@
                                 <!-- MOBILE NUMBER VALUE -->
                                 <!-- <span class="text-lg font-medium ml-[118px]">0999 0000 000</span> -->
                                 <input
-                                    class="w-[500px] h-[42px] ml-[118px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    class="w-[500px] h-[42px] ml-[118px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit"
                                     name="mobile-edit"
                                     placeholder="0999 0000 000"
@@ -177,7 +187,7 @@
                                 <!-- ADDRESS VALUE -->
                                 <!-- <span class="text-lg font-medium ml-[180px]">1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila</span> -->
                                 <input
-                                    class="w-[500px] h-[42px] ml-[176px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    class="w-[500px] h-[42px] ml-[176px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit"
                                     name="address-edit"
                                     placeholder="1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila"
@@ -191,7 +201,7 @@
                                 <!-- CONTACT PERSON VALUE -->
                                 <!-- <span class="text-lg font-medium ml-[120px]">John Doe</span> -->
                                 <input
-                                    class="w-[500px] h-[42px] ml-[120px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    class="w-[500px] h-[42px] ml-[120px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit"
                                     name="contact-person-edit"
                                     placeholder="John Doe"
@@ -205,7 +215,7 @@
                                 <!-- CONTACT MOBILE VALUE -->
                                 <!-- <span class="text-lg font-medium ml-[88px]">0999 0000 000</span> -->
                                 <input
-                                    class="w-[500px] h-[42px] ml-[88px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    class="w-[500px] h-[42px] ml-[88px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit"
                                     name="contact-mobile-edit"
                                     placeholder="0999 0000 000"
@@ -219,12 +229,14 @@
                         <img src="/assets/Rectangle-yellow.png" alt="honest-clause" class="w-1 h-10 mt-5">
                         <span class="mt-7 ml-2 italic">I hereby certify that all the information provided are true and correct to the best of my knowledge.</span>
                         
+                        <!-- CANCEL BTN  -->
                         <a href="#">
                             <button class="flex w-[90px] h-[45px] mt-3 ml-[600px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <span class=" text-gray-text text-lg">Cancel</span>
                             </button>
                         </a>
                         
+                        <!-- SAVE BTN  -->
                         <a href="#">
                             <button class="flex w-[90px] h-[45px] bg-save-button mt-3 ml-[30px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <span class=" text-gray-text text-lg">Save</span>
