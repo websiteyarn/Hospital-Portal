@@ -95,7 +95,7 @@
                     <!-- The profile box includes the left items (profile, patient, name, birthdate, and sex) as well 
                     as the right items (email, mobile number, address, contact person, and contact mobile number).
                     Below the left and right items are the bottom items (honest clause and edit button). -->
-                    
+
                     <div class="flex flex-row w-full h-full">
 
                         <!-- LEFT ITEMS  -->
@@ -143,19 +143,31 @@
                         <!-- RIGHT ITEMS  -->
                         <div class="w-[60%] h-full">
                             <!-- EMAIL -->
-                            <div class="w-fit h-fit ml-10 mt-14">
+                            <div class="flex flex-row w-fit h-fit ml-10 mt-14 justify-center items-center">
                                 <span class="text-lg text-side-navbar-active-text">Email</span>
 
                                 <!-- EMAIL VALUE -->
-                                <span class="text-lg font-medium ml-[200px]">janedoe@google.com</span>
+                                <!-- <span class="text-lg font-medium ml-[200px]">janedoe@google.com</span> -->
+                                <input
+                                    class="w-[500px] h-[42px] ml-[200px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="edit"
+                                    name="email-edit"
+                                    placeholder="janedoe@google.com"
+                                >
                             </div>
 
                             <!-- MOBILE NUMBER  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
+                            <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
                                 <span class="text-lg text-side-navbar-active-text">Mobile Number</span>
 
                                 <!-- MOBILE NUMBER VALUE -->
-                                <span class="text-lg font-medium ml-[118px]">0999 0000 000</span>
+                                <!-- <span class="text-lg font-medium ml-[118px]">0999 0000 000</span> -->
+                                <input
+                                    class="w-[500px] h-[42px] ml-[118px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="edit"
+                                    name="mobile-edit"
+                                    placeholder="0999 0000 000"
+                                >
                             </div>
 
                             <!-- ADDRESS  -->
@@ -163,23 +175,41 @@
                                 <span class="text-lg text-side-navbar-active-text">Address</span>
 
                                 <!-- ADDRESS VALUE -->
-                                <span class="text-lg font-medium ml-[180px]">1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila</span>
+                                <!-- <span class="text-lg font-medium ml-[180px]">1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila</span> -->
+                                <input
+                                    class="w-[500px] h-[42px] ml-[176px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="edit"
+                                    name="address-edit"
+                                    placeholder="1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila"
+                                >
                             </div>
 
                             <!-- CONTACT PERSON  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
+                            <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
                                 <span class="text-lg text-side-navbar-active-text">Contact Person</span>
 
-                                <!-- CONTACT VALUE -->
-                                <span class="text-lg font-medium ml-[120px]">John Doe</span>
+                                <!-- CONTACT PERSON VALUE -->
+                                <!-- <span class="text-lg font-medium ml-[120px]">John Doe</span> -->
+                                <input
+                                    class="w-[500px] h-[42px] ml-[120px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="edit"
+                                    name="contact-person-edit"
+                                    placeholder="John Doe"
+                                >
                             </div>
 
                             <!-- CONTACT MOBILE NUMBER  -->
-                            <div class="w-fit h-fit ml-10 mt-9">
+                            <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
                                 <span class="text-lg text-side-navbar-active-text">Contact Mobile No.</span>
 
                                 <!-- CONTACT MOBILE VALUE -->
-                                <span class="text-lg font-medium ml-[88px]">0999 0000 000</span>
+                                <!-- <span class="text-lg font-medium ml-[88px]">0999 0000 000</span> -->
+                                <input
+                                    class="w-[500px] h-[42px] ml-[88px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="edit"
+                                    name="contact-mobile-edit"
+                                    placeholder="0999 0000 000"
+                                >
                             </div>
                         </div>
                     </div>
@@ -190,9 +220,14 @@
                         <span class="mt-7 ml-2 italic">I hereby certify that all the information provided are true and correct to the best of my knowledge.</span>
                         
                         <a href="#">
-                            <button class="flex w-[90px] h-[45px] mt-3 ml-[750px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <img src="/assets/edit-btn.png" alt="user-profile-edit">
-                                <span class="ml-1 text-gray-text text-lg">Edit</span>
+                            <button class="flex w-[90px] h-[45px] mt-3 ml-[600px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Cancel</span>
+                            </button>
+                        </a>
+                        
+                        <a href="#">
+                            <button class="flex w-[90px] h-[45px] bg-save-button mt-3 ml-[30px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Save</span>
                             </button>
                         </a>
                     </div>

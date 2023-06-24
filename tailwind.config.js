@@ -10,6 +10,7 @@ module.exports = {
         "search-bar": "#2EB9B9", // bg-search-bar
         "gray-text": "#5C5C5C", // text-gray-text
         "sidebar-text-bold": "#246673", // text-sidebar-text-bold
+        "save-button": "#FFC300", // bg-save-button
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
