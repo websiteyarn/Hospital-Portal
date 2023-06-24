@@ -12,6 +12,7 @@ module.exports = {
         "sidebar-text-bold": "#246673", // text-sidebar-text-bold
         "save-button": "#FFC300", // bg-save-button
         "form-fill": "#F8F8F8", // bg-change-password-fill
+        "background-inactive": "#F5F5F5", // bg-background-inactive
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
