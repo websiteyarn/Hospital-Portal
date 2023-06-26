@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine</title>
+    <title>Appointment</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
     <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
@@ -28,17 +30,17 @@
 
             <!-- MEDICINE  -->
             <a href="">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/medicine-active.png" alt="medicine">
-                    <h1 class="text-side-navbar-active-text">Medicine</h1> 
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="/assets/sidebar/medicine.png" alt="medicine">
+                    <h1 class="text-white">Medicine</h1> 
                 </div>
             </a>
             
             <!-- APPOINTMENT  -->
             <a href="">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/appointment.png" alt="appointment">
-                    <h1 class="text-white">Appointment</h1> 
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="/assets/sidebar/appointment-active.png" alt="appointment">
+                    <h1 class="text-side-navbar-active-text">Appointment</h1> 
                 </div>
             </a>
 
@@ -92,66 +94,92 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- MAIN CONTENT -->
             <div class="flex flex-row w-fit">
-                <!-- MEDICATION LIST -->
-                <div class="w-[600px] h-[600px] overflow-auto">
+                <!-- APPOINTMENT LIST -->
+                <div class="w-[600px] h-[820px] overflow-auto">
                     <div class="mb-7 ml-4">
-                        <h1 class="text-3xl text-sidebar-text-bold">Personal Data</h1>
+                        <h1 class="text-3xl text-sidebar-text-bold">Appointment</h1>
                     </div>
 
-                    <!-- MEDICATION BOXES UN-ORDERED LIST -->
-                    <ul id="medicationList" class="space-y-5">
+                    <!-- BUTTON FOR NEW APPOINTMENT -->
+                    <button class="item flex flex-row items-center space-x-5 item w-[483px] h-[87px] bg-white cursor-pointer shadow-custom ml-4 rounded-3xl">
+                        <img src="/assets/add-btn.png" alt="add-btn" class="w-[21px] h-[21px] ml-4">
+                        <h1 class="text-2xl text-sidebar-text-bold font-medium">Add</h1>
+                    </button>
+
+                    <!-- APPOINTMENT BOXES UN-ORDERED LIST -->
+                    <ul id="appointmentList" class="space-y-5 mt-5">
                         <li>
-                            <!-- MEDICATION BOXES  -->
-                            <!-- All medication boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- FOR AND DATE  -->
+                            <!-- APPOINTMENT BOXES  -->
+                            <!-- All appointment boxes have an inactive default background color  -->
+                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <!-- DOCTOR AND DATE  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <span class="text-side-navbar-active-text text-lg">FOR</span>
-                                    <span class="text-lg text-gray-text">April 20, 2023</span>
+                                    <!-- DOCTOR  -->
+                                    <span class="text-3xl">Dr.Cha</span>
+                                    <!-- DATE  -->
+                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
                                 </div>
 
-                                <!-- ILLNESS  -->
+                                <!-- TYPE AND TIME  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-3xl">Diabetes</span>
-                                </div>
-
-                                <!-- PRESCRIBED BY  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-xl text-gray-text">Prescribed by Dr. Cha</span>
+                                    <!-- TYPE  -->
+                                    <span class="text-lg text-gray-text">Internal Medicine</span>
+                                    <!-- TIME  -->
+                                    <span class="text-lg text-appointment-date">1:00 pm</span>
                                 </div>
                             </div>
                         </li>
 
                         <li>
-                            <!-- MEDICATION BOXES  -->
-                            <!-- All medication boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- FOR AND DATE  -->
+                            <!-- APPOINTMENT BOXES  -->
+                            <!-- All appointment boxes have an inactive default background color  -->
+                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <!-- DOCTOR AND DATE  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <span class="text-side-navbar-active-text text-lg">FOR</span>
-                                    <span class="text-lg text-gray-text">April 20, 2023</span>
+                                    <!-- DOCTOR  -->
+                                    <span class="text-3xl">Dr.Cha</span>
+                                    <!-- DATE  -->
+                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
                                 </div>
 
-                                <!-- ILLNESS  -->
+                                <!-- TYPE AND TIME  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-3xl">Diabetes</span>
+                                    <!-- TYPE  -->
+                                    <span class="text-lg text-gray-text">Internal Medicine</span>
+                                    <!-- TIME  -->
+                                    <span class="text-lg text-appointment-date">1:00 pm</span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <!-- APPOINTMENT BOXES  -->
+                            <!-- All appointment boxes have an inactive default background color  -->
+                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <!-- DOCTOR AND DATE  -->
+                                <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
+                                    <!-- DOCTOR  -->
+                                    <span class="text-3xl">Dr.Cha</span>
+                                    <!-- DATE  -->
+                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
                                 </div>
 
-                                <!-- PRESCRIBED BY  -->
+                                <!-- TYPE AND TIME  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-xl text-gray-text">Prescribed by Dr. Cha</span>
+                                    <!-- TYPE  -->
+                                    <span class="text-lg text-gray-text">Internal Medicine</span>
+                                    <!-- TIME  -->
+                                    <span class="text-lg text-appointment-date">1:00 pm</span>
                                 </div>
                             </div>
                         </li>
                     </ul>                
                 </div>
 
-                <!-- MEDICATION DETAILS -->
+                <!-- APPOINTMENT DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
@@ -319,9 +347,31 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- <div class="">
+                <input type="text" id="booking-date" placeholder="Select a date" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div> -->
         </div>
     </div>
     <script src="/dist/JS animations/profile-dropdown.js"></script>
     <script src="/dist/JS animations/active-bg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#booking-date", {
+            // Specify available dates (optional)
+            minDate: "today",
+
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d",
+
+            inline: true,
+
+            // Additional appearance options (optional)
+            theme: "dark",
+            mode: "single",
+            allowInput: true,
+        });
+    </script>
 </body>
 </html>

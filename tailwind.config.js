@@ -13,6 +13,7 @@ module.exports = {
         "save-button": "#FFC300", // bg-save-button
         "form-fill": "#F8F8F8", // bg-change-password-fill
         "background-inactive": "#F5F5F5", // bg-background-inactive
+        "appointment-date": "#FF9900", // text-appointment-date
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
