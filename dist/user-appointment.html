@@ -181,181 +181,59 @@
 
                 <!-- APPOINTMENT DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
-                    <!-- DOCTOR'S DETAILS  -->
-                    <div class="flex flex-row items-center">
-                        <img src="/assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
-                        <div class="flex w-full justify-between">
-                            <!-- DOCTOR'S INFO -->
-                            <div class="flex flex-col mt-4">
-                                <h1 class="text-3xl">Dr. Cha</h1>
-                                <span class="text-sm text-gray-text ml-0.5">Internal Medicine</span>
-                            </div>
+                    <!-- TOP ITEMS -->
+                    <!-- THIS INCLUDES SPECIALTY, DOCTOR, THE THE CALENDAR -->
+                    <div class="flex flex-row w-full h-[70%]">
+                        <!-- FIRST HALF IS FOR THE DROPDOWNS  -->
+                        <div class="w-[50%] h-full">
+                            <!-- DOCTOR SPECIALTY  -->
+                            <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Specialty</h1>
+                            <div class="relative ml-10 z-50">
+                                <button id="specialtyMenu" class="w-[400px] h-10 rounded-full">
+                                    <input class="w-full h-full bg-form-fill rounded-full indent-6" type="text" id="specialtyBox" placeholder="Select">
+                                </button>
+                                <div id="specialtyDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 1')">Option 1</a>
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 2')">Option 2</a>
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 3')">Option 3</a>
+                                </div>
+                            </div>          
+                            
+                            <!-- DOCTOR  -->
+                            <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Doctor</h1>
+                            <div class="relative ml-10 z-30">
+                                <button id="doctorMenu" class="w-[400px] h-10 rounded-full">
+                                    <input class="w-full h-full bg-form-fill rounded-full indent-6" type="text" id="doctorBox" placeholder="Select">
+                                </button>
+                                <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 1')">Option 1</a>
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 2')">Option 2</a>
+                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 3')">Option 3</a>
+                                </div>
+                            </div>      
+                        </div>
 
-                            <!-- DATE INFO -->
-                            <div class="flex flex-col mt-8 mr-8">
-                                <span class="text-sm text-gray-text">Prescribed</span>
-                                <span class="text-sm text-gray-text">April 20, 2023</span>
-                            </div>
+                        <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
+                        <div class="w-[50%] h-full">
+                            <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
+                            <input type="text" id="booking-date" placeholder="Select a date" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
 
-                    <!-- ACTUAL MEDICATION LIST (PER BOX)-->
-                    <ul class="flex flex-wrap h-[600px] mx-8 overflow-auto">
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                    <!-- BOTTOM ITEMS -->
+                    <div class="w-full h-[50%] bg-green-200">
                         
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    
-                    <div class="flex flex-col ml-8 mt-10 mb-5">
-                        <span class="text-xs text-gray-text">License No: XXXXX </span>
-                        <span class="text-xs text-gray-text">PTR No: XXXXXXX </span>
                     </div>
                 </div>
             </div>
             
-            <!-- <div class="">
-                <input type="text" id="booking-date" placeholder="Select a date" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div> -->
+            
         </div>
     </div>
     <script src="/dist/JS animations/profile-dropdown.js"></script>
     <script src="/dist/JS animations/active-bg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/dist/JS animations/appointment-dropdown.js"></script>
     <script>
         flatpickr("#booking-date", {
             // Specify available dates (optional)
@@ -368,7 +246,6 @@
             inline: true,
 
             // Additional appearance options (optional)
-            theme: "dark",
             mode: "single",
             allowInput: true,
         });
