@@ -1042,6 +1042,14 @@ video {
   height: 1rem;
 }
 
+.h-\[60\%\] {
+  height: 60%;
+}
+
+.h-\[90\%\] {
+  height: 90%;
+}
+
 .w-1 {
   width: 0.25rem;
 }
@@ -1201,6 +1209,26 @@ video {
 
 .w-\[95\%\] {
   width: 95%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
+.w-\[48\%\] {
+  width: 48%;
+}
+
+.w-\[47\%\] {
+  width: 47%;
+}
+
+.w-\[46\%\] {
+  width: 46%;
 }
 
 .flex-grow {
@@ -1514,6 +1542,16 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 
 .pb-2 {

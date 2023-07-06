@@ -21,7 +21,7 @@
             <div class="flex flex-col w-[100%] p-5 justify-center items-center gap-2">
                 <h class="font-Commissioner text-5xl pb-5 w-[60%] text-gray-500 text-center leading-tight">Welcome to your gateway to wellness!</h>
                 <form class="w-[70%] font-Commissioner">
-                    <div class="h-[50%] flex flex-wrap gap-5">
+                    <div class="h-[80%] flex flex-wrap gap-5">
                         <div class="mb-6">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-first-name">
                                 First Name
@@ -34,11 +34,17 @@
                             </label>
                             <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="">
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-6 w-[46%]">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-gender">
                                 Gender
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="gender" type="text" placeholder="">
+                            <div class="">
+                                <select class="block appearance-none w-full border border-slate-500 text-gray-700 py-6 px-7 rounded-[200px] leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Rather not say</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="mb-6">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
@@ -52,7 +58,7 @@
                             </label>
                             <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="last-name" type="text" placeholder="">
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-6 w-[46%] data-te-input-wrapper-init">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
                                 Birth Date
                             </label>
