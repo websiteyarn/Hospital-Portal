@@ -216,18 +216,111 @@
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
                         <div class="w-[50%] h-full">
                             <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
-                            <input type="text" id="booking-date" placeholder="Select a date" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <!-- CALENDAR -->
+                            <input type="text" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
 
                     <!-- BOTTOM ITEMS -->
                     <div class="w-full h-[50%]">
                         <!-- TIME BTNS  -->
-                        <div class="w-full h-[80%] mx-10">
-                            <h1 class="text-side-navbar-active-text text-2xl mb-5">Time</h1>
-                            <button class="flex w-[150px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <span class=" text-gray-text text-lg">Cancel</span>
-                            </button>
+                        <div class="w-full h-[80%]">
+                            <h1 class="text-side-navbar-active-text text-2xl mb-5 mx-10">Time</h1>
+                            <!-- DIVISION FOR THE LIST OF THE TIME BTNS -->
+                            <div class="w-full h-fit">
+                                <!-- TIME BOXES LIST -->
+                                <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5">
+                                    <li>
+                                        <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 mt-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">8:00 am</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">9:00 am</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">10:00 am</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">11:00 am</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">2:00 pm</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">3:00 pm</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">4:00 pm</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">5:00 pm</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">6:00 pm</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                       <!-- TIME SLOT BTNS -->
+                                        <!-- All timeslot boxes have an inactive default background color  -->
+                                        <!-- When clicked, the background color changes to active  -->
+                                        <button class="time flex w-[150px] h-[45px] ml-5 justify-center items-center rounded-3xl bg-form-fill">
+                                            <span class=" text-custom-time text-lg">7:00 pm</span>
+                                        </button>
+                                    </li>
+                                </ul> 
+                            </div>
                         </div>
 
                         <!-- CANCEL AND SUBMIT BTNS  -->
