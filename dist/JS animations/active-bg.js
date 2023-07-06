@@ -19,4 +19,27 @@ function toggleActiveClass() {
 }
   
 toggleActiveClass();
+
+function toggleActiveClassTime() {
+  var listItemsTime = document.querySelectorAll('#timeSlotList .time');
+
+  listItemsTime.forEach(function(time) {
+    time.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      time.classList.remove('bg-form-fill');
+      time.classList.add('bg-time-active');
+
+      // Remove active class from all list items except the clicked item
+      listItemsTime.forEach(function(li) {
+          if (li !== time) {
+            li.classList.remove('bg-time-active');
+            li.classList.add('bg-form-fill');
+          }
+      });
+    });
+  });
+}
+
+toggleActiveClassTime();
+
   

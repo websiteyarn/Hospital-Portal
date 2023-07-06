@@ -14,6 +14,8 @@ module.exports = {
         "form-fill": "#F8F8F8", // bg-change-password-fill
         "background-inactive": "#F5F5F5", // bg-background-inactive
         "appointment-date": "#FF9900", // text-appointment-date
+        "custom-time": "#757575", // text-custom-time
+        "time-active": "#C1FF72", // text-time-active
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
