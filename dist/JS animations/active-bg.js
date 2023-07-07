@@ -42,4 +42,26 @@ function toggleActiveClassTime() {
 
 toggleActiveClassTime();
 
+function toggleActiveDoctorMessage() {
+  var listItemsDoctorMessage = document.querySelectorAll('#doctorMessageList .doctorMessage');
+
+  listItemsDoctorMessage.forEach(function(doctorMessage) {
+    doctorMessage.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      doctorMessage.classList.remove('bg-background-inactive');
+      doctorMessage.classList.add('bg-white');
+
+      // Remove active class from all list items except the clicked item
+      listItemsDoctorMessage.forEach(function(li) {
+          if (li !== doctorMessage) {
+            li.classList.remove('bg-white');
+            li.classList.add('bg-background-inactive');
+          }
+      });
+    });
+  });
+}
+
+toggleActiveDoctorMessage();
+
   
