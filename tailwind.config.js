@@ -16,7 +16,9 @@ module.exports = {
         "appointment-date": "#FF9900", // text-appointment-date
         "custom-time": "#757575", // text-custom-time
         "time-active": "#C1FF72", // text-time-active
-        "login-font-clr": "#68E3EA" // text-login-font-clr
+        "login-font-clr": "#68E3EA", // text-login-font-clr
+        "doctor-convo-border": "#60BFF0", // border-doctor-convo-border
+        "user-convo-bg": "#C7EBFE", // bg-user-convo-bg
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],

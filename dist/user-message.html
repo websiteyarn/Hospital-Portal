@@ -189,7 +189,7 @@
                     </ul>                
                 </div>
 
-                <!-- MEDICATION DETAILS -->
+                <!-- MESSAGE DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
@@ -200,160 +200,61 @@
                                 <h1 class="text-3xl">Dr. Cha</h1>
                                 <span class="text-sm text-gray-text ml-0.5">Internal Medicine</span>
                             </div>
-
-                            <!-- DATE INFO -->
-                            <div class="flex flex-col mt-8 mr-8">
-                                <span class="text-sm text-gray-text">Prescribed</span>
-                                <span class="text-sm text-gray-text">April 20, 2023</span>
-                            </div>
                         </div>
                     </div>
+                    <!-- BREAK LINE -->
+                    <hr>
 
                     <!-- ACTUAL MEDICATION LIST (PER BOX)-->
-                    <ul class="flex flex-wrap h-[600px] mx-8 overflow-auto">
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
+                    <ul id="" class="flex flex-col h-[600px] mx-8 overflow-auto">
+                        <!-- EACH MESSAGE BOX CORRESPONDS TO EACH li ELEMENT -->
+                        <!-- each doctor message has an id of doctorMessage -->
+                        <li id="doctorMessage" class="w-full h-fit">
+                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
                             </div>
                         </li>
 
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
+                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
+                        <!-- user message box should always be at the right (justify-end) of the convo -->
+                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
                             </div>
                         </li>
 
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
+                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
+                        <!-- user message box should always be at the right (justify-end) of the convo -->
+                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
                             </div>
                         </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
 
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
+                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
+                        <!-- user message box should always be at the right (justify-end) of the convo -->
+                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
+                            </div>
+                        </li>
 
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
+                        <li id="doctorMessage" class="w-full h-fit">
+                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
                             </div>
                         </li>
                     </ul>
 
-                    
-                    <div class="flex flex-col ml-8 mt-10 mb-5">
-                        <span class="text-xs text-gray-text">License No: XXXXX </span>
-                        <span class="text-xs text-gray-text">PTR No: XXXXXXX </span>
+                    <!-- BREAK LINE  -->
+                    <hr>
+                    <!-- TEXTBOX FOR USER MESSAGE AND SEND BTN  -->
+                    <div class="flex w-full h-[90px] items-center space-x-5">
+                        <img src="/assets/profilesample.jpg" class="w-16 h-16 rounded-full ml-5">
+                        <input type="text" placeholder="Type a message" class="w-[80%] py-2 px-3 rounded-lg  focus:outline-none focus:ring-2 focus:ring-side-navbar focus:border-transparent">
+                        <button class="w-12 h-12 bg-save-button hover:bg-side-navbar rounded-full px-3 py-1">
+                            <img src="/assets/send-arrow.png">
+                        </button>
                     </div>
                 </div>
             </div>
