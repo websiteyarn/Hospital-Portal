@@ -205,41 +205,52 @@
                     <!-- BREAK LINE -->
                     <hr>
 
-                    <!-- ACTUAL MEDICATION LIST (PER BOX)-->
+                    <!-- ACTUAL MESSAGE BOX -->
                     <ul id="" class="flex flex-col h-[600px] mx-8 overflow-auto">
                         <!-- EACH MESSAGE BOX CORRESPONDS TO EACH li ELEMENT -->
-                        <!-- each doctor message has an id of doctorMessage -->
-                        <li id="doctorMessage" class="w-full h-fit">
+                        <!-- if you're on admin side, the sender is always the doctor and will always have an id of sender -->
+                        <!-- if you're on admin side, the patient will be the receiver and will have an id of receiver -->
+                        <!-- if you're on patient side, the sender is always the patient and will always have an id of sender -->
+                        <!-- if you're on patient side, the doctor will be the reciever and will have an id of reciever -->
+                        <!-- the sender will always be on the right side of the screen and the receiver will always be on the left side of the screen -->
+
+                        <!-- reciever (doctor) -->
+                        <li id="receiver" class="w-full h-fit">
                             <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
                                 <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
                             </div>
                         </li>
 
-                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
-                        <!-- user message box should always be at the right (justify-end) of the convo -->
-                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                        <!-- sender (patient) -->
+                        <li id="sender" class="flex w-full h-fit justify-end">
                             <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
                                 <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
                             </div>
                         </li>
 
-                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
-                        <!-- user message box should always be at the right (justify-end) of the convo -->
-                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                        <!-- sender (patient) -->
+                        <li id="sender" class="flex w-full h-fit justify-end">
                             <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
                                 <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
                             </div>
                         </li>
 
-                        <!-- User message box has an id of userMessage, this is to differentiate the user message box from the doctor's message box -->
-                        <!-- user message box should always be at the right (justify-end) of the convo -->
-                        <li id="userMessage" class="flex w-full h-fit justify-end">
+                        <!-- sender (patient) -->
+                        <li id="sender" class="flex w-full h-fit justify-end">
                             <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
                                 <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
                             </div>
                         </li>
 
-                        <li id="doctorMessage" class="w-full h-fit">
+                        <!-- reciever (doctor) -->
+                        <li id="receiver" class="w-full h-fit">
+                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
+                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
+                            </div>
+                        </li>
+
+                        <!-- reciever (doctor) -->
+                        <li id="receiver" class="w-full h-fit">
                             <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
                                 <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
                             </div>

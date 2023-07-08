@@ -1870,10 +1870,6 @@ video {
     height: 3rem;
   }
 
-  .lg\:h-14 {
-    height: 3.5rem;
-  }
-
   .lg\:h-\[144px\] {
     height: 144px;
   }
@@ -1898,8 +1894,8 @@ video {
     width: 2.5rem;
   }
 
-  .lg\:w-14 {
-    width: 3.5rem;
+  .lg\:w-12 {
+    width: 3rem;
   }
 
   .lg\:w-28 {
@@ -1940,10 +1936,6 @@ video {
 
   .lg\:w-\[826px\] {
     width: 826px;
-  }
-
-  .lg\:w-12 {
-    width: 3rem;
   }
 
   .lg\:flex-row {
