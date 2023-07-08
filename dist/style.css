@@ -1436,11 +1436,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-time-active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(193 255 114 / var(--tw-bg-opacity));
-}
-
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -1897,6 +1892,10 @@ video {
 
   .lg\:w-10 {
     width: 2.5rem;
+  }
+
+  .lg\:w-12 {
+    width: 3rem;
   }
 
   .lg\:w-28 {

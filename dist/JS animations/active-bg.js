@@ -64,4 +64,26 @@ function toggleActiveDoctorMessage() {
 
 toggleActiveDoctorMessage();
 
+function toggleActivePatientMessage() {
+  var listItemsPatientMessage = document.querySelectorAll('#patientMessageList .patientMessage');
+
+  listItemsPatientMessage.forEach(function(patientMessage) {
+    patientMessage.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      patientMessage.classList.remove('bg-background-inactive');
+      patientMessage.classList.add('bg-white');
+
+      // Remove active class from all list items except the clicked item
+      listItemsPatientMessage.forEach(function(li) {
+          if (li !== patientMessage) {
+            li.classList.remove('bg-white');
+            li.classList.add('bg-background-inactive');
+          }
+      });
+    });
+  });
+}
+
+toggleActivePatientMessage();
+
   
