@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+include("../dist/backend files/connection.php");
+include("../dist/backend files/functions.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
