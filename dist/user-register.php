@@ -1,4 +1,21 @@
-<?php echo '
+<?php 
+session_start();
+
+include("../dist/backend files/connection.php");
+include("../dist/backend files/functions.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $first_name = $_POST['first-name'];
+    $last_name = $_POST['last-name'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $birth_date = $_POST['birth-date'];
+    $contact_no = $_POST['contact-no'];
+    $password = $_POST['password'];
+}
+    
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,67 +40,66 @@
             <!-- RIGHT SIDE -->
             <div class="flex flex-col w-[100%] p-5 justify-center items-center gap-2">
                 <h class="font-Commissioner text-5xl pb-5 w-[60%] text-gray-500 text-center leading-tight">Welcome to your gateway to wellness!</h>
-                <form class="w-[70%] font-Commissioner">
+                <form class="w-[70%] font-Commissioner" method="post">
                     <div class="h-[80%] flex flex-wrap gap-5">
                         <div class="mb-6">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-first-name">
                                 First Name
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="">
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl leading-tight focus:outline-none focus:shadow-outline" name="first-name" type="text" placeholder="">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-last-name">
+                                Last Name
+                            </label>
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="last-name" type="text" placeholder="">
                         </div>
                         <div class="mb-6">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
                                 Email
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="">
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="">
                         </div>
                         <div class="mb-6 w-[46%]">
                             <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-gender">
                                 Gender
                             </label>
                             <div class="">
-                                <select class="block appearance-none w-full border border-slate-500 text-gray-700 py-6 px-7 rounded-[200px] leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-gender">
+                                <select class="block appearance-none w-full border border-slate-500 text-gray-700 py-6 px-7 rounded-[200px] leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="grid-gender">
                                     <option>Male</option>
                                     <option>Female</option>
                                     <option>Rather not say</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="mb-6">
-                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
-                                Password
-                            </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="">
-                        </div>
-                        <div class="mb-6">
-                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
-                                Last Name
-                            </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="last-name" type="text" placeholder="">
-                        </div>
                         <div class="mb-6 w-[46%] data-te-input-wrapper-init">
-                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
+                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-birthdate">
                                 Birth Date
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="birth-date" type="date" placeholder="">
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="birth-date" type="date" placeholder="">
                         </div>
                         <div class="mb-6">
-                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
+                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-contactno">
                                 Contact No.
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="contact-num" type="text" placeholder="">
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="contact-num" type="text" placeholder="">
                         </div>
                         <div class="mb-6">
-                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-email">
+                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-password">
+                                Password
+                            </label>
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2" for="grid-conf-password">
                                 Confirm Password
                             </label>
-                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" id="conf-password" type="password" placeholder="">
+                            <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="conf-password" type="password" placeholder="">
                         </div>
-                        <div class="w-[95%]">
-                            <button class="bg-gray-400 appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                                Sign up
-                            </button>
+                        <div class="mb-6 w-[95%]">
+                            <input class="shadow appearance-none border rounded-[200px] bg-gray-400 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline"  type="submit" placeholder="">
                         </div>
+                        
                     </div>    
                 </form>
                 <p class="font-Commissioner pt-2 w-[60%] text-center text-gray-500 ">By using this service, you understood and agree to the ISY Online Services Terms of Use and Privacy Statement</p>
@@ -91,5 +107,3 @@
         </div>
     </body>
 </html>
-' 
-    ?>

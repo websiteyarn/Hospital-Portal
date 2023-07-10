@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+include("./dist/backend files/connection.php");
+include("./dist/backend files/functions.php");
+
+$user_data = check_login($con); //collect user data and check connection
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
