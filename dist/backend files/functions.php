@@ -3,7 +3,7 @@
 function check_login($con){
     if(isset($_SESSION['UserID'])){
         $id = $_SESSION['UserID'];
-        $query = "select * from users where UserID = '$id' limit 1";
+        $query = "select * from user where UserID = '$id' limit 1";
 
         $result = mysqli_query($con, $query);
         if($result && mysqli_num_rows($result) > 0){
@@ -12,7 +12,7 @@ function check_login($con){
         }
     }
     // redirect to login
-    header("Location: login.php");
+    header("Location: health-board.php");
     die; 
 }
 
