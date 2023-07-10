@@ -26,8 +26,6 @@ if(isset($_POST['submit'])){
         echo "Wrong username or password!";
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
