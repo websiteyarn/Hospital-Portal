@@ -1,8 +1,13 @@
 <?php 
 session_start();
 
-include("../dist/backend files/connection.php");
-include("../dist/backend files/functions.php");
+require_once("../dist/backend files/connection.php");
+require_once("../dist/backend files/functions.php");
+
+$user_data = check_login($con);
+$user_id = $user_data['userID'];
+$query = "select * from medicine where userID = '$user_id'";
+$result = mysqli_query($con, $query);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +20,7 @@ include("../dist/backend files/functions.php");
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
@@ -27,18 +32,18 @@ include("../dist/backend files/functions.php");
             </a>
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/health-board-active.png" alt="health-board-active">
-                    <h1 class="text-side-navbar-active-text">Health Board</h1> 
+            <a href="health-board.php">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    <h1 class="text-white">Health Board</h1> 
                 </div>
             </a>
 
             <!-- MEDICINE  -->
             <a href="user-medication.php">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/medicine.png" alt="medicine">
-                    <h1 class="text-white">Medicine</h1> 
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/medicine-active.png" alt="medicine">
+                    <h1 class="text-side-navbar-active-text">Medicine</h1> 
                 </div>
             </a>
             
@@ -74,8 +79,8 @@ include("../dist/backend files/functions.php");
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -89,7 +94,7 @@ include("../dist/backend files/functions.php");
                 <!-- USER PROFILE MOBILE  -->
                 <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
                     <button class=""> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -112,49 +117,28 @@ include("../dist/backend files/functions.php");
                     <!-- MEDICATION BOXES UN-ORDERED LIST -->
                     <ul id="medicationList" class="space-y-5">
                         <li>
+                            <?php while($row = mysqli_fetch_assoc($result)){?>
                             <!-- MEDICATION BOXES  -->
                             <!-- All medication boxes have an inactive default background color  -->
                             <!-- When clicked, the background color changes to active  -->
-                            <div class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                            <div id="click-medicine" class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
                                 <!-- FOR AND DATE  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
                                     <span class="text-side-navbar-active-text text-lg">FOR</span>
-                                    <span class="text-lg text-gray-text">April 20, 2023</span>
+                                    <span id="click-date" class="text-lg text-gray-text"><?php echo $row['date'] ?></span>
                                 </div>
 
                                 <!-- ILLNESS  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-3xl">Diabetes</span>
+                                    <span id="click-illness" class="text-3xl"><?php echo $row['Illness'] ?></span>
                                 </div>
 
                                 <!-- PRESCRIBED BY  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-xl text-gray-text">Prescribed by Dr. Cha</span>
+                                    <span id="click-notes" class="text-xl text-gray-text"><?php echo $row['notes'] ?></span>
                                 </div>
                             </div>
-                        </li>
-
-                        <li>
-                            <!-- MEDICATION BOXES  -->
-                            <!-- All medication boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- FOR AND DATE  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <span class="text-side-navbar-active-text text-lg">FOR</span>
-                                    <span class="text-lg text-gray-text">April 20, 2023</span>
-                                </div>
-
-                                <!-- ILLNESS  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-3xl">Diabetes</span>
-                                </div>
-
-                                <!-- PRESCRIBED BY  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <span class="text-xl text-gray-text">Prescribed by Dr. Cha</span>
-                                </div>
-                            </div>
+                            <?php ;} ?>
                         </li>
                     </ul>                
                 </div>
@@ -163,18 +147,18 @@ include("../dist/backend files/functions.php");
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
-                        <img src="/assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
+                        <img src="../assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
                         <div class="flex w-full justify-between">
                             <!-- DOCTOR'S INFO -->
                             <div class="flex flex-col mt-4">
-                                <h1 class="text-3xl">Dr. Cha</h1>
-                                <span class="text-sm text-gray-text ml-0.5">Internal Medicine</span>
+                                <h1 id="display-doc" class="text-3xl">Dr. Cha</h1>
+                                <span id="display-spec" class="text-sm text-gray-text ml-0.5">Internal Medicine</span>
                             </div>
 
                             <!-- DATE INFO -->
                             <div class="flex flex-col mt-8 mr-8">
-                                <span class="text-sm text-gray-text">Prescribed</span>
-                                <span class="text-sm text-gray-text">April 20, 2023</span>
+                                <span id="display-notes" class="text-sm text-gray-text">Prescribed</span>
+                                <span id="display-date" class="text-sm text-gray-text">April 20, 2023</span>
                             </div>
                         </div>
                     </div>
@@ -184,139 +168,27 @@ include("../dist/backend files/functions.php");
                         <li>
                             <!-- MEDICATION BOX -->
                             <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
+                                <img src="../assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
 
                                 <!-- MEDICATION DETAILS -->
                                 <div class="flex flex-col mt-14">
                                     <!-- MEDICATION DETAILS -->
                                     <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
+                                        <h1 id="display-dosage" class="text-3xl">Metformin</h1>
+                                        <!-- <span class="text-3xl">(Glumet XR)</span>
                                         <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
+                                        <span class="text-lg text-side-navbar-active-text">Everyday</span> -->
                                     </div>
 
                                     <!-- MEDICATION NOTES -->
                                     <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
+                                        <span id="display-schedule" class="text-sm">Take one (1) tablet after breakfast and dinner </span>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         
                         <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="/assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
-
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
-                                    <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 class="text-3xl">Metformin</h1>
-                                        <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span>
-                                    </div>
-
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span class="text-sm">Take one (1) tablet after breakfast and dinner </span>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                     </ul>
 
@@ -329,7 +201,8 @@ include("../dist/backend files/functions.php");
             </div>
         </div>
     </div>
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
-    <script src="/dist/JS animations/active-bg.js"></script>
+    <script src="/dist/JS assets/medicine-display.js"></script>
+    <script src="/dist/JS assets/profile-dropdown.js"></script>
+    <script src="/dist/JS assets/active-bg.js"></script>
 </body>
 </html>

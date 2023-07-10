@@ -30,10 +30,10 @@ include("../dist/backend files/functions.php");
             </a>
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/health-board-active.png" alt="health-board-active">
-                    <h1 class="text-side-navbar-active-text">Health Board</h1> 
+            <a href="health-board.php">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    <h1 class="text-white">Health Board</h1> 
                 </div>
             </a>
 
@@ -47,9 +47,9 @@ include("../dist/backend files/functions.php");
             
             <!-- APPOINTMENT  -->
             <a href="user-appointment.php">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/appointment.png" alt="appointment">
-                    <h1 class="text-white">Appointment</h1> 
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/appointment-active.png" alt="appointment">
+                    <h1 class="text-side-navbar-active-text">Appointment</h1> 
                 </div>
             </a>
 

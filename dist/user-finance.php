@@ -1,8 +1,13 @@
 <?php 
 session_start();
 
-include("../dist/backend files/connection.php");
-include("../dist/backend files/functions.php");
+require_once("../dist/backend files/connection.php");
+require_once("../dist/backend files/functions.php");
+
+$user_data = check_login($con);
+$user_id = $user_data['userID'];
+$query = "select * from finance where userID = '$user_id'";
+$result = mysqli_query($con, $query);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +20,7 @@ include("../dist/backend files/functions.php");
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
@@ -27,9 +32,9 @@ include("../dist/backend files/functions.php");
             </a>
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/health-board-active.png" alt="health-board-active">
+            <a href="health-board.php">
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/health-board.png" alt="health-board-active">
                     <h1 class="text-side-navbar-active-text">Health Board</h1> 
                 </div>
             </a>
@@ -60,9 +65,9 @@ include("../dist/backend files/functions.php");
            
             <!-- FINANCE  -->
             <a href="user-finance.php">
-                <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="../assets/sidebar/finance.png" alt="finance">
-                    <h1 class="text-white">Finance</h1> 
+                <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/finance-active.png" alt="finance">
+                    <h1 class="text-side-navbar-active-text">Finance</h1> 
                 </div>
             </a>    
         </div>
@@ -74,8 +79,8 @@ include("../dist/backend files/functions.php");
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -110,7 +115,7 @@ include("../dist/backend files/functions.php");
 
                 <!-- TABLE FOR HEADERS -->
 
-                <div class="flex flex-row w-[1636px] h-fit ml-4">
+                <div class="flex flex-row w-[1636px] h-fit text-center">
                     <span class="ml-[135px] text-2xl text-side-navbar-active-text">Agenda</span>
                     <span class="ml-[237px] text-2xl text-side-navbar-active-text">Doctor</span>
                     <span class="ml-[250px] text-2xl text-side-navbar-active-text">Amount</span>
@@ -126,29 +131,19 @@ include("../dist/backend files/functions.php");
                         <tbody class="text-center">
                             <!-- EACH TR IS A TABLE ROW -->
 
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
-
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
-
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
+                            <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
+                                <?php 
+                                    while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                        <td> <?php echo $row['agenda']; ?> </td>
+                                        <td> <?php echo $row['doctor']; ?> </td>
+                                        <td> <?php echo $row['amount']; ?> </td>
+                                        <td> <?php echo $row['date']; ?> </td>
+                                        <td> <?php echo $row['status']; ?> </td>
+                            </tr>
+                                <?php
+                                    }
+                                ?>         
                         </tbody>
                     </table>
                 </div>
@@ -159,3 +154,7 @@ include("../dist/backend files/functions.php");
     <script src="/dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
+
+<?php
+    mysqli_close($con); 
+?>
