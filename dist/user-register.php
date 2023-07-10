@@ -1,3 +1,4 @@
+<?php echo '
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,11 +11,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
         <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
     </head>
+   
+    
     <body class = "bg-gradient-to-tr from-gray-100 to to-slate-100 p-0 m-0 font-Commissioner flex-nowrap">
         <div class = "flex flex-row h-screen">
             <!-- LEFT SIDE -->
             <div class="bg-white flex items-center justify-center w-[75%] p-5 gap-x-12 rounded-r-[50px] shadow-2xl font-Commissioner">
-                    <img class="items-center w-[280px] h-[300px] " src="/assets/Logo Enhanced.png">
+                    <img class="items-center w-[280px] h-[300px] " src="../assets/Logo Enhanced.png">
                     <p class="text-[130px] leading-tight text-login-font-clr w-[40%] ">I SEE YOU</p>
             </div>
             <!-- RIGHT SIDE -->
@@ -88,3 +91,5 @@
         </div>
     </body>
 </html>
+' 
+    ?>
