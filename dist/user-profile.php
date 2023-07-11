@@ -117,7 +117,7 @@ include("../dist/backend files/functions.php");
                     Below the left and right items are the bottom items (honest clause and edit button). -->
                     
                     <?php 
-                        $query = "SELECT * FROM `user` WHERE UserID='1';"; // change to the value of $_SESSION['userID']; 
+                        $query = "SELECT * FROM `user` WHERE userID='1';"; // change to the value of $_SESSION['userID']; 
                         $result = mysqli_query($con, $query);
 
                         while($row = mysqli_fetch_assoc($result)){ ?>
@@ -139,15 +139,15 @@ include("../dist/backend files/functions.php");
                                 <!-- PATIENT NUMBER VALUE -->
                                 <span class="text-lg font-medium ml-[160px]">
                                     <?php 
-                                        $len = strlen($row['UserID']);
+                                        $len = strlen($row['userID']);
                                         if($len == 1){
-                                            echo "00-000-00".$row['UserID'];
+                                            echo "00-000-00".$row['userID'];
                                         }
                                         else if(len == 2){
-                                            echo "00-000-0".$row['UserID'];
+                                            echo "00-000-0".$row['userID'];
                                         }
                                         else if(len == 3){
-                                            echo "00-000-".$row['UserID'];
+                                            echo "00-000-".$row['userID'];
                                         }
                                     ?>
                                 </span>
@@ -158,7 +158,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Name</span>
 
                                 <!-- NAME VALUE -->
-                                <span class="text-lg font-medium ml-[244px]"><?php echo $row['First Name']." ".$row['Last Name']; ?></span>
+                                <span class="text-lg font-medium ml-[244px]"><?php echo $row['first_name']." ".$row['last_name']; ?></span>
                             </div>
 
                             <!-- DATE OF BIRTH  -->
@@ -166,7 +166,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Date of Birth</span>
 
                                 <!-- DATE OF BIRTH VALUE -->
-                                <span class="text-lg font-medium ml-[184px]"><?php echo date("m-d-Y", strtotime($row['Birth Date'])); ?></span>
+                                <span class="text-lg font-medium ml-[184px]"><?php echo date("m-d-Y", strtotime($row['birth_date'])); ?></span>
                             </div>
 
                             <!-- SEX  -->
@@ -174,7 +174,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Sex</span>
 
                                 <!-- SEX VALUE -->
-                                <span class="text-lg font-medium ml-[260px]"><?php echo $row['Gender']; ?></span>
+                                <span class="text-lg font-medium ml-[260px]"><?php echo $row['gender']; ?></span>
                             </div>
                             
                         </div>
@@ -186,7 +186,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Email</span>
 
                                 <!-- EMAIL VALUE -->
-                                <span class="text-lg font-medium ml-[200px]"><?php echo $row['Email']; ?></span>
+                                <span class="text-lg font-medium ml-[200px]"><?php echo $row['email']; ?></span>
                             </div>
 
                             <!-- MOBILE NUMBER  -->
@@ -194,7 +194,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Mobile Number</span>
 
                                 <!-- MOBILE NUMBER VALUE -->
-                                <span class="text-lg font-medium ml-[118px]"><?php echo $row['Contact Number']; ?></span>
+                                <span class="text-lg font-medium ml-[118px]"><?php echo $row['contact_number']; ?></span>
                             </div>
 
                             <!-- ADDRESS  -->
@@ -202,7 +202,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Address</span>
 
                                 <!-- ADDRESS VALUE -->
-                                <span class="text-lg font-medium ml-[180px]"><?php echo $row['Address']; ?></span>
+                                <span class="text-lg font-medium ml-[180px]"><?php echo $row['address']; ?></span>
                             </div>
 
                             <!-- CONTACT PERSON  -->
@@ -210,7 +210,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Contact Person</span>
 
                                 <!-- CONTACT VALUE -->
-                                <span class="text-lg font-medium ml-[120px]"><?php echo $row['Contact Person']; ?></span>
+                                <span class="text-lg font-medium ml-[120px]"><?php echo $row['family']; ?></span>
                             </div>
 
                             <!-- CONTACT MOBILE NUMBER  -->
@@ -218,7 +218,7 @@ include("../dist/backend files/functions.php");
                                 <span class="text-lg text-side-navbar-active-text">Contact Mobile No.</span>
 
                                 <!-- CONTACT MOBILE VALUE -->
-                                <span class="text-lg font-medium ml-[88px]"><?php echo $row['Contact Mobile No']; ?></span>
+                                <span class="text-lg font-medium ml-[88px]"><?php echo $row['family_number']; ?></span>
                             </div>
                         </div>
                     </div>
@@ -243,6 +243,6 @@ include("../dist/backend files/functions.php");
         </div>
     </div> 
     
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
