@@ -35,7 +35,7 @@ $result = mysqli_query($con, $query);
             <a href="health-board.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/health-board.png" alt="health-board-active">
-                    <h1 class="text-side-navbar-active-text">Health Board</h1> 
+                    <h1 class="text-white">Health Board</h1> 
                 </div>
             </a>
 
@@ -56,7 +56,7 @@ $result = mysqli_query($con, $query);
             </a>
 
             <!-- MESSAGE  -->
-            <a href="#">
+            <a href="user-message.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1> 
@@ -84,24 +84,26 @@ $result = mysqli_query($con, $query);
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="user-profile.php">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
                     </ul>
                 </div>
 
                 <!-- USER PROFILE MOBILE  -->
                 <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
                     <button class=""> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"href="user-profile.php">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
                     </ul>
                 </div>
             </div>
@@ -130,20 +132,16 @@ $result = mysqli_query($con, $query);
                         <!-- TABLE BODY  -->
                         <tbody class="text-center">
                             <!-- EACH TR IS A TABLE ROW -->
-
-                            <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
-                                <?php 
-                                    while($row = mysqli_fetch_assoc($result)){
-                                ?>
-                                        <td> <?php echo $row['agenda']; ?> </td>
-                                        <td> <?php echo $row['doctor']; ?> </td>
-                                        <td> <?php echo $row['amount']; ?> </td>
-                                        <td> <?php echo $row['date']; ?> </td>
-                                        <td> <?php echo $row['status']; ?> </td>
-                            </tr>
-                                <?php
-                                    }
-                                ?>         
+                            <?php while($row = mysqli_fetch_assoc($result)){?>
+                                <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
+                                    
+                                            <td> <?php echo $row['agenda']; ?> </td>
+                                            <td> <?php echo $row['doctor']; ?> </td>
+                                            <td> <?php echo $row['amount']; ?> </td>
+                                            <td> <?php echo $row['date']; ?> </td>
+                                            <td> <?php echo $row['status']; ?> </td>
+                                </tr>
+                            <?php ;} ?>         
                         </tbody>
                     </table>
                 </div>
