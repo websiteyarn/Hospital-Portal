@@ -225,7 +225,7 @@ if (isset($_COOKIE['name'])) {
             </div>
         </div>
     </div>
-    <script src="/dist/JS animations/medicine-display.js"></script>
+    <script src="../dist/JS animations/medicine-display.js"></script>
     <script src="../dist/JS animations/profile-dropdown.js"></script>
     <script src="../dist/JS animations/active-bg.js"></script>
 </body>
