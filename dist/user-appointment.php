@@ -8,6 +8,9 @@ $user_data = check_login($con);
 $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
+
+
+
 ?>
 
 
@@ -162,27 +165,33 @@ $result = mysqli_query($con, $query);
                         <div class="w-[50%] h-full">
                             <!-- DOCTOR SPECIALTY  -->
                             <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Specialty</h1>
+                            <?php $specialty_query = "select specialty from admin";
+                            $specialty_result = mysqli_query($con, $specialty_query);
+                            
+                            ?>
                             <div class="relative ml-10 z-50">
                                 <button id="specialtyMenu" class="w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" type="text" id="specialtyBox" placeholder="Select">
                                 </button>
                                 <div id="specialtyDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 1')">Option 1</a>
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 2')">Option 2</a>
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('Option 3')">Option 3</a>
-                                </div>
+                                    <?php while($specialty_row = mysqli_fetch_assoc($specialty_result)){?>
+                                        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText"><?php echo $specialty_row['specialty'] ?></a>
+                                    <?php ;} ?>
+                                    </div>
                             </div>          
                             
                             <!-- DOCTOR  -->
                             <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Doctor</h1>
+                            <?php $doctor_query = "select name from admin";
+                            $doctor_result = mysqli_query($con, $doctor_query);?>
                             <div class="relative ml-10 z-30">
                                 <button id="doctorMenu" class="w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" type="text" id="doctorBox" placeholder="Select">
                                 </button>
                                 <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 1')">Option 1</a>
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 2')">Option 2</a>
-                                    <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('Option 3')">Option 3</a>
+                                    <?php while($doctor_row = mysqli_fetch_assoc($doctor_result)){?>        
+                                        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText"><?php echo $doctor_row['name'] ?></a>
+                                     <?php ;} ?>
                                 </div>
                             </div>      
                         </div>
@@ -309,7 +318,7 @@ $result = mysqli_query($con, $query);
                             <!-- SAVE BTN  -->
                             <a href="#">
                                 <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                    <span class=" text-gray-text text-lg">Save</span>
+                                    <span class=" text-gray-text text-lg" type="submit">Save</span>
                                 </button>
                             </a>
                         </div>
