@@ -6,8 +6,24 @@ require_once("../dist/backend files/functions.php");
 
 $user_data = check_login($con);
 $user_id = $user_data['userID'];
-$query = "select * from medicine where userID = '$user_id'";
+$doctor_id = $user_data['doctorID'];
+$query = "select * from illness where userID = '$user_id'";
 $result = mysqli_query($con, $query);
+
+if (isset($_COOKIE['name'])) {
+    $value = $_COOKIE['name'];
+    // echo $value;  // Retrieve the value from the cookie
+    // Use the $value variable in your PHP code
+    $highlight_query = "select * from medication where userID = '$user_id' and medicineID = '$value'";
+    $highlight_result = mysqli_query($con, $highlight_query);
+
+    $doctor_query = "select * from admin where doctorID = '$value'";
+    $doctor_result = mysqli_query($con, $doctor_query);
+    
+    $medicine_query = "select * from medication where userID = '$user_id' and doctorID = '$value'";
+    $medicine_result = mysqli_query($con, $medicine_query);
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +137,7 @@ $result = mysqli_query($con, $query);
                             <!-- MEDICATION BOXES  -->
                             <!-- All medication boxes have an inactive default background color  -->
                             <!-- When clicked, the background color changes to active  -->
-                            <div id="click-medicine" class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
+                            <div id="click-medicine" name=<?php echo $row['illnessID'] ?> class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
                                 <!-- FOR AND DATE  -->
                                 <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
                                     <span class="text-side-navbar-active-text text-lg">FOR</span>
@@ -147,45 +163,51 @@ $result = mysqli_query($con, $query);
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
-                        <img src="../assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
-                        <div class="flex w-full justify-between">
-                            <!-- DOCTOR'S INFO -->
-                            <div class="flex flex-col mt-4">
-                                <h1 id="display-doc" class="text-3xl">Dr. Cha</h1>
-                                <span id="display-spec" class="text-sm text-gray-text ml-0.5">Internal Medicine</span>
-                            </div>
+                        <?php while($highlight_row = mysqli_fetch_assoc($highlight_result)){
+                            while($doctor_row = mysqli_fetch_assoc($doctor_result)){
+                            ?>
+                            <img src="../assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
+                            <div class="flex w-full justify-between">
+                                <!-- DOCTOR'S INFO -->
+                                <div class="flex flex-col mt-4">
+                                    <h1 id="display-doc" class="text-3xl"><?php echo $doctor_row['name'] ?></h1>
+                                    <span id="display-spec" class="text-sm text-gray-text ml-0.5"><?php echo $doctor_row['specialty'] ?></span>
+                                </div>
 
-                            <!-- DATE INFO -->
-                            <div class="flex flex-col mt-8 mr-8">
-                                <span id="display-notes" class="text-sm text-gray-text">Prescribed</span>
-                                <span id="display-date" class="text-sm text-gray-text">April 20, 2023</span>
+                                <!-- DATE INFO -->
+                                <div class="flex flex-col mt-8 mr-8">
+                                    <span id="display-notes" class="text-sm text-gray-text"><?php echo $highlight_row['prescription_notes'] ?></span>
+                                    <span id="display-date" class="text-sm text-gray-text"><?php echo $highlight_row['prescription_date'] ?></span>
+                                </div>
                             </div>
-                        </div>
+                        <?php ;} 
+                        ;} ?>    
                     </div>
 
                     <!-- ACTUAL MEDICATION LIST (PER BOX)-->
                     <ul class="flex flex-wrap h-[600px] mx-8 overflow-auto">
                         <li>
-                            <!-- MEDICATION BOX -->
-                            <div class="flex w-[482px] h-[300px]">
-                                <img src="../assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
+                            <?php while($medicine_row = mysqli_fetch_assoc($medicine_result)){?>
+                                <!-- MEDICATION BOX -->
+                                <div class="flex w-[482px] h-[300px]">
+                                    <img src="../assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
 
-                                <!-- MEDICATION DETAILS -->
-                                <div class="flex flex-col mt-14">
                                     <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                        <h1 id="display-dosage" class="text-3xl">Metformin</h1>
-                                        <!-- <span class="text-3xl">(Glumet XR)</span>
-                                        <span class="text-xl">500mg</span>
-                                        <span class="text-lg text-side-navbar-active-text">Everyday</span> -->
-                                    </div>
+                                    <div class="flex flex-col mt-14">
+                                        <!-- MEDICATION DETAILS -->
+                                        <div class="flex flex-col w-fit h-fit ml-6 mb-12">
+                                            <h1 id="display-dosage" class="text-3xl"><?php echo $medicine_row['medicine'] ?></h1>
+                                            <span class="text-xl"><?php echo $medicine_row['dosage'] ?></span>
+                                            <span class="text-lg text-side-navbar-active-text"><?php echo $medicine_row['schedule'] ?></span>
+                                        </div>
 
-                                    <!-- MEDICATION NOTES -->
-                                    <div class="flex w-fit h-fit ml-6">
-                                        <span id="display-schedule" class="text-sm">Take one (1) tablet after breakfast and dinner </span>
+                                        <!-- MEDICATION NOTES -->
+                                        <div class="flex w-fit h-fit ml-6">
+                                            <span id="display-schedule" class="text-sm"><?php echo $medicine_row['notes'] ?></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php ;} ?>
                         </li>
                         
                         <li>
@@ -201,8 +223,8 @@ $result = mysqli_query($con, $query);
             </div>
         </div>
     </div>
-    <script src="/dist/JS assets/medicine-display.js"></script>
-    <script src="/dist/JS assets/profile-dropdown.js"></script>
-    <script src="/dist/JS assets/active-bg.js"></script>
+    <!-- <script src="/dist/JS animations/medicine-display.js"></script> -->
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/active-bg.js"></script>
 </body>
 </html>
