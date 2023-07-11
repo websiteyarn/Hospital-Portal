@@ -175,7 +175,7 @@ $result = mysqli_query($con, $query);
                                 </button>
                                 <div id="specialtyDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
                                     <?php while($specialty_row = mysqli_fetch_assoc($specialty_result)){?>
-                                        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText"><?php echo $specialty_row['specialty'] ?></a>
+                                        <a id="specialtyInput" class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateText('<?php echo $specialty_row['specialty']?>')"><?php echo $specialty_row['specialty'] ?></a>
                                     <?php ;} ?>
                                     </div>
                             </div>          
@@ -190,7 +190,7 @@ $result = mysqli_query($con, $query);
                                 </button>
                                 <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
                                     <?php while($doctor_row = mysqli_fetch_assoc($doctor_result)){?>        
-                                        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText"><?php echo $doctor_row['name'] ?></a>
+                                        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('<?php echo $doctor_row['name']?>')"><?php echo $doctor_row['name'] ?></a>
                                      <?php ;} ?>
                                 </div>
                             </div>      
