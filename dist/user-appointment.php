@@ -3,6 +3,11 @@ session_start();
 
 include("../dist/backend files/connection.php");
 include("../dist/backend files/functions.php");
+
+$user_data = check_login($con);
+$user_id = $user_data['userID'];
+$query = "select * from appointment where userID = '$user_id'";
+$result = mysqli_query($con, $query);
 ?>
 
 
@@ -16,7 +21,7 @@ include("../dist/backend files/functions.php");
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/">
 </head>
@@ -77,29 +82,31 @@ include("../dist/backend files/functions.php");
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="user-profile.php">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
                     </ul>
                 </div>
 
                 <!-- USER PROFILE MOBILE  -->
                 <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
                     <button class=""> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"href="user-profile.php">Profile</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
                     </ul>
                 </div>
             </div>
@@ -114,76 +121,34 @@ include("../dist/backend files/functions.php");
 
                     <!-- BUTTON FOR NEW APPOINTMENT -->
                     <button class="item flex flex-row items-center space-x-5 item w-[483px] h-[87px] bg-white cursor-pointer shadow-custom ml-4 rounded-3xl">
-                        <img src="/assets/add-btn.png" alt="add-btn" class="w-[21px] h-[21px] ml-4">
+                        <img src="../assets/add-btn.png" alt="add-btn" class="w-[21px] h-[21px] ml-4">
                         <h1 class="text-2xl text-sidebar-text-bold font-medium">Add</h1>
                     </button>
 
                     <!-- APPOINTMENT BOXES UN-ORDERED LIST -->
                     <ul id="appointmentList" class="space-y-5 mt-5">
                         <li>
-                            <!-- APPOINTMENT BOXES  -->
-                            <!-- All appointment boxes have an inactive default background color  -->
-                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DOCTOR AND DATE  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <!-- DOCTOR  -->
-                                    <span class="text-3xl">Dr.Cha</span>
-                                    <!-- DATE  -->
-                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
-                                </div>
+                            <?php while($row = mysqli_fetch_assoc($result)){?>
+                                <!-- APPOINTMENT BOXES  -->
+                                <!-- All appointment boxes have an inactive default background color  -->
+                                <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
+                                    <!-- DOCTOR AND DATE  -->
+                                    <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
+                                        <!-- DOCTOR  -->
+                                        <span class="text-3xl"><?php echo $row['doctorName'] ?></span>
+                                        <!-- DATE  -->
+                                        <span class="text-lg text-appointment-date pt-1"><?php echo $row['date'] ?></span>
+                                    </div>
 
-                                <!-- TYPE AND TIME  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <!-- TYPE  -->
-                                    <span class="text-lg text-gray-text">Internal Medicine</span>
-                                    <!-- TIME  -->
-                                    <span class="text-lg text-appointment-date">1:00 pm</span>
+                                    <!-- TYPE AND TIME  -->
+                                    <div class="flex flex-row justify-between ml-7 mr-7">
+                                        <!-- TYPE  -->
+                                        <span class="text-lg text-gray-text"><?php echo $row['specialty'] ?></span>
+                                        <!-- TIME  -->
+                                        <span class="text-lg text-appointment-date"><?php echo $row['time'] ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- APPOINTMENT BOXES  -->
-                            <!-- All appointment boxes have an inactive default background color  -->
-                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DOCTOR AND DATE  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <!-- DOCTOR  -->
-                                    <span class="text-3xl">Dr.Cha</span>
-                                    <!-- DATE  -->
-                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
-                                </div>
-
-                                <!-- TYPE AND TIME  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <!-- TYPE  -->
-                                    <span class="text-lg text-gray-text">Internal Medicine</span>
-                                    <!-- TIME  -->
-                                    <span class="text-lg text-appointment-date">1:00 pm</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- APPOINTMENT BOXES  -->
-                            <!-- All appointment boxes have an inactive default background color  -->
-                            <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DOCTOR AND DATE  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <!-- DOCTOR  -->
-                                    <span class="text-3xl">Dr.Cha</span>
-                                    <!-- DATE  -->
-                                    <span class="text-lg text-appointment-date pt-1">July 30, 2023</span>
-                                </div>
-
-                                <!-- TYPE AND TIME  -->
-                                <div class="flex flex-row justify-between ml-7 mr-7">
-                                    <!-- TYPE  -->
-                                    <span class="text-lg text-gray-text">Internal Medicine</span>
-                                    <!-- TIME  -->
-                                    <span class="text-lg text-appointment-date">1:00 pm</span>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </li>
                     </ul>                
                 </div>
@@ -351,14 +316,13 @@ include("../dist/backend files/functions.php");
                     </div>
                 </div>
             </div>
-            
-            
+             
         </div>
     </div>
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
-    <script src="/dist/JS animations/active-bg.js"></script>
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/active-bg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="/dist/JS animations/appointment-dropdown.js"></script>
+    <script src="../dist/JS animations/appointment-dropdown.js"></script>
     <script>
         flatpickr("#booking-date", {
             // Specify available dates (optional)
