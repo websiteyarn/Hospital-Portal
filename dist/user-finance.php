@@ -1,3 +1,15 @@
+<?php 
+session_start();
+
+require_once("../dist/backend files/connection.php");
+require_once("../dist/backend files/functions.php");
+
+$user_data = check_login($con);
+$user_id = $user_data['userID'];
+$query = "select * from finance where userID = '$user_id'";
+$result = mysqli_query($con, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,52 +20,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
         <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
-            <img src="/assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
-
+            <a href="health-board.php">
+            <img src="../assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
+            </a>
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
+            <a href="health-board.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/health-board.png" alt="health-board-active">
-                    <h1 class="text-white">Health Board</h1> 
+                    <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    <h1 class="text-side-navbar-active-text">Health Board</h1> 
                 </div>
             </a>
 
             <!-- MEDICINE  -->
-            <a href="">
+            <a href="user-medication.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/medicine.png" alt="medicine">
+                    <img src="../assets/sidebar/medicine.png" alt="medicine">
                     <h1 class="text-white">Medicine</h1> 
                 </div>
             </a>
             
             <!-- APPOINTMENT  -->
-            <a href="">
+            <a href="user-appointment.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/appointment.png" alt="appointment">
+                    <img src="../assets/sidebar/appointment.png" alt="appointment">
                     <h1 class="text-white">Appointment</h1> 
                 </div>
             </a>
 
             <!-- MESSAGE  -->
-            <a href="">
+            <a href="#">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/message.png" alt="message">
+                    <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1> 
                 </div>
             </a>
            
             <!-- FINANCE  -->
-            <a href="">
+            <a href="user-finance.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/finance-active.png" alt="finance">
+                    <img src="../assets/sidebar/finance-active.png" alt="finance">
                     <h1 class="text-side-navbar-active-text">Finance</h1> 
                 </div>
             </a>    
@@ -66,8 +79,8 @@
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -102,7 +115,7 @@
 
                 <!-- TABLE FOR HEADERS -->
 
-                <div class="flex flex-row w-[1636px] h-fit ml-4">
+                <div class="flex flex-row w-[1636px] h-fit text-center">
                     <span class="ml-[135px] text-2xl text-side-navbar-active-text">Agenda</span>
                     <span class="ml-[237px] text-2xl text-side-navbar-active-text">Doctor</span>
                     <span class="ml-[250px] text-2xl text-side-navbar-active-text">Amount</span>
@@ -118,29 +131,19 @@
                         <tbody class="text-center">
                             <!-- EACH TR IS A TABLE ROW -->
 
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
-
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
-
-                          <tr class="h-20 border-b-gray-200 border-b-2">
-                            <td>Data 1</td>
-                            <td>Data 2</td>
-                            <td>Data 3</td>
-                            <td>Data 4</td>
-                            <td>Data 5</td>
-                          </tr>
+                            <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
+                                <?php 
+                                    while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                        <td> <?php echo $row['agenda']; ?> </td>
+                                        <td> <?php echo $row['doctor']; ?> </td>
+                                        <td> <?php echo $row['amount']; ?> </td>
+                                        <td> <?php echo $row['date']; ?> </td>
+                                        <td> <?php echo $row['status']; ?> </td>
+                            </tr>
+                                <?php
+                                    }
+                                ?>         
                         </tbody>
                     </table>
                 </div>
@@ -151,3 +154,7 @@
     <script src="/dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
+
+<?php
+    mysqli_close($con); 
+?>
