@@ -1,3 +1,12 @@
+<?php
+
+include("../dist/backend files/connection.php");
+include("../dist/backend files/functions.php");
+
+// session_start();
+// echo $_SESSION['userID'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +56,7 @@
                 </div>
             </a>
         </div>
+
         <!-- MAIN CONTENT -->
         <div class="flex-col flex-grow lg:ml-[60px]">
             <!-- TOP ITEMS (USER-DROPDOWN) -->
@@ -95,11 +105,18 @@
                 </div>
 
                 <!-- PROFILE BOX  -->
+                
                 <div class="flex flex-col w-[1636px] h-[530px] mt-[45px] bg-white rounded-[30px] shadow-custom">
 
                     <!-- The profile box includes the left items (profile, patient, name, birthdate, and sex) as well 
                     as the right items (email, mobile number, address, contact person, and contact mobile number).
                     Below the left and right items are the bottom items (honest clause and edit button). -->
+                    
+                    <?php 
+                        $query = "SELECT * FROM `admin` WHERE doctorID='2';"; // change to the value of $_SESSION['userID']; 
+                        $result = mysqli_query($con, $query);
+
+                        while($row = mysqli_fetch_assoc($result)){ ?>
 
                     <div class="flex flex-row w-full h-full">
 
@@ -117,7 +134,20 @@
                                 <span class="text-lg text-side-navbar-active-text">License Number</span>
 
                                 <!-- LICENSE NUMBER VALUE -->
-                                <span class="text-lg font-medium ml-[160px]">00-000-000</span>
+                                <span class="text-lg font-medium ml-[160px]">
+                                    <?php 
+                                        $len = strlen($row['doctorID']);
+                                        if($len == 1){
+                                            echo "00-000-00".$row['doctorID'];
+                                        }
+                                        else if(len == 2){
+                                            echo "00-000-0".$row['doctorID'];
+                                        }
+                                        else if(len == 3){
+                                            echo "00-000-".$row['doctorID'];
+                                        }
+                                    ?>
+                                </span>
                             </div>
 
                             <!-- NAME  -->
@@ -125,7 +155,7 @@
                                 <span class="text-lg text-side-navbar-active-text">Name</span>
 
                                 <!-- NAME VALUE -->
-                                <span class="text-lg font-medium ml-[244px]">Jane Doe</span>
+                                <span class="text-lg font-medium ml-[244px]"><?php echo $row['name']; ?></span>
                             </div>
 
                             <!-- SPECIALTY  -->
@@ -133,33 +163,29 @@
                                 <span class="text-lg text-side-navbar-active-text">Specialty</span>
 
                                 <!-- SPECIALTY VALUE -->
-                                <span class="text-lg font-medium ml-[214px]">Internal Medicine</span>
+                                <span class="text-lg font-medium ml-[214px]"><?php echo $row['specialty']; ?></span>
                             </div>
+
+
 
                         </div>
 
                         <!-- RIGHT ITEMS  -->
                         <div class="w-[60%] h-full">
                             <!-- EMAIL -->
-                            <div class="flex flex-row w-fit h-fit ml-10 mt-14 justify-center items-center">
+                            <div class="w-fit h-fit ml-10 mt-14">
                                 <span class="text-lg text-side-navbar-active-text">Email</span>
 
                                 <!-- EMAIL VALUE -->
-                                <!-- <span class="text-lg font-medium ml-[200px]">janedoe@google.com</span> -->
-                                <input
-                                    class="w-[500px] h-[42px] ml-[200px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                    type="edit" name="email-edit" placeholder="janedoe@google.com">
+                                <span class="text-lg font-medium ml-[200px]"><?php echo $row['email']; ?></span>
                             </div>
 
                             <!-- MOBILE NUMBER  -->
-                            <div class="flex flex-row justify-center items-center w-fit h-fit ml-10 mt-9">
+                            <div class="w-fit h-fit ml-10 mt-9">
                                 <span class="text-lg text-side-navbar-active-text">Mobile Number</span>
 
                                 <!-- MOBILE NUMBER VALUE -->
-                                <!-- <span class="text-lg font-medium ml-[118px]">0999 0000 000</span> -->
-                                <input
-                                    class="w-[500px] h-[42px] ml-[118px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                    type="edit" name="mobile-edit" placeholder="0999 0000 000">
+                                <span class="text-lg font-medium ml-[118px]"><?php echo $row['mobile_number']; ?></span>
                             </div>
 
                             <!-- ADDRESS  -->
@@ -167,11 +193,7 @@
                                 <span class="text-lg text-side-navbar-active-text">Address</span>
 
                                 <!-- ADDRESS VALUE -->
-                                <!-- <span class="text-lg font-medium ml-[180px]">1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila</span> -->
-                                <input
-                                    class="w-[500px] h-[42px] ml-[176px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                    type="edit" name="address-edit"
-                                    placeholder="1016 Anonas, Sta. Mesa, Maynila, Kalakhang Maynila">
+                                <span class="text-lg font-medium ml-[180px]"><?php echo $row['address']; ?></span>
                             </div>
 
                             <!-- DATE OF BIRTH  -->
@@ -179,7 +201,7 @@
                                 <span class="text-lg text-side-navbar-active-text">Date of Birth</span>
 
                                 <!-- DATE OF BIRTH VALUE -->
-                                <span class="text-lg font-medium ml-[140px]">November 9, 2001</span>
+                                <span class="text-lg font-medium ml-[140px]"><?php echo date("m-d-Y", strtotime($row['birthdate'])); ?></span>
                             </div>
 
                             <!-- SEX  -->
@@ -187,10 +209,14 @@
                                 <span class="text-lg text-side-navbar-active-text">Sex</span>
 
                                 <!-- SEX VALUE -->
-                                <span class="text-lg font-medium ml-[215px]">Female</span>
+                                <span class="text-lg font-medium ml-[215px]"><?php echo $row['gender']; ?></span>
                             </div>
+
                         </div>
                     </div>
+                    <?php
+                        }
+                    ?>
 
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-fit h-20 ml-10">
@@ -198,19 +224,11 @@
                         <span class="mt-7 ml-2 italic">I hereby certify that all the information provided are true and
                             correct to the best of my knowledge.</span>
 
-                        <!-- CANCEL BTN  -->
                         <a href="#">
                             <button
-                                class="flex w-[90px] h-[45px] mt-3 ml-[600px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <span class=" text-gray-text text-lg">Cancel</span>
-                            </button>
-                        </a>
-
-                        <!-- SAVE BTN  -->
-                        <a href="#">
-                            <button
-                                class="flex w-[90px] h-[45px] bg-save-button mt-3 ml-[30px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <span class=" text-gray-text text-lg">Save</span>
+                                class="flex w-[90px] h-[45px] mt-3 ml-[750px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <img src="../assets/edit-btn.png" alt="user-profile-edit">
+                                <span class="ml-1 text-gray-text text-lg">Edit</span>
                             </button>
                         </a>
                     </div>
