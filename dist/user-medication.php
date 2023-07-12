@@ -9,6 +9,7 @@ $user_id = $user_data['userID'];
 $doctor_id = $user_data['doctorID'];
 $query = "select * from illness where userID = '$user_id'";
 $result = mysqli_query($con, $query);
+$value = 1;
 
         $docName = $_COOKIE['docName'];
         $illnessName = $_COOKIE['illnessName'];
