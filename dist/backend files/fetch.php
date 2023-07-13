@@ -1,7 +1,7 @@
 <?php
 
-include("../dist/backend files/connection.php");
-include("../dist/backend files/functions.php");
+include("connection.php");
+include("functions.php");
 
 $request = $_POST['request'];
 if (isset($_POST['request'])){
