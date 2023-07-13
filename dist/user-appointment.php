@@ -10,7 +10,25 @@ $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
 
+if(isset($_COOKIE['doctorSelect'])) {
+    $timeValue = $_COOKIE['timeSelect'];
+    $dateValue = $_COOKIE['bookingDate'];
+    $doctorValue = $_COOKIE['doctorSelect'];
+    $specialtyValue = $_COOKIE['specialtySelect'];
 
+
+
+    $docID_query = "select * from admin where name = '$doctorValue'";
+    $docID_result = mysqli_query($con, $docID_query);
+
+    while ($row = mysqli_fetch_array($docID_result)) {
+        $docID = $row['doctorID'];
+    }
+    echo $docID;
+}
+    $insert_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty) values ('$user_id', '$docID', '$dateValue', '$timeValue','$doctorValue', '$specialtyValue')";
+    $check = mysqli_query($con, $insert_query);
+     
 ?>
 
 
@@ -214,14 +232,15 @@ $result = mysqli_query($con, $query);
                                 <!-- TIME BOXES LIST -->
                                 <?php $time_query = "select time from time"; 
                                 $time_result = mysqli_query($con,$time_query)?>
+                                <input type="text" name="time-select" id="time-select" class="hidden"> 
                                 <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5 justify-normal items-center">
                                     <?php while($time_row = mysqli_fetch_assoc($time_result)){?>
                                         <li>
                                             <!-- TIME SLOT BTNS -->
                                             <!-- All timeslot boxes have an inactive default background color  -->
                                             <!-- When clicked, the background color changes to active  -->
-                                            <button class="time flex w-[150px] h-[45px] ml-5 mt-5 justify-center items-center rounded-3xl bg-form-fill mb-2">
-                                                <span name="time-select" id="time-select" class=" text-custom-time text-lg"><?php echo $time_row['time'] ?></span>
+                                            <button value="<?php echo $time_row['time'] ?>" class="time flex w-[150px] h-[45px] ml-5 mt-5 justify-center items-center rounded-3xl bg-form-fill mb-2 text-custom-time text-lg">
+                                               <?php echo $time_row['time'] ?>
                                             </button>
                                         </li>
                                     <?php ;} ?>
@@ -240,7 +259,7 @@ $result = mysqli_query($con, $query);
                             
                             <!-- SAVE BTN  -->
                             <a href="#">
-                                <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <button onclick="dataPost()" class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                     <span class=" text-gray-text text-lg" type="submit">Save</span>
                                 </button>
                             </a>
@@ -256,6 +275,8 @@ $result = mysqli_query($con, $query);
     <script src="../dist/JS animations/active-bg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../dist/JS animations/appointment-dropdown.js"></script>
+    <script src="../dist/JS animations/appointment-post.js"></script>
+    
     <script>
         flatpickr("#booking-date", {
             // Specify available dates (optional)
@@ -278,7 +299,7 @@ $result = mysqli_query($con, $query);
                 var value = $(this).val();
                  console.log(value);
 
-                $.ajax({url:"fetch.php",
+                $.ajax({url:"../dist/backend files/fetch.php",
                     type:"POST",
                     data:"request=" + value,
                     dataType: "html",
