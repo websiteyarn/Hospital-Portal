@@ -9,12 +9,12 @@ $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
-
 if(isset($_COOKIE['doctorSelect'])) {
     $timeValue = $_COOKIE['timeSelect'];
     $dateValue = $_COOKIE['bookingDate'];
     $doctorValue = $_COOKIE['doctorSelect'];
     $specialtyValue = $_COOKIE['specialtySelect'];
+    $docID = null;
 
 
 
@@ -25,10 +25,19 @@ if(isset($_COOKIE['doctorSelect'])) {
         $docID = $row['doctorID'];
     }
     echo $docID;
+    
 }
     $insert_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty) values ('$user_id', '$docID', '$dateValue', '$timeValue','$doctorValue', '$specialtyValue')";
-    $check = mysqli_query($con, $insert_query);
-     
+    $check = mysqli_query($con, $insert_query); 
+    unset($_COOKIE['timeSelect']);
+    unset($_COOKIE['bookingDate']);
+    unset($_COOKIE['doctorSelect']);
+    unset($_COOKIE['specialtySelect']);
+    setcookie('timeSelect', '', time() - 3600, '/');
+    setcookie('bookingDate', '', time() - 3600, '/');
+    setcookie('doctorSelect', '', time() - 3600, '/');
+    setcookie('specialtySelect', '', time() - 3600, '/');  
+    //hello world
 ?>
 
 
