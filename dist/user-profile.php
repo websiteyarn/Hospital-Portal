@@ -3,8 +3,7 @@
 include("../dist/backend files/connection.php");
 include("../dist/backend files/functions.php");
 
-// session_start();
-// echo $_SESSION['userID'];
+session_start();
 
 ?>
 
@@ -119,7 +118,8 @@ include("../dist/backend files/functions.php");
                     Below the left and right items are the bottom items (honest clause and edit button). -->
                     
                     <?php 
-                        $query = "SELECT * FROM `user` WHERE userID='1';"; // change to the value of $_SESSION['userID']; 
+                        $uid = $_SESSION['userID'];
+                        $query = "SELECT * FROM `user` WHERE userID=$uid;"; // change to the value of $_SESSION['userID']; 
                         $result = mysqli_query($con, $query);
 
                         while($row = mysqli_fetch_assoc($result)){ ?>
@@ -226,7 +226,7 @@ include("../dist/backend files/functions.php");
                     </div>
                     <?php
                         }
-                    ?>
+                    ?>   
                     
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-fit h-20 ml-10">

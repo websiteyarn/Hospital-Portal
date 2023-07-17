@@ -3,8 +3,7 @@
 include("../dist/backend files/connection.php");
 include("../dist/backend files/functions.php");
 
-// session_start();
-// echo $_SESSION['userID'];
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -113,6 +112,8 @@ include("../dist/backend files/functions.php");
                     Below the left and right items are the bottom items (honest clause and edit button). -->
                     
                     <?php 
+                        // $uid = $_SESSION['user'];
+
                         $query = "SELECT * FROM `admin` WHERE doctorID='2';"; // change to the value of $_SESSION['userID']; 
                         $result = mysqli_query($con, $query);
 
@@ -224,7 +225,7 @@ include("../dist/backend files/functions.php");
                         <span class="mt-7 ml-2 italic">I hereby certify that all the information provided are true and
                             correct to the best of my knowledge.</span>
 
-                        <a href="#">
+                        <a href="admin-profile-edit.php">
                             <button
                                 class="flex w-[90px] h-[45px] mt-3 ml-[750px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <img src="../assets/edit-btn.png" alt="user-profile-edit">
@@ -237,7 +238,7 @@ include("../dist/backend files/functions.php");
         </div>
     </div>
 
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
+    <script src="./JS animations/profile-dropdown.js"></script>
 </body>
 
 </html>
