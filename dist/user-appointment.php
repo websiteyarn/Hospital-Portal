@@ -9,7 +9,6 @@ $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
-
 if(isset($_COOKIE['doctorSelect'])) {
     $timeValue = $_COOKIE['timeSelect'];
     $dateValue = $_COOKIE['bookingDate'];
