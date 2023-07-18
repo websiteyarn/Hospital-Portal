@@ -8,6 +8,8 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    //test commit
+
     if(!empty($email) && !empty($password)){
         // read from database
         $query = "select * from admin where email = '$email' limit 1";
