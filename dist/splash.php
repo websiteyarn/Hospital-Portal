@@ -28,6 +28,13 @@
                         </a>
                     </div>
                     <div class="w-[50%]">
+                        <a href="doctor-login.php">
+                            <button class=" shadow appearance-none border rounded-[200px] bg-white border-slate-700 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                                Doctor
+                            </button>
+                        </a>
+                    </div>
+                    <div class="w-[50%]">
                         <a href="admin-login.php">
                             <button class=" shadow appearance-none border rounded-[200px] bg-white border-slate-700 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 Admin
