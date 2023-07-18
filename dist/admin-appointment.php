@@ -129,31 +129,10 @@ $doc_id = $doc_data['doctorID'];
                         <!-- TABLE BODY -->
                         <tbody class="text-center">
                             <tr class="h-20 border-b-gray-200 border-b-2 text-xl font-normal">
-                                <td class="w-[100px] h-[50px]">Dominique Libardo</td>
-                                <td class="w-[100px] h-[50px]">09XXXXXXXXX</td>
-                                <td class="w-[100px] h-[50px]">doms@gmail.com</td>
-                                <td class="text-teal-500  w-[100px] h-[50px]">1:00pm</td>
-                            </tr>
-
-                            <tr class="h-20 border-b-gray-200 border-b-2 text-xl font-normal">
-                                <td class="w-[100px] h-[50px]">Dominique Libardo</td>
-                                <td class="w-[100px] h-[50px]">09XXXXXXXXX</td>
-                                <td class="w-[100px] h-[50px]">doms@gmail.com</td>
-                                <td class="text-teal-500  w-[100px] h-[50px]">1:00pm</td>
-                            </tr>
-
-                            <tr class="h-20 border-b-gray-200 border-b-2 text-xl font-normal">
-                                <td class="w-[100px] h-[50px]">Dominique Libardo</td>
-                                <td class="w-[100px] h-[50px]">09XXXXXXXXX</td>
-                                <td class="w-[100px] h-[50px]">doms@gmail.com</td>
-                                <td class="text-teal-500  w-[100px] h-[50px]">1:00pm</td>
-                            </tr>
-
-                            <tr class="h-20 border-b-gray-200 border-b-2 text-xl font-normal">
-                                <td class="w-[100px] h-[50px]">Dominique Libardo</td>
-                                <td class="w-[100px] h-[50px]">09XXXXXXXXX</td>
-                                <td class="w-[100px] h-[50px]">doms@gmail.com</td>
-                                <td class="text-teal-500  w-[100px] h-[50px]">1:00pm</td>
+                                <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['username']?></td>
+                                <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['contactnumber']?></td>
+                                <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['useremail']?></td>
+                                <td class="text-teal-500  w-[100px] h-[50px]"><?php echo $appointmentRow['time']?></td>
                             </tr>
                         </tbody>
                     </table>

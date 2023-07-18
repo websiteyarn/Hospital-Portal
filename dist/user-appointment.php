@@ -15,8 +15,12 @@ if(isset($_POST['submit'])){
     $doctorSelect = $_POST['doctor-select'];
     $doctorID = $_POST['doctor-id'];
     $specialtySelect = $_POST['specialty-select'];
+    $usernameSelect = $_POST['username'];
+    $contactNumSelect = $_POST['contact-number'];
+    $emailSelect = $_POST['user-email'];
 
-    $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', '$doctorSelect', '$specialtySelect')";
+    $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
+    '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect')";
     mysqli_query($con, $appointment_query);
 }
 ?>
@@ -246,16 +250,25 @@ if(isset($_POST['submit'])){
                             </a>
                             
                             <!-- SAVE BTN  -->
-                            <form method="post">
-                            <input type="text" name="time-select" id="time-select" class="hidden">
-                            <input type="text" name="doctor-select" id="doctor-select" class="hidden">
-                            <input type="text" name="doctor-id" id="doctor-id" class="hidden">
-                            <input type="text" name="specialty-select" id="specialty-select" class="hidden">
-                            <input type="text" name="booking-select" id="booking-select" class="hidden">
-                            <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <input class=" text-gray-text text-lg" type="submit" name="submit"></input>
-                            </button>
-                            </form>
+                            <?php $user_query = "select * from user where userID = '$user_id'";
+                            $user_result = mysqli_query($con, $user_query);  
+                            ?>
+                            <?php while($userRow = mysqli_fetch_assoc($user_result)){ ?>           
+                                <form method="post">
+                                    <input type="text" name="time-select" id="time-select" class="hidden">
+                                    <input type="text" name="doctor-select" id="doctor-select" class="hidden">
+                                    <input type="text" name="doctor-id" id="doctor-id" class="hidden">
+                                    <input type="text" name="specialty-select" id="specialty-select" class="hidden">
+                                    <input type="text" name="booking-select" id="booking-select" class="hidden">
+
+                                    <input type="text" name="username" id="username" class="hidden" value = "<?php echo $userRow['first_name'].' '.$userRow['last_name'] ?>">
+                                    <input type="text" name="contact-number" id="contact-number" class="hidden" value = "<?php echo $userRow['contact_number'] ?>">
+                                    <input type="text" name="user-email" id="user-email" class="hidden" value = "<?php echo $userRow['email'] ?>">
+                                    <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                        <input class=" text-gray-text text-lg" type="submit" name="submit"></input>
+                                    </button>
+                                </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
