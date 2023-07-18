@@ -9,35 +9,16 @@ $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
-if(isset($_COOKIE['doctorSelect'])) {
-    $timeValue = $_COOKIE['timeSelect'];
-    $dateValue = $_COOKIE['bookingDate'];
-    $doctorValue = $_COOKIE['doctorSelect'];
-    $specialtyValue = $_COOKIE['specialtySelect'];
-    $docID = null;
+if(isset($_POST['submit'])){
+    $timeSelect = $_POST['time-select'];
+    $bookingSelect = $_POST['booking-select'];
+    $doctorSelect = $_POST['doctor-select'];
+    $doctorID = $_POST['doctor-id'];
+    $specialtySelect = $_POST['specialty-select'];
 
-
-
-    $docID_query = "select * from admin where name = '$doctorValue'";
-    $docID_result = mysqli_query($con, $docID_query);
-
-    while ($row = mysqli_fetch_array($docID_result)) {
-        $docID = $row['doctorID'];
-    }
-    echo $docID;
-    
+    $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', '$doctorSelect', '$specialtySelect')";
+    mysqli_query($con, $appointment_query);
 }
-    $insert_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty) values ('$user_id', '$docID', '$dateValue', '$timeValue','$doctorValue', '$specialtyValue')";
-    $check = mysqli_query($con, $insert_query); 
-    unset($_COOKIE['timeSelect']);
-    unset($_COOKIE['bookingDate']);
-    unset($_COOKIE['doctorSelect']);
-    unset($_COOKIE['specialtySelect']);
-    setcookie('timeSelect', '', time() - 3600, '/');
-    setcookie('bookingDate', '', time() - 3600, '/');
-    setcookie('doctorSelect', '', time() - 3600, '/');
-    setcookie('specialtySelect', '', time() - 3600, '/');  
-    //hello world
 ?>
 
 
@@ -151,7 +132,7 @@ if(isset($_COOKIE['doctorSelect'])) {
                     </div>
 
                     <!-- BUTTON FOR NEW APPOINTMENT -->
-                    <button class="item flex flex-row items-center space-x-5 item w-[483px] h-[87px] bg-white cursor-pointer shadow-custom ml-4 rounded-3xl">
+                    <button class="item flex flex-row items-center space-x-5 item w-[483px] h-[87px] bg-white cursor-pointer shadow-custom ml-4 rounded-3xl " onclick="showAppointment()">
                         <img src="../assets/add-btn.png" alt="add-btn" class="w-[21px] h-[21px] ml-4">
                         <h1 class="text-2xl text-sidebar-text-bold font-medium">Add</h1>
                     </button>
@@ -185,7 +166,7 @@ if(isset($_COOKIE['doctorSelect'])) {
                 </div>
 
                 <!-- APPOINTMENT DETAILS -->
-                <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
+                <div id="appointmentDetails" class="hidden flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- TOP ITEMS -->
                     <!-- THIS INCLUDES SPECIALTY, DOCTOR, THE THE CALENDAR -->
                     <div class="flex flex-row w-full h-[70%]">
@@ -218,7 +199,6 @@ if(isset($_COOKIE['doctorSelect'])) {
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="doctor-select" type="text" id="doctorBox" placeholder="Select">
                                 </button>
                                 <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
-                                    
                                 </div>
                             </div>      
                         </div>
@@ -227,7 +207,7 @@ if(isset($_COOKIE['doctorSelect'])) {
                         <div class="w-[50%] h-full">
                             <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
                             <!-- CALENDAR -->
-                            <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
 
@@ -241,7 +221,6 @@ if(isset($_COOKIE['doctorSelect'])) {
                                 <!-- TIME BOXES LIST -->
                                 <?php $time_query = "select time from time"; 
                                 $time_result = mysqli_query($con,$time_query)?>
-                                <input type="text" name="time-select" id="time-select" class="hidden"> 
                                 <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5 justify-normal items-center">
                                     <?php while($time_row = mysqli_fetch_assoc($time_result)){?>
                                         <li>
@@ -260,18 +239,22 @@ if(isset($_COOKIE['doctorSelect'])) {
                         <!-- CANCEL AND SUBMIT BTNS  -->
                         <div class="flex w-full h-[20%] justify-end items-center">
                             <!-- CANCEL BTN  -->
-                            <a href="#">
+                            <a href="user-appointment.php">
                                 <button class="flex w-[150px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                     <span class=" text-gray-text text-lg">Cancel</span>
                                 </button>
                             </a>
                             
                             <!-- SAVE BTN  -->
-                            <a href="#">
-                                <button onclick="dataPost()" class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                    <span class=" text-gray-text text-lg" type="submit">Save</span>
-                                </button>
-                            </a>
+                            <form method="post">
+                            <input type="text" name="time-select" id="time-select" class="hidden">
+                            <input type="text" name="doctor-select" id="doctor-select" class="hidden">
+                            <input type="text" name="doctor-id" id="doctor-id" class="hidden">
+                            <input type="text" name="specialty-select" id="specialty-select" class="hidden">
+                            <input type="text" name="booking-select" id="booking-select" class="hidden">
+                            <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <input class=" text-gray-text text-lg" type="submit" name="submit"></input>
+                            </button>
                             </form>
                         </div>
                     </div>

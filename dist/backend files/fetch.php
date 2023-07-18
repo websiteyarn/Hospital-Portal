@@ -12,10 +12,11 @@ if (isset($_POST['request'])){
     $result = mysqli_query($con, $query);
     ?>
     <?php while($row = mysqli_fetch_assoc($result)){?>        
-        <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('<?php echo $row['name']?>')"><?php echo $row['name'] ?></a>
+        <span name="<?php echo $row['doctorID']?>" id="docID" class="block px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer" onclick="updateDoctorText('<?php echo $row['name']?>')"><?php echo $row['name'] ?></span>
      <?php ;} ?>
     <?php
 }
 ?>
+
 
 

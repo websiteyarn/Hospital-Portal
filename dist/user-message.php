@@ -60,7 +60,7 @@ require_once("../dist/backend files/functions.php");
             </a>
            
             <!-- FINANCE  -->
-            <a href="">
+            <a href="user-finance.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/finance.png" alt="finance">
                     <h1 class="text-white">Finance</h1> 

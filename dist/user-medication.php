@@ -12,10 +12,6 @@ $result = mysqli_query($con, $query);
 
         $docName = $_COOKIE['docName'];
         $illnessName = $_COOKIE['illnessName'];
-        echo $docName;
-        echo $illnessName;
-        // echo $value;  // Retrieve the value from the cookie
-        // Use the $value variable in your PHP code
         $highlight_query = "select * from medication where userID = '$user_id' and doctorID = '$docName'";
         $highlight_result = mysqli_query($con, $highlight_query);
 

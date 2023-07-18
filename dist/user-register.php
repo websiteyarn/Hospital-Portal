@@ -16,14 +16,13 @@ include("../dist/backend files/functions.php");
         $password = $_POST['password'];
         $confirm_password = $_POST['conf-password'];
 
-        echo $first_name, $last_name, $email, $gender, $birth_date, $contact_no, $password, $confirm_password;
 
         if(!empty($first_name) && !empty($last_name) &&  !empty($email) && 
         !empty($gender) && !empty($birth_date) && !empty($contact_no) 
         && !empty($password) && !empty($confirm_password))
         {
             if (strcmp($password,$confirm_password)){
-                    echo "Password does not match";
+                echo "<script>alert('Password does not match');</script>";
             }
             else{
                 $query = "insert into user (first_name, last_name, email, gender, birth_date, contact_number, password) 
@@ -51,7 +50,7 @@ include("../dist/backend files/functions.php");
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-        <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+        <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     </head>
    
     
