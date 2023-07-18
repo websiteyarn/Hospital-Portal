@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2023 at 10:33 PM
+-- Generation Time: Jul 18, 2023 at 11:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,16 +62,24 @@ CREATE TABLE `appointment` (
   `date` date NOT NULL,
   `time` varchar(255) NOT NULL,
   `doctorName` varchar(255) NOT NULL,
-  `specialty` varchar(255) NOT NULL
+  `specialty` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `useremail` varchar(255) NOT NULL,
+  `contactnumber` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointmentID`, `userID`, `doctorID`, `date`, `time`, `doctorName`, `specialty`) VALUES
-(1, 1, 1, '2023-07-30', '1:00 PM', 'Dr. Cha', 'Internal Medicine'),
-(2, 1, 2, '2023-07-31', '5:00 PM', 'Dr. Atlas', 'Obstetrician-Gynecologist');
+INSERT INTO `appointment` (`appointmentID`, `userID`, `doctorID`, `date`, `time`, `doctorName`, `specialty`, `username`, `useremail`, `contactnumber`) VALUES
+(1, 1, 1, '2023-07-30', '1:00 PM', 'Dr. Cha', 'Internal Medicine', 'Mathew James Muyco', 'testing', '09612649728'),
+(2, 1, 2, '2023-07-31', '5:00 PM', 'Dr. Atlas', 'Obstetrician-Gynecologist', '', '', ''),
+(134, 1, 2, '2023-07-22', '8:00 am', 'Dr. Atlas', 'Obstetrician-Gynecologist', '', '', ''),
+(135, 1, 1, '2023-07-21', '2:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'testing', '09612649728'),
+(136, 1, 1, '2023-07-29', '10:00 am', 'Dr Cha', 'Internal Medicine', 'Test', 'Mat', '09612649728'),
+(137, 1, 1, '2023-07-25', '6:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647'),
+(138, 1, 1, '2023-07-19', '8:00 am', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647');
 
 -- --------------------------------------------------------
 
@@ -94,7 +102,7 @@ CREATE TABLE `finance` (
 --
 
 INSERT INTO `finance` (`financeID`, `userID`, `agenda`, `doctor`, `amount`, `date`, `status`) VALUES
-(1, 3, 'Check up', 'Dr. Cha', 500, '2023-07-18', 'Paid'),
+(1, 2, 'Check up', 'Dr. Cha', 500, '2023-07-18', 'Paid'),
 (3, 1, 'test', 'test', 1000, '2023-07-05', 'paid'),
 (4, 1, 'Pills', 'Dr. Cha', 1000, '2023-07-06', 'Paid');
 
@@ -119,7 +127,9 @@ CREATE TABLE `illness` (
 
 INSERT INTO `illness` (`illnessID`, `Illness`, `date`, `notes`, `userID`, `doctorID`) VALUES
 (1, 'Diabetes', '2023-07-20', 'Prescribed by Dr. Cha', 1, 1),
-(2, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 1, 2);
+(2, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 1, 2),
+(4, 'Diabetes', '2023-07-20', 'Prescribed by Dr. Cha', 2, 1),
+(5, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -148,7 +158,11 @@ INSERT INTO `medication` (`medicineID`, `illnessID`, `userID`, `doctorID`, `medi
 (1, 1, 1, 1, 'Metformin', '50/500mg', 'Take one (1) tablet after breakfast and dinner ', 'Everyday ', '2023-07-12', 'Prescribed'),
 (2, 1, 1, 1, 'Dapagliflozin + Metformin', '10/1000mg', 'Take one (1) tablet after lunch', 'Everyday', '2023-07-12', 'Prescribed'),
 (3, 2, 1, 2, '(Utrogestan)', '200mg', 'Take one (1) tablet after breakfast. Only for 10 days before expected menstruation ', '10 days, everyday, before menstruation', '2023-07-12', 'Prescribed'),
-(4, 2, 1, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed');
+(4, 2, 1, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed'),
+(5, 4, 2, 1, 'Metformin', '50/500mg', 'Take one (1) tablet after breakfast and dinner ', 'Everyday ', '2023-07-12', 'Prescribed'),
+(6, 4, 2, 1, 'Dapagliflozin + Metformin', '10/1000mg', 'Take one (1) tablet after lunch', 'Everyday', '2023-07-12', 'Prescribed'),
+(7, 5, 2, 2, '(Utrogestan)', '200mg', 'Take one (1) tablet after breakfast. Only for 10 days before expected menstruation ', '10 days, everyday, before menstruation', '2023-07-12', 'Prescribed'),
+(8, 5, 2, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed');
 
 -- --------------------------------------------------------
 
@@ -163,11 +177,38 @@ CREATE TABLE `patient details` (
   `Blood` varchar(10) NOT NULL,
   `Height` int(11) NOT NULL,
   `Weight` int(11) NOT NULL,
-  `Temperature` int(11) NOT NULL,
+  `Temperature` decimal(11,0) NOT NULL,
   `Oxygen Level` int(11) NOT NULL,
   `Pulse Rate` int(11) NOT NULL,
-  `Blood Pressure` int(11) NOT NULL
+  `Blood Pressure` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time`
+--
+
+CREATE TABLE `time` (
+  `timeID` int(11) NOT NULL,
+  `time` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `time`
+--
+
+INSERT INTO `time` (`timeID`, `time`) VALUES
+(1, '8:00 am'),
+(2, '9:00 am'),
+(3, '10:00 am'),
+(4, '11:00 am'),
+(5, '2:00 pm'),
+(6, '3:00 pm'),
+(7, '4:00 pm'),
+(8, '5:00 pm'),
+(9, '6:00 pm'),
+(10, '7:00 pm');
 
 -- --------------------------------------------------------
 
@@ -196,7 +237,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `doctorID`, `first_name`, `last_name`, `email`, `gender`, `birth_date`, `contact_number`, `password`, `address`, `family`, `family_number`) VALUES
 (1, 1, 'Mathew James', 'Muyco', 'mjmuyco13@gmail.com', 'Male', '2023-07-11', 2147483647, 'finn', '', '', 0),
-(3, 1, 'Finn', 'Steiner', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', 'Male', '2023-07-06', 11111, 'finn', '', '', 0);
+(2, 1, 'Finn', 'Steiner', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', 'Male', '2023-07-06', 11111, 'finn', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -229,7 +270,7 @@ ALTER TABLE `finance`
 ALTER TABLE `illness`
   ADD PRIMARY KEY (`illnessID`),
   ADD KEY `medicine_ibfk_1` (`userID`),
-  ADD KEY `doctorID` (`doctorID`);
+  ADD KEY `illness_ibfk_2` (`doctorID`);
 
 --
 -- Indexes for table `medication`
@@ -246,6 +287,12 @@ ALTER TABLE `medication`
 ALTER TABLE `patient details`
   ADD PRIMARY KEY (`patientID`),
   ADD KEY `patient details_ibfk_1` (`userID`);
+
+--
+-- Indexes for table `time`
+--
+ALTER TABLE `time`
+  ADD PRIMARY KEY (`timeID`);
 
 --
 -- Indexes for table `user`
@@ -268,7 +315,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `finance`
@@ -280,13 +327,13 @@ ALTER TABLE `finance`
 -- AUTO_INCREMENT for table `illness`
 --
 ALTER TABLE `illness`
-  MODIFY `illnessID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `illnessID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `medication`
 --
 ALTER TABLE `medication`
-  MODIFY `medicineID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `medicineID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `patient details`
@@ -295,10 +342,16 @@ ALTER TABLE `patient details`
   MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `time`
+--
+ALTER TABLE `time`
+  MODIFY `timeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -322,7 +375,7 @@ ALTER TABLE `finance`
 --
 ALTER TABLE `illness`
   ADD CONSTRAINT `illness_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `illness_ibfk_2` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`);
+  ADD CONSTRAINT `illness_ibfk_2` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `medication`
