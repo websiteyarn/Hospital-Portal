@@ -10,15 +10,15 @@ if(isset($_POST['submit'])){
 
     if(!empty($email) && !empty($password)){
         // read from database
-        $query = "select * from user where email = '$email' limit 1";
+        $query = "select * from admin where email = '$email' limit 1";
         $result = mysqli_query($con, $query);
 
         if($result){
             if($result && mysqli_num_rows($result) > 0){
-                $user_data = mysqli_fetch_assoc($result);
-                if($user_data['password'] === $password){
-                    $_SESSION['userID'] = $user_data['userID'];
-                    header("Location: health-board.php");
+                $doctor_data = mysqli_fetch_assoc($result);
+                if($doctor_data['password'] === $password){
+                    $_SESSION['doctorID'] = $doctor_data['doctorID'];
+                    header("Location: admin-patient-file.php");
                     die;
                 }
             }
@@ -51,17 +51,16 @@ if(isset($_POST['submit'])){
             <!-- RIGHT SIDE -->
             <div class="flex flex-col w-[100%] p-5 justify-center items-center gap-2">
                 <h class="font-Commissioner text-5xl pb-5 w-[60%] text-gray-500 text-center leading-tight">Welcome back, have a nice day!</h>
-                <form class="w-[50%] font-Commissioner">
+                <form class="w-[50%] font-Commissioner" method="post">
                     <div class="mb-6">
                         <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="Email">
                     </div>
                     <div class="mb-6">
                         <input class="shadow appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="Password">
                     </div>
-                    <div>
-                        <button class="bg-gray-400 appearance-none border rounded-[200px] border-slate-500 w-full py-5 px-7 text-gray-700 text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                            Login
-                        </button>
+                    <div class="mb-6 w-[95%]">
+                        <input class="shadow appearance-none border rounded-[200px] bg-gray-400 w-full py-5 px-7 text-gray-700
+                        text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="submit"  type="submit" placeholder="">
                     </div>
                 </form>
                 <a class="inline-block align-baseline font-bold text-md text-gray-500  hover:text-gray-900 " href="#">
