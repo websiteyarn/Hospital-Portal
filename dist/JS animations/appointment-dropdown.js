@@ -39,7 +39,7 @@ function updateDoctorText(value) {
 }
 
 function showAppointment(){
-    appointmentDetails.style.display = appointmentDetails.style.display === "none" ? "block" : "none";
+    appointmentDetails.style.display = appointmentDetails.style.display === "block" ? "none" : "block";
 }
 
 

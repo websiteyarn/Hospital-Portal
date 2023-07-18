@@ -4,7 +4,7 @@ session_start();
 require_once("../dist/backend files/connection.php");
 require_once("../dist/backend files/functions.php");
 
-$user_data = check_login($con);
+$user_data = check_user_login($con);
 $user_id = $user_data['userID'];
 $doctor_id = $user_data['doctorID'];
 $query = "select * from illness where userID = '$user_id'";

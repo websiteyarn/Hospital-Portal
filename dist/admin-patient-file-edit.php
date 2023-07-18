@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
@@ -17,32 +17,32 @@
         <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
-            <img src="/assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
+            <img src="../assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
+            <a href="admin-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/patient-active.png" alt="health-board-active">
+                    <img src="../assets/sidebar/patient-active.png" alt="health-board-active">
                     <h1 class="text-side-navbar-active-text">Patient</h1>
                 </div>
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="">
+            <a href="admin-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/appointment.png" alt="appointment">
+                    <img src="../assets/sidebar/appointment.png" alt="appointment">
                     <h1 class="text-white">Appointment</h1>
                 </div>
             </a>
 
             <!-- MESSAGE  -->
-            <a href="">
+            <a href="admin-message.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
-                    <img src="/assets/sidebar/message.png" alt="message">
+                    <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1>
                 </div>
             </a>
@@ -55,8 +55,8 @@
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50">
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center">
-                        <img src="/assets/doctor-sample.png" alt="profile pic" class="rounded-full lg:w-12 lg:h-12">
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/doctor-sample.png" alt="profile pic" class="rounded-full lg:w-12 lg:h-12">
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button>
                     <!--profile dropdown-->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
@@ -73,7 +73,7 @@
                 <!-- USER PROFILE MOBILE  -->
                 <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg">
                     <button class="">
-                        <img src="/assets/profilesample.jpg" alt="profile pic"
+                        <img src="../assets/profilesample.jpg" alt="profile pic"
                             class="rounded-full w-7 h-7 lg:w-10 lg:h-10">
                     </button>
                     <!-- profile dropdown -->
@@ -209,7 +209,7 @@
                     <div class="flex  flex-row  w-full justify-between items-center">
                         <!-- PATIENT NAME-->
                         <div class="flex flex-row justify-center items-center mt-3 ml-5">
-                            <img src="/assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mr-6">
+                            <img src="../assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mr-6">
                             <h1 class="text-[40px]">Jane Doe</h1>
                         </div>
 
@@ -345,26 +345,26 @@
 
                             <!-- PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
-                                <img src="/assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
+                                <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
                                 <p class="text-lg">Due to your medication, you might get dehydrated so drink lots of
                                     water.</p>
                             </div>
 
                             <!-- PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
-                                <img src="/assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
+                                <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
                                 <p class="text-lg">Don’t skip meals</p>
                             </div>
 
                             <!-- PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
-                                <img src="/assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
+                                <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
                                 <p class="text-lg">Get enough sleep</p>
                             </div>
 
                             <!-- EDIT PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
-                                <img src="/assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
+                                <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
                                 <input
                                     class="w-full  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                     type="edit" name="note-edit" placeholder="Note">
@@ -380,7 +380,7 @@
                             <!-- PATIENT DIAGNOSIS BOXES-->
                             <div class="flex flex-row mb-3">
                                 <div class="flex flex-row items-center">
-                                    <img src="/assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
+                                    <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
                                     <div>
                                         <p class="text-2xl">Diabetes</p>
                                         <p class="text-gray-text text-base">July 9, 2021 | Ongoing treatment</p>
@@ -389,7 +389,7 @@
 
                                 <!-- PATIENT DIAGNOSIS BOXES-->
                                 <div class="flex flex-row items-center">
-                                    <img src="/assets/Rectangle-blue.png" class="w-[6px] h-[56px] mr-[12px]">
+                                    <img src="../assets/Rectangle-blue.png" class="w-[6px] h-[56px] mr-[12px]">
                                     <div>
                                         <p class="text-2xl">Diabetes</p>
                                         <p class="text-gray-text text-base">July 9, 2021 | Ongoing treatment</p>
@@ -400,7 +400,7 @@
                             <!--EDIT PATIENT DIAGNOSIS BOXES-->
                             <div class="flex flex-row">
                                 <div class="flex flex-row items-center">
-                                    <img src="/assets/Rectangle-gray.png" class="w-[6px] h-[56px] mr-[12px]">
+                                    <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[56px] mr-[12px]">
                                     <div>
                                         <input
                                             class="w-[200px]  h-[35px] pl-5 pr-3 mb-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
@@ -434,7 +434,7 @@
 
                             <!-- PATIENT LAB BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-yellow.png" class="w-[6px] h-[80px] mr-[12px]">
+                                <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[80px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <div class="flex flex-row justify-between w-[350px]">
                                         <p class="text-2xl">FBS (Glucose)</p>
@@ -447,7 +447,7 @@
 
                             <!-- PATIENT LAB BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-blue.png" class="w-[6px] h-[80px] mr-[12px]">
+                                <img src="../assets/Rectangle-blue.png" class="w-[6px] h-[80px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <div class="flex flex-row justify-between w-[350px]">
                                         <p class="text-2xl">HbA1c</p>
@@ -460,7 +460,7 @@
 
                             <!-- EDIT  PATIENT LAB BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-gray.png" class="w-[6px] h-[80px] mr-[12px]">
+                                <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[80px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <div class="flex flex-row justify-between w-[350px] mb-2">
                                         <input
@@ -490,7 +490,7 @@
 
                             <!-- PATIENT PRESCRIPTION BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-yellow.png" class="w-[6px] h-[86px] mr-[12px]">
+                                <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[86px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <p class="text-2xl">Metformin (Glumet XR)</p>
                                     <div class="flex flex-row justify-between w-[250px]">
@@ -503,7 +503,7 @@
 
                             <!-- PATIENT PRESCRIPTION BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-blue.png" class="w-[6px] h-[86px] mr-[12px]">
+                                <img src="../assets/Rectangle-blue.png" class="w-[6px] h-[86px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <p class="text-2xl">Dapagliflozin + Metformin (Xigduo)</p>
                                     <div class="flex flex-row justify-between w-[250px]">
@@ -516,7 +516,7 @@
 
                             <!-- EDIT PATIENT PRESCRIPTION BOXES -->
                             <div class="flex flex-row items-center mb-[19px]">
-                                <img src="/assets/Rectangle-gray.png" class="w-[6px] h-[86px] mr-[12px]">
+                                <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[86px] mr-[12px]">
                                 <div class="flex flex-col">
                                     <input
                                         class="w-full  h-[35px] pl-5 pr-3 mb-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
@@ -561,8 +561,8 @@
             </div>
         </div>
     </div>
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
-    <script src="/dist/JS animations/active-bg.js"></script>
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/active-bg.js"></script>
 </body>
 
 </html>

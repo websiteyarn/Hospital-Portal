@@ -4,7 +4,7 @@ session_start();
 include("../dist/backend files/connection.php");
 include("../dist/backend files/functions.php");
 
-$user_data = check_login($con);
+$user_data = check_user_login($con);
 $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
@@ -166,7 +166,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- APPOINTMENT DETAILS -->
-                <div id="appointmentDetails" class="hidden flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
+                <div id="appointmentDetails" class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- TOP ITEMS -->
                     <!-- THIS INCLUDES SPECIALTY, DOCTOR, THE THE CALENDAR -->
                     <div class="flex flex-row w-full h-[70%]">

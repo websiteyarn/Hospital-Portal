@@ -28,8 +28,8 @@ session_start();
             <img src="../assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
 
             <!-- nav -->
-            <!-- HEALTH BOARD  -->
-            <a href="">
+            <!-- Patient File  -->
+            <a href="admin-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/patient-active.png" alt="health-board-active">
@@ -38,7 +38,7 @@ session_start();
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="">
+            <a href="admin-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment.png" alt="appointment">
@@ -47,7 +47,7 @@ session_start();
             </a>
 
             <!-- MESSAGE  -->
-            <a href="">
+            <a href="admin-message.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
@@ -69,12 +69,12 @@ session_start();
                     <!--profile dropdown-->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
-                                href="#">Profile</a></li>
+                                href="admin-profile.php">Profile</a></li>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change
                                 Password</a></li>
                         <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
-                                href="#">Log out</a></li>
+                                href="splash.php">Log out</a></li>
                     </ul>
                 </div>
 
@@ -87,12 +87,12 @@ session_start();
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
-                                href="#">Profile</a></li>
+                                href="admin-profile.php">Profile</a></li>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change
                                 Password</a></li>
                         <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
-                                href="#">Log out</a></li>
+                                href="splash.php">Log out</a></li>
                     </ul>
                 </div>
             </div>
@@ -380,7 +380,7 @@ session_start();
 
                     <!-- EDIT BUTTON -->
                     <div class="flex  w-full justify-end items-center ">
-                        <a href="#">
+                        <a href="admin-patient-file-edit.php">
                             <button
                                 class="flex w-[90px] h-[45px] mr-5 mb-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <img src="../assets/edit-btn.png" alt="user-profile-edit">
@@ -393,8 +393,8 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="./JS animations/profile-dropdown.js"></script>
-    <script src="./JS animations/active-bg.js"></script>
+    <script src="../JS animations/profile-dropdown.js"></script>
+    <script src="../JS animations/active-bg.js"></script>
 </body>
 
 </html>

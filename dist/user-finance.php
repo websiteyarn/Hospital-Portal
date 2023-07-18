@@ -4,7 +4,7 @@ session_start();
 require_once("../dist/backend files/connection.php");
 require_once("../dist/backend files/functions.php");
 
-$user_data = check_login($con);
+$user_data = check_user_login($con);
 $user_id = $user_data['userID'];
 $query = "select * from finance where userID = '$user_id'";
 $result = mysqli_query($con, $query);
