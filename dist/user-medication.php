@@ -4,7 +4,7 @@ session_start();
 require_once("../dist/backend files/connection.php");
 require_once("../dist/backend files/functions.php");
 
-$user_data = check_login($con);
+$user_data = check_user_login($con);
 $user_id = $user_data['userID'];
 $doctor_id = $user_data['doctorID'];
 $query = "select * from illness where userID = '$user_id'";
@@ -12,10 +12,6 @@ $result = mysqli_query($con, $query);
 
         $docName = $_COOKIE['docName'];
         $illnessName = $_COOKIE['illnessName'];
-        echo $docName;
-        echo $illnessName;
-        // echo $value;  // Retrieve the value from the cookie
-        // Use the $value variable in your PHP code
         $highlight_query = "select * from medication where userID = '$user_id' and doctorID = '$docName'";
         $highlight_result = mysqli_query($con, $highlight_query);
 

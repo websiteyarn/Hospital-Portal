@@ -29,7 +29,7 @@ session_start();
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
+            <a href="admin-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/patient.png" alt="health-board-active">
@@ -38,7 +38,7 @@ session_start();
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="">
+            <a href="admin-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment.png" alt="appointment">
@@ -47,7 +47,7 @@ session_start();
             </a>
 
             <!-- MESSAGE  -->
-            <a href="">
+            <a href="admin-message.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
@@ -68,12 +68,12 @@ session_start();
                     <!--profile dropdown-->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
-                                href="#">Profile</a></li>
+                                href="admin-profile.php">Profile</a></li>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change
                                 Password</a></li>
                         <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
-                                href="#">Log out</a></li>
+                                href="splash.php">Log out</a></li>
                     </ul>
                 </div>
 
@@ -140,10 +140,10 @@ session_start();
                                             if($len == 1){
                                                 echo "00-000-00".$row['doctorID'];
                                             }
-                                            else if(len == 2){
+                                            else if($len == 2){
                                                 echo "00-000-0".$row['doctorID'];
                                             }
-                                            else if(len == 3){
+                                            else if($len == 3){
                                                 echo "00-000-".$row['doctorID'];
                                             }
                                         ?>
