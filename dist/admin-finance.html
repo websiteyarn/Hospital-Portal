@@ -128,68 +128,77 @@
                         </div>
                     </div>
 
-                    <!-- ACTUAL MEDICATION LIST (PER BOX)-->
-                    <ul id="" class="flex flex-col h-[600px] mx-8 overflow-auto">
-                        <!-- EACH MESSAGE BOX CORRESPONDS TO EACH li ELEMENT -->
-                        <!-- if you're on admin side, the sender is always the doctor and will always have an id of sender -->
-                        <!-- if you're on admin side, the patient will be the receiver and will have an id of receiver -->
-                        <!-- if you're on patient side, the sender is always the patient and will always have an id of sender -->
-                        <!-- if you're on patient side, the doctor will be the reciever and will have an id of reciever -->
-                        <!-- the sender will always be on the right side of the screen and the receiver will always be on the left side of the screen -->
+                    <!-- ACTUAL PATIENT FINANCE LIST (PER BOX)-->
+                    <ul id="" class="flex flex-col h-[570px] mx-8 overflow-auto mt-5">
+                        <li class="flex flex-row w-full h-fit mt-4">
 
-                        <!-- RECEIVER (PATIENT) -->
-                        <li id="receiver" class="w-full h-fit">
-                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
-                            </div>
+                            <!-- DOCTOR'S DETAILS  -->
+                           <div class="w-[30%] h-fit flex flex-row">
+                                <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
+                                <!-- DR DETAILS -->
+                                <div class="flex flex-col ml-5 my-auto">
+                                    <span class="text-xl">Clinical consultation</span>
+                                    <span class="text-xl">Dr. Cha</span>
+                                </div>
+                           </div>
+
+                            <!-- DATE -->
+                           <div class="w-[30%] h-fit flex my-auto justify-center">
+                                <span class="text-xl text-gray-text">July 20, 2020</span>
+                           </div>
+
+                            <!-- AMOUNT AND STATUS-->
+                           <div class="w-[20%] h-fit flex items-center justify-center">
+                                <div class="flex flex-col ml-5">
+                                    <span class="text-xl">Php 700</span>
+                                    <span class="text-xl text-orange-text">Pending</span>
+                                </div>
+                           </div>
+                           <div class="w-[20%] h-fit flex justify-center items-center my-auto">
+                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                           </div>
                         </li>
 
-                        <!-- SENDER (DOCTOR) -->
-                        <li id="sender" class="flex w-full h-fit justify-end">
-                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
-                            </div>
-                        </li>
+                        <li class="flex flex-row w-full h-fit mt-4">
 
-                        <!-- SENDER (DOCTOR) -->
-                        <li id="sender" class="flex w-full h-fit justify-end">
-                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
-                            </div>
-                        </li>
+                            <!-- DOCTOR'S DETAILS  -->
+                           <div class="w-[30%] h-fit flex flex-row">
+                                <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
+                                <!-- DR DETAILS -->
+                                <div class="flex flex-col ml-5 my-auto">
+                                    <span class="text-xl">Clinical consultation</span>
+                                    <span class="text-xl">Dr. Cha</span>
+                                </div>
+                           </div>
 
-                        <!-- SENDER (DOCTOR) -->
-                        <li id="sender" class="flex w-full h-fit justify-end">
-                            <div class="w-[500px] h-[100px] bg-user-convo-bg my-2 mx-10 rounded-2xl">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aliquam vitae tempora, atque nemo eligendi libero commodi est eveniet dolorum.</p>
-                            </div>
-                        </li>
+                            <!-- DATE -->
+                           <div class="w-[30%] h-fit flex my-auto justify-center">
+                                <span class="text-xl text-gray-text">July 20, 2020</span>
+                           </div>
 
-                        <!-- RECEIVER (PATIENT) -->
-                        <li id="receiver" class="w-full h-fit">
-                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
-                            </div>
-                        </li>
-
-                        <!-- RECEIVER (PATIENT) -->
-                        <li id="receiver" class="w-full h-fit">
-                            <div class="w-[500px] h-fit bg-white my-2 mx-10 rounded-2xl border border-doctor-convo-border">
-                                <p class="text-gray-text mx-5 text-justify indent-5 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae vero consectetur nisi, velit sequi quis non perferendis optio magni aperiam laboriosam praesentium ut illum quibusdam fugit facere doloribus perspiciatis? Illum sapiente ipsa dolorum dolore dolorem obcaecati inventore ex aperiam iure porro et molestias unde maiores, dolor repellat velit quos!</p>
-                            </div>
+                            <!-- AMOUNT AND STATUS-->
+                           <div class="w-[20%] h-fit flex items-center justify-center">
+                                <div class="flex flex-col ml-5">
+                                    <span class="text-xl">Php 700</span>
+                                    <span class="text-xl text-orange-text">Pending</span>
+                                </div>
+                           </div>
+                           <div class="w-[20%] h-fit flex justify-center items-center my-auto">
+                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                           </div>
                         </li>
                     </ul>
 
-                    <!-- BREAK LINE  -->
-                    <hr>
-                    <!-- TEXTBOX FOR USER MESSAGE AND SEND BTN  -->
-                    <div class="flex w-full h-[90px] items-center space-x-5">
-                        <img src="/assets/doctor-sample.png" class="w-20 h-20 rounded-full ml-5">
-                        <input type="text" placeholder="Type a message" class="w-[80%] py-2 px-3 rounded-lg  focus:outline-none focus:ring-2 focus:ring-side-navbar focus:border-transparent">
-                        <button class="w-12 h-12 bg-save-button hover:bg-side-navbar rounded-full px-3 py-1">
-                            <img src="/assets/send-arrow.png">
-                        </button>
+                    <!-- BOTTOM ITEMS  -->
+                    <div class="flex w-full h-fit py-2 justify-end">
+                        <a href="#">
+                            <button class="flex w-[90px] h-[45px] mr-10 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <img src="../assets/edit-btn.png" alt="user-profile-edit">
+                                <span class="ml-1 text-gray-text text-lg">Edit</span>
+                            </button>
+                        </a>
                     </div>
+                    
                 </div>
             </div>
         </div>
