@@ -22,6 +22,7 @@ module.exports = {
         "orange-text": "#FF9900", // text-orange-text
         "blue-text": "#3D98AA", // text-blue-text
         "delete-btn": "#A01D00", // bg-delete-btn
+        "edit-text-admin": "#9DC1C8", // text-edit-text-admin
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],

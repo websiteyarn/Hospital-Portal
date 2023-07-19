@@ -191,16 +191,74 @@
                                 <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
                            </div>
                         </li>
+
+                       
+
+                        <li class="flex flex-row w-full h-fit mt-4">
+
+                            <!-- DOCTOR'S DETAILS  -->
+                           <div class="w-[25%] h-fit flex flex-row">
+                                <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
+                                <!-- DR DETAILS -->
+                                <div class="flex flex-col ml-5 w-full space-y-1">
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type=""
+                                        name=""
+                                        placeholder="Agenda"
+                                    >
+
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type=""
+                                        name=""
+                                        placeholder="Doctor"
+                                    >
+                                </div>
+                           </div>
+
+                            <!-- DATE -->
+                           <div class="w-[25%] h-fit flex justify-center items-center">
+                                <input
+                                    class="w-[200px] h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type=""
+                                    name=""
+                                    placeholder="Date"
+                                >
+                           </div>
+
+                            <!-- AMOUNT AND STATUS-->
+                           <div class="w-[25%] h-fit flex items-center justify-center">
+                                <div class="flex flex-col ml-5 space-y-1">
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type=""
+                                        name=""
+                                        placeholder="Amount"
+                                    >
+
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type=""
+                                        name=""
+                                        placeholder="Status"
+                                    >
+                                </div>
+                           </div>
+                        </li>
                     </ul>
 
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-full h-fit py-2 justify-end">
+                        <!-- CANCEL BTN  -->
                         <a href="#">
-                            <button class="flex w-[90px] h-[45px] mr-10 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <img src="../assets/edit-btn.png" alt="user-profile-edit">
-                                <span class="ml-1 text-gray-text text-lg">Edit</span>
+                            <button class="flex w-[90px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Cancel</span>
                             </button>
                         </a>
+                        
+                        <!-- SAVE BTN  -->
+                        <input type="submit" name="submit" value="Save" class="text-gray-text text-lg w-[90px] h-[45px] bg-save-button mx-[30px] justify-center items-center rounded-3xl shadow-custom hover:cursor-pointer hover:scale-105 transform transition-transform duration-300">
                     </div>
                     
                 </div>
