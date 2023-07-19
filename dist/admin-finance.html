@@ -49,10 +49,7 @@
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
-                        <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-md" href="#">Log out</a></li> 
                     </ul>
                 </div>
 
@@ -63,9 +60,6 @@
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="#">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change Password</a></li> 
-                        <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
                     </ul>
                 </div>
@@ -73,94 +67,45 @@
             
             <!-- MAIN CONTENT -->
             <div class="flex flex-row w-fit">
-                <!-- PATIENT MESSAGE LIST -->
+                <!-- PATIENT FINANCE LIST -->
                 <div class="w-[600px] h-[820px] overflow-auto">
                     <div class="mb-7 ml-4">
-                        <h1 class="text-3xl text-sidebar-text-bold">Message</h1>
+                        <h1 class="text-3xl text-sidebar-text-bold">Patient Finance</h1>
                     </div>
 
                     <!-- PATIENT BOXES UN-ORDERED LIST -->
-                    <ul id="patientMessageList" class="space-y-5">
+                    <ul id="patientFinanceListAdmin" class="space-y-5">
+                        <!-- PATIENT FINANCE BOXES  -->
+                        <!-- All patient finance boxes have an inactive default background color  -->
+                        <!-- When clicked, the background color changes to active  -->
                         <li>
-                            <!-- PATIENT MESSAGE BOXES  -->
-                            <!-- All patient message boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="patientMessage w-[483px] h-[177px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DATE  -->
-                                <div class="flex justify-end items-end px-7 pt-4">
-                                    <span class="text-sm text-gray-text">April 20, 2023</span>
-                                </div>
-
-                                <!-- PATIENT PROFILE  -->
-                                <div class="flex flex-row ">
-                                    <img src="/assets/profilesample.jpg" class="w-20 h-20 rounded-full z-30 -mt-4 ml-3">
-
-                                    <!-- DOCTOR DETAILS -->
-                                    <div class="flex flex-col">
-                                        <span class="text-3xl ml-5">Doms Libs</span>
-                                    </div>
-                                </div>
-
-                                <!-- LAST MESSAGE  -->
-                                <div class="flex flex-row w-full h-[50px] mt-3 overflow-hidden justify-center items-center">
-                                    <p class="text-gray-text text-sm truncate mx-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt fuga culpa saepe provident ratione enim quod facere sint, quibusdam veniam a quas? Modi tenetur tempora ipsam vel itaque porro rem, illum illo non vero autem cum aliquid consequatur error ad laborum similique labore fuga commodi. Nostrum enim repellendus magnam veritatis.</p>
-                                </div>
+                            
+                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
                             </div>
                         </li>
 
                         <li>
-                            <!-- PATIENT MESSAGE BOXES  -->
-                            <!-- All patient message boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="patientMessage w-[483px] h-[177px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DATE  -->
-                                <div class="flex justify-end items-end px-7 pt-4">
-                                    <span class="text-sm text-gray-text">April 20, 2023</span>
-                                </div>
-
-                                <!-- PATIENT PROFILE  -->
-                                <div class="flex flex-row ">
-                                    <img src="/assets/profilesample.jpg" class="w-20 h-20 rounded-full z-30 -mt-4 ml-3">
-
-                                    <!-- DOCTOR DETAILS -->
-                                    <div class="flex flex-col">
-                                        <span class="text-3xl ml-5">Doms Libs</span>
-                                    </div>
-                                </div>
-
-                                <!-- LAST MESSAGE  -->
-                                <div class="flex flex-row w-full h-[50px] mt-3 overflow-hidden justify-center items-center">
-                                    <p class="text-gray-text text-sm truncate mx-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt fuga culpa saepe provident ratione enim quod facere sint, quibusdam veniam a quas? Modi tenetur tempora ipsam vel itaque porro rem, illum illo non vero autem cum aliquid consequatur error ad laborum similique labore fuga commodi. Nostrum enim repellendus magnam veritatis.</p>
-                                </div>
+                            
+                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
                             </div>
                         </li>
 
                         <li>
-                            <!-- PATIENT MESSAGE BOXES  -->
-                            <!-- All patient message boxes have an inactive default background color  -->
-                            <!-- When clicked, the background color changes to active  -->
-                            <div class="patientMessage w-[483px] h-[177px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <!-- DATE  -->
-                                <div class="flex justify-end items-end px-7 pt-4">
-                                    <span class="text-sm text-gray-text">April 20, 2023</span>
-                                </div>
-
-                                <!-- PATIENT PROFILE  -->
-                                <div class="flex flex-row ">
-                                    <img src="/assets/profilesample.jpg" class="w-20 h-20 rounded-full z-30 -mt-4 ml-3">
-
-                                    <!-- DOCTOR DETAILS -->
-                                    <div class="flex flex-col">
-                                        <span class="text-3xl ml-5">Doms Libs</span>
-                                    </div>
-                                </div>
-
-                                <!-- LAST MESSAGE  -->
-                                <div class="flex flex-row w-full h-[50px] mt-3 overflow-hidden justify-center items-center">
-                                    <p class="text-gray-text text-sm truncate mx-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt fuga culpa saepe provident ratione enim quod facere sint, quibusdam veniam a quas? Modi tenetur tempora ipsam vel itaque porro rem, illum illo non vero autem cum aliquid consequatur error ad laborum similique labore fuga commodi. Nostrum enim repellendus magnam veritatis.</p>
-                                </div>
+                            
+                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
                             </div>
                         </li>
+
+                        <li>
+                            
+                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
+                            </div>
+                        </li>
+
                     </ul>                
                 </div>
 
