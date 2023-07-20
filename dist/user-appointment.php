@@ -210,15 +210,18 @@ if(isset($_POST['submit'])){
                                 <button id="doctorMenu" class="w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="doctor-select" type="text" id="doctorBox" placeholder="Select">
                                 </button>
-                                <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
+                                <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl" onclick="setDate()">
                                 </div>
                             </div>      
                         </div>
 
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
-                        <div class="w-[50%] h-full">
+                        <div class="w-[50%] h-full" onclick="render()">
                             <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
                             <!-- CALENDAR -->
+                            <input class="hidden" id="book1"></input>
+                            <input class="hidden" id="book2"></input>
+                            <input class="hidden" id="book3"></input>
                             <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
@@ -289,31 +292,56 @@ if(isset($_POST['submit'])){
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../dist/JS animations/appointment-dropdown.js"></script>
     <script src="../dist/JS animations/appointment-post.js"></script>
-
     <script>
-        let booking = document.getElementById("booking-date");
-        let docDay = document.getElementById("docDay")
-        booking.addEventListener("change", function(){
-            let bookingValue = [docDay.value];
-        });
+         var day1;
+         var day2;
+         var day3;
+         var updatedOption = null;
+        function setDate(){
+            day1 = document.getElementById("book1").value;
+            day2 = document.getElementById("book2").value;
+            day3 = document.getElementById("book3").value;
+            console.log(day1,day2,day3);
+            appointDate.destroy();
+            render(day1,day2,day3);
+        }
 
-    </script>
-    <script>
-        flatpickr("#booking-date", {
-            // Specify available dates (optional)
-            minDate: "today",
-            enable: [function(date) {return (date.getDay() === 3 || date.getDay() === 6);}],
+        function render(day1,day2,day3){
 
-            altInput: true,
-            altFormat: "Y-m-j",
-            dateFormat: "Y-m-d",
+            flatpickr("#booking-date", {
+                // Specify available dates (optional)
+                minDate: "today",
+                    enable: [function(date) { var intDay1 = parseInt(day1); var intDay2 = parseInt(day2); var intDay3 = parseInt(day3); console.log(intDay1,intDay2,intDay3); 
+                        const day = date.getDay(); console.log(day);
+                        return(day === intDay1) || (day === intDay2) || (day === intDay3); }],
 
-            inline: true,
+                    altInput: true,
+                    altFormat: "Y-m-j",
+                    dateFormat: "Y-m-d",
 
-            // Additional appearance options (optional)
-            mode: "single",
-            allowInput: true,
-        });
+                    inline: true,
+
+                    // Additional appearance options (optional)
+                    mode: "single",
+                    allowInput: true,
+            });
+        }
+                var appointDate = flatpickr("#booking-date", {
+                // Specify available dates (optional)
+                minDate: "today",
+                enable: [],
+
+                altInput: true,
+                altFormat: "Y-m-j",
+                dateFormat: "Y-m-d",
+
+                inline: true,
+
+                // Additional appearance options (optional)
+                mode: "single",
+                allowInput: true,
+            });
+          
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
