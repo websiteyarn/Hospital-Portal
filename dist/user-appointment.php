@@ -9,6 +9,7 @@ $user_id = $user_data['userID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
+
 if(isset($_POST['submit'])){
     $timeSelect = $_POST['time-select'];
     $bookingSelect = $_POST['booking-select'];
@@ -288,11 +289,20 @@ if(isset($_POST['submit'])){
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../dist/JS animations/appointment-dropdown.js"></script>
     <script src="../dist/JS animations/appointment-post.js"></script>
-    
+
+    <script>
+        let booking = document.getElementById("booking-date");
+        let docDay = document.getElementById("docDay")
+        booking.addEventListener("change", function(){
+            let bookingValue = [docDay.value];
+        });
+
+    </script>
     <script>
         flatpickr("#booking-date", {
             // Specify available dates (optional)
             minDate: "today",
+            enable: [function(date) {return (date.getDay() === 3 || date.getDay() === 6);}],
 
             altInput: true,
             altFormat: "Y-m-j",
