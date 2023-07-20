@@ -94,4 +94,26 @@ function toggleActivePatientMessage() {
 }
 
 toggleActivePatientMessage();
+
+function toggleActivePatientFinance() {
+  var listItemsPatientFinanceAdmin = document.querySelectorAll('#patientFinanceListAdmin .patientFinanceAdmin');
+
+  listItemsPatientFinanceAdmin.forEach(function(patientFinanceAdmin) {
+    patientFinanceAdmin.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      patientFinanceAdmin.classList.remove('bg-background-inactive');
+      patientFinanceAdmin.classList.add('bg-white');
+
+      // Remove active class from all list items except the clicked item
+      listItemsPatientFinanceAdmin.forEach(function(li) {
+          if (li !== patientFinanceAdmin) {
+            li.classList.remove('bg-white');
+            li.classList.add('bg-background-inactive');
+          }
+      });
+    });
+  });
+}
+
+toggleActivePatientFinance();
  

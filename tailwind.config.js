@@ -19,6 +19,10 @@ module.exports = {
         "login-font-clr": "#68E3EA", // text-login-font-clr
         "doctor-convo-border": "#60BFF0", // border-doctor-convo-border
         "user-convo-bg": "#C7EBFE", // bg-user-convo-bg
+        "orange-text": "#FF9900", // text-orange-text
+        "blue-text": "#3D98AA", // text-blue-text
+        "delete-btn": "#A01D00", // bg-delete-btn
+        "edit-text-admin": "#9DC1C8", // text-edit-text-admin
       },
       fontFamily: {
         Commissioner: ["Commissioner", "sans-serif"],
