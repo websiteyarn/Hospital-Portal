@@ -6,6 +6,7 @@ include("../dist/backend files/functions.php");
 
 $user_data = check_user_login($con);
 $user_id = $user_data['userID'];
+$docID = $_SESSION['docID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
 
@@ -23,9 +24,12 @@ if(isset($_POST['submit'])){
     $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
     '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect')";
     $verify = mysqli_query($con, $appointment_query);
+    $tc_query = "update time set status = 'disabled' where time = '$timeSelect' and doctorID = '$docID'";
+    $tc_result = mysqli_query($con, $tc_query);
 
     if($verify){
         echo "<script>alert('Appointment booked successfully!');</script>";
+        header("Refresh: 0");
     }
     else{
         echo "<script>alert('Appointment booking failed!');</script>";
@@ -234,7 +238,7 @@ if(isset($_POST['submit'])){
                             <!-- DIVISION FOR THE LIST OF THE TIME BTNS -->
                             <div class="w-full h-fit">
                                 <!-- TIME BOXES LIST -->
-                                <?php $time_query = "select time from time"; 
+                                <?php $time_query = "select time from time where status = 'enabled' and doctorID = '$docID'"; 
                                 $time_result = mysqli_query($con,$time_query)?>
                                 <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5 justify-normal items-center">
                                     <?php while($time_row = mysqli_fetch_assoc($time_result)){?>
