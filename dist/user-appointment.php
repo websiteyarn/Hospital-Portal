@@ -220,7 +220,7 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
-                        <div class="w-[50%] h-full" onclick="render()">
+                        <div class="w-[50%] h-full">
                             <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
                             <!-- CALENDAR -->
                             <input class="hidden" id="book1"></input>
