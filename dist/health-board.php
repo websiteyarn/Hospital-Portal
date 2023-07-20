@@ -304,21 +304,24 @@ $userID = $user_data['userID'];
                     
                     <!-- LABORATORY RESULTS SECTION -->
                     <div class="w-full h-[182px] lg:w-[620px] lg:h-[515px] mt-[18px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
+                        <?php $lab_query = "select * from lab_results where userID = '$userID'"?>
+                        <?php $lab = mysqli_query($con, $lab_query) or die(mysqli_error($con));?>
                         <div class="w-full h-fit my-2"><h1 class="text-start ml-5 font-medium text-side-navbar lg:text-2xl">Laboratory Results</h1></div>
                         <hr>
+                        <?php while($lab_row = mysqli_fetch_assoc($lab)){?>
                         <!-- LAB BULLET POINT -->
                         <div class="flex flex-row w-full h-[130px]">
                             <img src="../assets/Rectangle-green.png" alt="bullet" class="mt-[35px] ml-5"> 
                             <div class="w-full h-fit">
                                 <!-- DATE  -->
                                 <div class="flex flex-row w-full h-fit justify-between pt-[32px]">
-                                    <span class="text-sm ml-5 text-gray-text">April 2, 2023</span>
+                                    <span class="text-sm ml-5 text-gray-text"><?php echo $lab_row['date'] ?></span>
                                 </div>
 
                                 <!-- LAB TEST  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5">FBS(Glucose)</span>
-                                    <span class="text-2xl mr-5 text-side-navbar">7.78 mmol/L</span>
+                                    <span class="text-3xl ml-5"><?php echo $lab_row['lab_test'] ?></span>
+                                    <span class="text-2xl mr-5 text-side-navbar"><?php echo $lab_row['lab_result'] ?></span>
                                 </div>
     
                                 <!-- NORMAL RANGE  -->
@@ -328,118 +331,11 @@ $userID = $user_data['userID'];
                                 
                                 <!-- NORMAL RANGE VALUE  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">30.9 - 6.4 mmol/L</span>
+                                    <span class="text-sm ml-5 text-gray-text"><?php echo $lab_row['normal_range'] ?></span>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- LAB BULLET POINT -->
-                        <div class="flex flex-row w-full h-[130px]">
-                            <img src="../assets/Rectangle-yellow.png" alt="bullet" class="mt-[35px] ml-5"> 
-                            <div class="w-full h-fit">
-                                <!-- DATE  -->
-                                <div class="flex flex-row w-full h-fit justify-between pt-[32px]">
-                                    <span class="text-sm ml-5 text-gray-text">April 2, 2023</span>
-                                </div>
-
-                                <!-- LAB TEST  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5">FBS(Glucose)</span>
-                                    <span class="text-2xl mr-5 text-side-navbar">7.78 mmol/L</span>
-                                </div>
-    
-                                <!-- NORMAL RANGE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">Normal Range:</span>
-                                </div>
-                                
-                                <!-- NORMAL RANGE VALUE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">30.9 - 6.4 mmol/L</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- LAB BULLET POINT -->
-                        <div class="flex flex-row w-full h-[130px]">
-                            <img src="../assets/Rectangle-green.png" alt="bullet" class="mt-[35px] ml-5"> 
-                            <div class="w-full h-fit">
-                                <!-- DATE  -->
-                                <div class="flex flex-row w-full h-fit justify-between pt-[32px]">
-                                    <span class="text-sm ml-5 text-gray-text">April 2, 2023</span>
-                                </div>
-
-                                <!-- LAB TEST  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5">FBS(Glucose)</span>
-                                    <span class="text-2xl mr-5 text-side-navbar">7.78 mmol/L</span>
-                                </div>
-    
-                                <!-- NORMAL RANGE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">Normal Range:</span>
-                                </div>
-                                
-                                <!-- NORMAL RANGE VALUE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">30.9 - 6.4 mmol/L</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- LAB BULLET POINT -->
-                        <div class="flex flex-row w-full h-[130px]">
-                            <img src="../assets/Rectangle-yellow.png" alt="bullet" class="mt-[35px] ml-5"> 
-                            <div class="w-full h-fit">
-                                <!-- DATE  -->
-                                <div class="flex flex-row w-full h-fit justify-between pt-[32px]">
-                                    <span class="text-sm ml-5 text-gray-text">April 2, 2023</span>
-                                </div>
-
-                                <!-- LAB TEST  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5">FBS(Glucose)</span>
-                                    <span class="text-2xl mr-5 text-side-navbar">7.78 mmol/L</span>
-                                </div>
-    
-                                <!-- NORMAL RANGE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">Normal Range:</span>
-                                </div>
-                                
-                                <!-- NORMAL RANGE VALUE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">30.9 - 6.4 mmol/L</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- LAB BULLET POINT -->
-                        <div class="flex flex-row w-full h-[130px]">
-                            <img src="../assets/Rectangle-green.png" alt="bullet" class="mt-[35px] ml-5"> 
-                            <div class="w-full h-fit">
-                                <!-- DATE  -->
-                                <div class="flex flex-row w-full h-fit justify-between pt-[32px]">
-                                    <span class="text-sm ml-5 text-gray-text">April 2, 2023</span>
-                                </div>
-
-                                <!-- LAB TEST  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5">FBS(Glucose)</span>
-                                    <span class="text-2xl mr-5 text-side-navbar">7.78 mmol/L</span>
-                                </div>
-    
-                                <!-- NORMAL RANGE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">Normal Range:</span>
-                                </div>
-                                
-                                <!-- NORMAL RANGE VALUE  -->
-                                <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-sm ml-5 text-gray-text">30.9 - 6.4 mmol/L</span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?> 
                     </div>
                 </div>
             </div>
