@@ -21,7 +21,14 @@ if(isset($_POST['submit'])){
 
     $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
     '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect')";
-    mysqli_query($con, $appointment_query);
+    $verify = mysqli_query($con, $appointment_query);
+
+    if($verify){
+        echo "<script>alert('Appointment booked successfully!');</script>";
+    }
+    else{
+        echo "<script>alert('Appointment booking failed!');</script>";
+    }
 }
 ?>
 
