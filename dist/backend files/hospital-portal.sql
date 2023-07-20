@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 11:11 PM
+-- Generation Time: Jul 20, 2023 at 08:31 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -67,19 +67,6 @@ CREATE TABLE `appointment` (
   `useremail` varchar(255) NOT NULL,
   `contactnumber` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `appointment`
---
-
-INSERT INTO `appointment` (`appointmentID`, `userID`, `doctorID`, `date`, `time`, `doctorName`, `specialty`, `username`, `useremail`, `contactnumber`) VALUES
-(1, 1, 1, '2023-07-30', '1:00 PM', 'Dr. Cha', 'Internal Medicine', 'Mathew James Muyco', 'testing', '09612649728'),
-(2, 1, 2, '2023-07-31', '5:00 PM', 'Dr. Atlas', 'Obstetrician-Gynecologist', '', '', ''),
-(134, 1, 2, '2023-07-22', '8:00 am', 'Dr. Atlas', 'Obstetrician-Gynecologist', '', '', ''),
-(135, 1, 1, '2023-07-21', '2:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'testing', '09612649728'),
-(136, 1, 1, '2023-07-29', '10:00 am', 'Dr Cha', 'Internal Medicine', 'Test', 'Mat', '09612649728'),
-(137, 1, 1, '2023-07-25', '6:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647'),
-(138, 1, 1, '2023-07-19', '8:00 am', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647');
 
 -- --------------------------------------------------------
 
@@ -186,29 +173,61 @@ CREATE TABLE `patient details` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `scheduleID` int(11) NOT NULL,
+  `doctorID` int(11) NOT NULL,
+  `day` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`scheduleID`, `doctorID`, `day`) VALUES
+(1, 1, '1,2,4'),
+(2, 2, '2,3,5');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `time`
 --
 
 CREATE TABLE `time` (
   `timeID` int(11) NOT NULL,
-  `time` varchar(255) NOT NULL
+  `time` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `doctorID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `time`
 --
 
-INSERT INTO `time` (`timeID`, `time`) VALUES
-(1, '8:00 am'),
-(2, '9:00 am'),
-(3, '10:00 am'),
-(4, '11:00 am'),
-(5, '2:00 pm'),
-(6, '3:00 pm'),
-(7, '4:00 pm'),
-(8, '5:00 pm'),
-(9, '6:00 pm'),
-(10, '7:00 pm');
+INSERT INTO `time` (`timeID`, `time`, `status`, `doctorID`) VALUES
+(1, '8:00 am', 'enabled', 1),
+(2, '9:00 am', 'enabled', 1),
+(3, '10:00 am', 'enabled', 1),
+(4, '11:00 am', 'enabled', 1),
+(5, '2:00 pm', 'enabled', 1),
+(6, '3:00 pm', 'enabled', 1),
+(7, '4:00 pm', 'enabled', 1),
+(8, '5:00 pm', 'enabled', 1),
+(9, '6:00 pm', 'enabled', 1),
+(10, '7:00 pm', 'enabled', 1),
+(11, '8:00 am', 'enabled', 2),
+(12, '9:00 am', 'enabled', 2),
+(13, '10:00 am', 'enabled', 2),
+(14, '11:00 am', 'enabled', 2),
+(15, '2:00 pm', 'enabled', 2),
+(16, '3:00 pm', 'enabled', 2),
+(17, '4:00 pm', 'enabled', 2),
+(18, '5:00 pm', 'enabled', 2),
+(19, '6:00 pm', 'enabled', 2),
+(20, '7:00 pm', 'enabled', 2);
 
 -- --------------------------------------------------------
 
@@ -236,7 +255,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `doctorID`, `first_name`, `last_name`, `email`, `gender`, `birth_date`, `contact_number`, `password`, `address`, `family`, `family_number`) VALUES
-(1, 1, 'Mathew James', 'Muyco', 'mjmuyco13@gmail.com', 'Male', '2023-07-11', 2147483647, 'finn', '', '', 0),
+(1, 1, 'Mathew James', 'Muyco', 'mjmuyco13@gmail.com', 'Male', '2023-07-11', 2147483647, 'finn', 'Blk 11 Lot 5 Phase O (old) Brgy Narra Francisco Homes San Jose Del Monte Bulacan', 'Mathew James Palma Muyco', 2147483647),
 (2, 1, 'Finn', 'Steiner', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', 'Male', '2023-07-06', 11111, 'finn', '', '', 0);
 
 --
@@ -289,10 +308,18 @@ ALTER TABLE `patient details`
   ADD KEY `patient details_ibfk_1` (`userID`);
 
 --
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`scheduleID`),
+  ADD KEY `docID` (`doctorID`);
+
+--
 -- Indexes for table `time`
 --
 ALTER TABLE `time`
-  ADD PRIMARY KEY (`timeID`);
+  ADD PRIMARY KEY (`timeID`),
+  ADD KEY `doctorID` (`doctorID`);
 
 --
 -- Indexes for table `user`
@@ -315,7 +342,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `finance`
@@ -342,10 +369,16 @@ ALTER TABLE `patient details`
   MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `schedule`
+--
+ALTER TABLE `schedule`
+  MODIFY `scheduleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `time`
 --
 ALTER TABLE `time`
-  MODIFY `timeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `timeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -361,20 +394,20 @@ ALTER TABLE `user`
 -- Constraints for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appointment_ibfk_3` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `finance`
 --
 ALTER TABLE `finance`
-  ADD CONSTRAINT `finance_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `finance_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `illness`
 --
 ALTER TABLE `illness`
-  ADD CONSTRAINT `illness_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `illness_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `illness_ibfk_2` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -389,7 +422,19 @@ ALTER TABLE `medication`
 -- Constraints for table `patient details`
 --
 ALTER TABLE `patient details`
-  ADD CONSTRAINT `patient details_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `patient details_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `time`
+--
+ALTER TABLE `time`
+  ADD CONSTRAINT `time_ibfk_1` FOREIGN KEY (`doctorID`) REFERENCES `admin` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
