@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2023 at 09:52 PM
+-- Generation Time: Jul 20, 2023 at 10:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -229,6 +229,25 @@ CREATE TABLE `patient details` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `root`
+--
+
+CREATE TABLE `root` (
+  `rootID` int(11) NOT NULL,
+  `adminID` int(11) NOT NULL,
+  `password` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `root`
+--
+
+INSERT INTO `root` (`rootID`, `adminID`, `password`) VALUES
+(1, 1111, 1111);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schedule`
 --
 
@@ -380,6 +399,12 @@ ALTER TABLE `patient details`
   ADD KEY `patient details_ibfk_1` (`userID`);
 
 --
+-- Indexes for table `root`
+--
+ALTER TABLE `root`
+  ADD PRIMARY KEY (`rootID`);
+
+--
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
@@ -451,6 +476,12 @@ ALTER TABLE `notes`
 --
 ALTER TABLE `patient details`
   MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `root`
+--
+ALTER TABLE `root`
+  MODIFY `rootID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `schedule`
