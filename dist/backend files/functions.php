@@ -33,3 +33,8 @@ function check_doc_login($con){
     die; 
 }
 
+function page_refresh($location){
+    echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$location.'">';
+    exit;
+}
+

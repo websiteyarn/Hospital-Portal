@@ -23,7 +23,7 @@
             <!-- nav -->
 
             <!-- FINANCE  -->
-            <a href="health-board.php">
+            <a href="../dist/admin-finance.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl bg-white mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/finance-active.png" alt="health-board-active">
                     <h1 class="text-side-navbar-active-text">Finance</h1> 
@@ -31,7 +31,7 @@
             </a>
 
             <!-- ACCOUNTS -->
-            <a href="health-board.php">
+            <a href="../dist/admin-accounts.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/accounts.png" alt="health-board-active">
                     <h1 class="text-white">Accounts</h1> 
@@ -46,8 +46,8 @@
                 <!-- USER PROFILE -->
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="/assets/doctor-sample.png" alt="profile pic" class="rounded-full lg:w-12 lg:h-12"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/doctor-sample.png" alt="profile pic" class="rounded-full lg:w-12 lg:h-12"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -58,7 +58,7 @@
                 <!-- USER PROFILE MOBILE  -->
                 <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
                     <button class=""> 
-                        <img src="/assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -197,7 +197,7 @@
 
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-full h-fit py-2 justify-end">
-                        <a href="#">
+                        <a href="../dist/admin-finance-edit.php">
                             <button class="flex w-[90px] h-[45px] mr-10 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <img src="../assets/edit-btn.png" alt="user-profile-edit">
                                 <span class="ml-1 text-gray-text text-lg">Edit</span>
@@ -209,7 +209,7 @@
             </div>
         </div>
     </div>
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
-    <script src="/dist/JS animations/active-bg.js"></script>
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/active-bg.js"></script>
 </body>
 </html>

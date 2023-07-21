@@ -9,20 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">
         <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
-            <a href="health-board.php">
+            <a href="../dist/admin-finance.php">
             <img src="../assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
             </a>
             <!-- nav -->
 
             <!-- FINANCE  -->
-            <a href="health-board.php">
+            <a href="../dist/admin-finance.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl bg-white mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/finance-active.png" alt="health-board-active">
                     <h1 class="text-side-navbar-active-text">Finance</h1> 
@@ -30,7 +30,7 @@
             </a>
 
             <!-- ACCOUNTS -->
-            <a href="health-board.php">
+            <a href="../dist/admin-accounts.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/accounts.png" alt="health-board-active">
                     <h1 class="text-white">Accounts</h1> 
