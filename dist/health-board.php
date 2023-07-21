@@ -302,6 +302,8 @@ $userID = $user_data['userID'];
                         <?php }} ?>
                     </div>
                     
+   
+                    
                     <!-- LABORATORY RESULTS SECTION -->
                     <div class="w-full h-[182px] lg:w-[620px] lg:h-[515px] mt-[18px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
                         <?php $lab_query = "select * from lab_results where userID = '$userID'"?>

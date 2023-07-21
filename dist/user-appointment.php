@@ -311,7 +311,6 @@ if(isset($_POST['submit'])){
         }
 
         function render(day1,day2,day3){
-
             flatpickr("#booking-date", {
                 // Specify available dates (optional)
                 minDate: "today",
