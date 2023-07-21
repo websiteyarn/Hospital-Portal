@@ -165,10 +165,10 @@ session_start();
                                     if($len == 1){
                                         echo "00-000-00".$row['userID'];
                                     }
-                                    else if(len == 2){
+                                    else if($len == 2){
                                         echo "00-000-0".$row['userID'];
                                     }
-                                    else if(len == 3){
+                                    else if($len == 3){
                                         echo "00-000-".$row['userID'];
                                     }
                                 ?>                                
@@ -201,17 +201,6 @@ session_start();
                                         <td><input
                                                 class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                                 type="number" name="age-edit" placeholder="<?php echo $row["Age"]." years old" ?>" value="<?php echo $row["Age"];?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- BIRTH DATE -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Birth Date</th>
-                                        <!-- BIRTH DATE VALUE -->
-                                        <td><input
-                                                class="w-[70%] h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="text" name="birth-date-edit" placeholder="Nov 09, 2001">
                                         </td>
                                     </tr>
 
@@ -351,7 +340,7 @@ session_start();
                                     <?php 
                                         $patientID = $_SESSION['patientID'];
                                         $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                        $query = "SELECT * FROM `illness` WHERE date=(SELECT MAX(date) from illness) AND userID=$patientID AND doctorID=$doctorID;";
+                                        $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
                                         $result = mysqli_query($con, $query);
 
                                         while($row = mysqli_fetch_assoc($result)){ 
@@ -405,7 +394,7 @@ session_start();
                                 <?php 
                                     $patientID = $_SESSION['patientID'];
                                     $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                    $query = "SELECT * FROM `lab_results` WHERE date=(SELECT MAX(date) from `lab_results`) AND userid=$patientID AND doctorID = $doctorID;";
+                                    $query = "SELECT * FROM `lab_results` WHERE userid=$patientID AND doctorID = $doctorID;";
                                     $result = mysqli_query($con, $query);
 
                                     while($row = mysqli_fetch_assoc($result)){ 
@@ -460,7 +449,7 @@ session_start();
                                 <?php 
                                     $patientID = $_SESSION['patientID'];
                                     $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                    $query = "SELECT * FROM `illness` as a, `medication` as b WHERE a.illnessID = b.illnessID AND a.date=(SELECT MAX(a.date) from illness) AND a.userID=$patientID AND a.doctorID=$doctorID;";
+                                    $query = "SELECT * FROM `medication` WHERE doctorID=$doctorID AND userID=$patientID;";
                                     $result = mysqli_query($con, $query);
 
                                     while($row = mysqli_fetch_assoc($result)){ 

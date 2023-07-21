@@ -116,7 +116,7 @@ session_start();
 
                             while($row = mysqli_fetch_assoc($result)){ 
                         ?>
-                            <li> <!-- admin-patient-file.php?patientID=<?php echo $row['userID']; ?> -->
+                            <li> 
                                 <a href="./backend files/display-patient-record.php?ID=<?php echo $row['userID'];?>">
                                     <!-- PATIENT RECORD BOXES  -->
                                     <!-- patient boxes have an inactive default background color except for the selected box  -->
@@ -166,10 +166,10 @@ session_start();
                                     if($len == 1){
                                         echo "00-000-00".$row['userID'];
                                     }
-                                    else if(len == 2){
+                                    else if($len == 2){
                                         echo "00-000-0".$row['userID'];
                                     }
-                                    else if(len == 3){
+                                    else if($len == 3){
                                         echo "00-000-".$row['userID'];
                                     }
                                 ?>
@@ -186,7 +186,14 @@ session_start();
                         $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
                         $result = mysqli_query($con, $query);
 
-                        while($row = mysqli_fetch_assoc($result)){ 
+                        if(empty($row = mysqli_fetch_assoc($result))){
+                            echo "emty";
+                            $query = "INSERT INTO `patient details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
+                            mysqli_query($con, $query);
+                            echo "<script> location.reload();</script>";
+                        }
+                        else{
+                            while($row){ 
                     ?>
 
                     <!-- PATIENT INFORMATION -->
@@ -200,14 +207,6 @@ session_start();
                                         Age</th>
                                     <!-- AGE VALUE -->
                                     <td class="w-[70%] text-lg font-medium"><?php echo $row["Age"]." years old" ?></td>
-                                </tr>
-
-                                <!-- BIRTH DATE -->
-                                <tr class="h-10 text-xl font-normal text-left">
-                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                        Birth Date</th>
-                                    <!-- BIRTH DATE VALUE -->
-                                    <td class="w-[70%] text-lg font-medium">Nov 09, 2001</td>
                                 </tr>
 
                                 <!-- BLOOD -->
@@ -274,6 +273,8 @@ session_start();
                         </div>
                     </div>
                     <?php
+                            $row = mysqli_fetch_assoc($result);
+                            }
                         }
                     ?>
 
@@ -319,7 +320,7 @@ session_start();
                                     $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
                                     // get the max date from user
                                     // then get the row 
-                                    $query = "SELECT * FROM `illness` WHERE date=(SELECT MAX(date) from illness WHERE userID=$patientID AND doctorID=$doctorID) AND userID=$patientID AND doctorID=$doctorID;";
+                                    $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
                                     $result = mysqli_query($con, $query);
 
                                     while($row = mysqli_fetch_assoc($result)){ 
@@ -353,7 +354,7 @@ session_start();
                             <?php 
                                 $patientID = $_SESSION['patientID'];
                                 $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                $query = "SELECT * FROM `lab_results` WHERE date=(SELECT MAX(date) from `lab_results` WHERE userID=$patientID AND doctorID=$doctorID) AND userid=$patientID AND doctorID = $doctorID;";
+                                $query = "SELECT * FROM `lab_results` WHERE userid=$patientID AND doctorID = $doctorID;";
                                 $result = mysqli_query($con, $query);
 
                                 while($row = mysqli_fetch_assoc($result)){ 
@@ -387,7 +388,7 @@ session_start();
                             <?php 
                                 $patientID = $_SESSION['patientID'];
                                 $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                $query = "SELECT * FROM `illness` as a, `medication` as b WHERE a.illnessID = b.illnessID and a.date=(SELECT MAX(date) from illness where a.userID=$patientID AND a.doctorID=$doctorID) AND a.userID=$patientID AND a.doctorID=$doctorID;";
+                                $query = "SELECT * FROM `medication` WHERE doctorID=$doctorID AND userID=$patientID;";
                                 $result = mysqli_query($con, $query);
 
                                 while($row = mysqli_fetch_assoc($result)){ 

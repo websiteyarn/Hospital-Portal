@@ -16,7 +16,7 @@ $o2 = $_POST['oxygen-edit'];
 $pulse = $_POST['pulse-rate-edit'];
 $bp = $_POST['blood-pressure-edit'];
 
-$query = "UPDATE `patient details` SET `Age` = '".$age."', `Blood` = '".$blood."', `Height` = '".$height."', `Weight` = '".$weight."', `Temperature` = '".$temp."', `Oxygen Level` = '".$o2."', `Pulse Rate` = '".$pulse."', `Blood Pressure` = '".$bp."' WHERE `patientID` = '".$patientID."';";
+$query = "UPDATE `patient details` SET `Age` = '".$age."', `Blood` = '".$blood."', `Height` = '".$height."', `Weight` = '".$weight."', `Temperature` = '".$temp."', `Oxygen Level` = '".$o2."', `Pulse Rate` = '".$pulse."', `Blood Pressure` = '".$bp."' WHERE `userID` = '".$patientID."';";
 $result = mysqli_query($con, $query);
 
 if($result)
