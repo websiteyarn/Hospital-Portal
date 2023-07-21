@@ -116,4 +116,48 @@ function toggleActivePatientFinance() {
 }
 
 toggleActivePatientFinance();
+
+function toggleActiveDoctorAccounts() {
+  var listItemsDoctorAccounts = document.querySelectorAll('#doctorAccountListAdmin .doctorAccountAdmin');
+
+  listItemsDoctorAccounts.forEach(function(doctorAccountAdmin) {
+    doctorAccountAdmin.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      doctorAccountAdmin.classList.remove('bg-background-inactive');
+      doctorAccountAdmin.classList.add('bg-white');
+
+      // Remove active class from all list items except the clicked item
+      listItemsDoctorAccounts.forEach(function(li) {
+          if (li !== doctorAccountAdmin) {
+            li.classList.remove('bg-white');
+            li.classList.add('bg-background-inactive');
+          }
+      });
+    });
+  });
+}
+
+toggleActiveDoctorAccounts();
+
+function toggleActivePatientAccounts() {
+  var listItemsPatientAccounts = document.querySelectorAll('#patientAccountListAdmin .patientAccountAdmin');
+
+  listItemsPatientAccounts.forEach(function(patientAccountAdmin) {
+    patientAccountAdmin.addEventListener('click', function() {
+      // Toggle the active class for the clicked item
+      patientAccountAdmin.classList.remove('bg-background-inactive');
+      patientAccountAdmin.classList.add('bg-white');
+
+      // Remove active class from all list items except the clicked item
+      listItemsPatientAccounts.forEach(function(li) {
+          if (li !== patientAccountAdmin) {
+            li.classList.remove('bg-white');
+            li.classList.add('bg-background-inactive');
+          }
+      });
+    });
+  });
+}
+
+toggleActivePatientAccounts();
  
