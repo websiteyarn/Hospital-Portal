@@ -144,10 +144,10 @@ session_start();
                                             if($len == 1){
                                                 echo "00-000-00".$row['userID'];
                                             }
-                                            else if(len == 2){
+                                            else if($len == 2){
                                                 echo "00-000-0".$row['userID'];
                                             }
-                                            else if(len == 3){
+                                            else if($len == 3){
                                                 echo "00-000-".$row['userID'];
                                             }
                                         ?>

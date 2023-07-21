@@ -25,9 +25,10 @@ include("../dist/backend files/functions.php");
                 echo "<script>alert('Password does not match');</script>";
             }
             else{
-                $query = "insert into user (first_name, last_name, email, gender, birth_date, contact_number, password) 
-            values ('$first_name','$last_name','$email','$gender','$birth_date','$contact_no','$password')";
-            
+                $query = "insert into user (doctorID,first_name, last_name, email, gender, birth_date, contact_number, password) 
+            values ('1','$first_name','$last_name','$email','$gender','$birth_date','$contact_no','$password')";
+            // lagyan ng 1 sa doctorid for now
+
             // Initiate connection to database and execute query
             mysqli_query($con, $query);
             header("Location: user-login.php");
