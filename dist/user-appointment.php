@@ -6,8 +6,10 @@ include("../dist/backend files/functions.php");
 
 $user_data = check_user_login($con);
 $user_id = $user_data['userID'];
+$docID = $_SESSION['docID'];
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
+
 
 if(isset($_POST['submit'])){
     $timeSelect = $_POST['time-select'];
@@ -21,7 +23,17 @@ if(isset($_POST['submit'])){
 
     $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
     '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect')";
-    mysqli_query($con, $appointment_query);
+    $verify = mysqli_query($con, $appointment_query);
+    $tc_query = "update time set status = 'disabled' where time = '$timeSelect' and doctorID = '$docID'";
+    $tc_result = mysqli_query($con, $tc_query);
+
+    if($verify){
+        echo "<script>alert('Appointment booked successfully!');</script>";
+        header("Refresh: 0");
+    }
+    else{
+        echo "<script>alert('Appointment booking failed!');</script>";
+    }
 }
 ?>
 
@@ -202,7 +214,7 @@ if(isset($_POST['submit'])){
                                 <button id="doctorMenu" class="w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="doctor-select" type="text" id="doctorBox" placeholder="Select">
                                 </button>
-                                <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl">
+                                <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl" onclick="setDate()">
                                 </div>
                             </div>      
                         </div>
@@ -211,6 +223,9 @@ if(isset($_POST['submit'])){
                         <div class="w-[50%] h-full">
                             <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
                             <!-- CALENDAR -->
+                            <input class="hidden" id="book1"></input>
+                            <input class="hidden" id="book2"></input>
+                            <input class="hidden" id="book3"></input>
                             <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
@@ -223,7 +238,7 @@ if(isset($_POST['submit'])){
                             <!-- DIVISION FOR THE LIST OF THE TIME BTNS -->
                             <div class="w-full h-fit">
                                 <!-- TIME BOXES LIST -->
-                                <?php $time_query = "select time from time"; 
+                                <?php $time_query = "select time from time where status = 'enabled' and doctorID = '$docID'"; 
                                 $time_result = mysqli_query($con,$time_query)?>
                                 <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5 justify-normal items-center">
                                     <?php while($time_row = mysqli_fetch_assoc($time_result)){?>
@@ -281,7 +296,6 @@ if(isset($_POST['submit'])){
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../dist/JS animations/appointment-dropdown.js"></script>
     <script src="../dist/JS animations/appointment-post.js"></script>
-    
     <script>
          var day1;
          var day2;
@@ -297,6 +311,7 @@ if(isset($_POST['submit'])){
         }
 
         function render(day1,day2,day3){
+
             flatpickr("#booking-date", {
                 // Specify available dates (optional)
                 minDate: "today",
@@ -320,16 +335,17 @@ if(isset($_POST['submit'])){
                 minDate: "today",
                 enable: [],
 
-            altInput: true,
-            altFormat: "Y-m-j",
-            dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "Y-m-j",
+                dateFormat: "Y-m-d",
 
-            inline: true,
+                inline: true,
 
-            // Additional appearance options (optional)
-            mode: "single",
-            allowInput: true,
-        });
+                // Additional appearance options (optional)
+                mode: "single",
+                allowInput: true,
+            });
+          
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
