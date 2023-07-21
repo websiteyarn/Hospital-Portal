@@ -16,6 +16,7 @@ function check_user_login($con){
     die; 
 }
 
+
 function check_doc_login($con){
     if(isset($_SESSION['doctorID'])){
         $id = $_SESSION['doctorID'];

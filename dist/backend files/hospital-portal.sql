@@ -172,6 +172,85 @@ CREATE TABLE `patient details` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `root`
+--
+
+CREATE TABLE `root` (
+  `rootID` int(11) NOT NULL,
+  `adminID` int(11) NOT NULL,
+  `password` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `root`
+--
+
+INSERT INTO `root` (`rootID`, `adminID`, `password`) VALUES
+(1, 1111, 1111);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `scheduleID` int(11) NOT NULL,
+  `doctorID` int(11) NOT NULL,
+  `day` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`scheduleID`, `doctorID`, `day`) VALUES
+(1, 1, '1,2,4'),
+(2, 2, '2,3,5');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time`
+--
+
+CREATE TABLE `time` (
+  `timeID` int(11) NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `doctorID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `time`
+--
+
+INSERT INTO `time` (`timeID`, `time`, `status`, `doctorID`) VALUES
+(1, '8:00 am', 'enabled', 1),
+(2, '9:00 am', 'disabled', 1),
+(3, '10:00 am', 'enabled', 1),
+(4, '11:00 am', 'enabled', 1),
+(5, '2:00 pm', 'enabled', 1),
+(6, '3:00 pm', 'enabled', 1),
+(7, '4:00 pm', 'enabled', 1),
+(8, '5:00 pm', 'enabled', 1),
+(9, '6:00 pm', 'enabled', 1),
+(10, '7:00 pm', 'enabled', 1),
+(11, '8:00 am', 'enabled', 2),
+(12, '9:00 am', 'enabled', 2),
+(13, '10:00 am', 'disabled', 2),
+(14, '11:00 am', 'enabled', 2),
+(15, '2:00 pm', 'enabled', 2),
+(16, '3:00 pm', 'enabled', 2),
+(17, '4:00 pm', 'enabled', 2),
+(18, '5:00 pm', 'enabled', 2),
+(19, '6:00 pm', 'enabled', 2),
+(20, '7:00 pm', 'enabled', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 

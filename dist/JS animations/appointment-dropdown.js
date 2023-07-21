@@ -26,6 +26,7 @@ let appointmentDetails = document.getElementById('appointmentDetails');
 
 
 
+
 doctorMenu.onclick = function () {
     doctorDropdown.style.display = doctorDropdown.style.display === "none" ? "block" : "none";
 }

@@ -283,9 +283,42 @@ if(isset($_POST['submit'])){
     <script src="../dist/JS animations/appointment-post.js"></script>
     
     <script>
-        flatpickr("#booking-date", {
-            // Specify available dates (optional)
-            minDate: "today",
+         var day1;
+         var day2;
+         var day3;
+         var updatedOption = null;
+        function setDate(){
+            day1 = document.getElementById("book1").value;
+            day2 = document.getElementById("book2").value;
+            day3 = document.getElementById("book3").value;
+            console.log(day1,day2,day3);
+            appointDate.destroy();
+            render(day1,day2,day3);
+        }
+
+        function render(day1,day2,day3){
+            flatpickr("#booking-date", {
+                // Specify available dates (optional)
+                minDate: "today",
+                    enable: [function(date) { var intDay1 = parseInt(day1); var intDay2 = parseInt(day2); var intDay3 = parseInt(day3); console.log(intDay1,intDay2,intDay3); 
+                        const day = date.getDay(); console.log(day);
+                        return(day === intDay1) || (day === intDay2) || (day === intDay3); }],
+
+                    altInput: true,
+                    altFormat: "Y-m-j",
+                    dateFormat: "Y-m-d",
+
+                    inline: true,
+
+                    // Additional appearance options (optional)
+                    mode: "single",
+                    allowInput: true,
+            });
+        }
+                var appointDate = flatpickr("#booking-date", {
+                // Specify available dates (optional)
+                minDate: "today",
+                enable: [],
 
             altInput: true,
             altFormat: "Y-m-j",

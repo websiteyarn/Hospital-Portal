@@ -655,6 +655,8 @@ $user_data = check_user_login($con); //collect user data and check connection
                         <hr>
                     </div>
                     
+   
+                    
                     <!-- LABORATORY RESULTS SECTION -->
                     <div class="w-full h-[182px] lg:w-[620px] lg:h-[515px] mt-[18px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
                         <div class="w-full h-fit my-2"><h1 class="text-start ml-5 font-medium text-side-navbar lg:text-2xl">Laboratory Results</h1></div>
