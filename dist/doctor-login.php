@@ -25,7 +25,12 @@ if(isset($_POST['submit'])){
 
                     $query = "SELECT * FROM `user` WHERE doctorID='".$_SESSION['doctorID']."' limit 1;"; 
                     $result = mysqli_query($con, $query);
-                    while($row = mysqli_fetch_assoc($result)){ 
+
+                    // no patient, new doctor
+                    if(empty($row = mysqli_fetch_assoc($result))){
+                        $_SESSION['patientID'] = "none";
+                    }
+                    else { 
                         $_SESSION['patientID'] = $row['userID'];
                     }
 

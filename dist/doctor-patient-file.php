@@ -142,6 +142,7 @@ session_start();
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom overflow-auto">
                     
                     <?php 
+                        if($_SESSION['patientID'] != "none"){
                         $patientID = $_SESSION['patientID'];
                         $query = "SELECT * FROM `user` WHERE userID=$patientID;";
                         $result = mysqli_query($con, $query);
@@ -177,23 +178,26 @@ session_start();
                         </div>
                     </div>
                     <?php
+                            }
                         }
                     ?>
 
                     <?php 
-                        // only the latest record should show
-                        $patientID = $_SESSION['patientID'];
-                        $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
-                        $result = mysqli_query($con, $query);
+                        if($_SESSION['patientID'] != "none"){
 
-                        if(empty($row = mysqli_fetch_assoc($result))){
-                            echo "emty";
-                            $query = "INSERT INTO `patient details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
-                            mysqli_query($con, $query);
-                            echo "<script> location.reload();</script>";
-                        }
-                        else{
-                            while($row){ 
+                            // only the latest record should show
+                            $patientID = $_SESSION['patientID'];
+                            $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
+                            $result = mysqli_query($con, $query);
+
+                            if(empty($row = mysqli_fetch_assoc($result))){
+                                echo "emty";
+                                $query = "INSERT INTO `patient details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
+                                mysqli_query($con, $query);
+                                echo "<script> location.reload();</script>";
+                            }
+                            else{
+                                while($row){ 
                     ?>
 
                     <!-- PATIENT INFORMATION -->
@@ -276,6 +280,7 @@ session_start();
                             $row = mysqli_fetch_assoc($result);
                             }
                         }
+                    }
                     ?>
 
 
@@ -290,12 +295,13 @@ session_start();
                             </div>
 
                             <?php 
-                                $patientID = $_SESSION['patientID'];
-                                $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                $query = "SELECT * FROM `notes` WHERE userID=$patientID AND doctorID=$doctorID;";
-                                $result = mysqli_query($con, $query);
+                                if($_SESSION['patientID'] != "none"){
+                                    $patientID = $_SESSION['patientID'];
+                                    $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                    $query = "SELECT * FROM `notes` WHERE userID=$patientID AND doctorID=$doctorID;";
+                                    $result = mysqli_query($con, $query);
 
-                                while($row = mysqli_fetch_assoc($result)){ 
+                                    while($row = mysqli_fetch_assoc($result)){ 
                             ?>
                             <!-- PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
@@ -303,6 +309,7 @@ session_start();
                                 <p class="text-lg"><?php echo $row["notes"]; ?></p>
                             </div>
                             <?php
+                                    }
                                 }
                             ?>
                         </div>
@@ -316,14 +323,15 @@ session_start();
                             <!-- PATIENT DIAGNOSIS BOXES-->
                             <div class="flex flex-row flex-wrap gap-2">
                                 <?php 
-                                    $patientID = $_SESSION['patientID'];
-                                    $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                    // get the max date from user
-                                    // then get the row 
-                                    $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
-                                    $result = mysqli_query($con, $query);
+                                    if($_SESSION['patientID'] != "none"){
+                                        $patientID = $_SESSION['patientID'];
+                                        $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                        // get the max date from user
+                                        // then get the row 
+                                        $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
+                                        $result = mysqli_query($con, $query);
 
-                                    while($row = mysqli_fetch_assoc($result)){ 
+                                        while($row = mysqli_fetch_assoc($result)){ 
                                 ?>
                                 <div class="flex flex-row items-center">
                                     <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
@@ -333,6 +341,7 @@ session_start();
                                     </div>
                                 </div>
                                 <?php
+                                        }
                                     }
                                 ?>
                             </div>
@@ -352,12 +361,13 @@ session_start();
                             </div>
 
                             <?php 
-                                $patientID = $_SESSION['patientID'];
-                                $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                $query = "SELECT * FROM `lab_results` WHERE userid=$patientID AND doctorID = $doctorID;";
-                                $result = mysqli_query($con, $query);
+                                if($_SESSION['patientID'] != "none"){
+                                    $patientID = $_SESSION['patientID'];
+                                    $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                    $query = "SELECT * FROM `lab_results` WHERE userid=$patientID AND doctorID = $doctorID;";
+                                    $result = mysqli_query($con, $query);
 
-                                while($row = mysqli_fetch_assoc($result)){ 
+                                    while($row = mysqli_fetch_assoc($result)){ 
                             ?>
 
                             <!-- PATIENT LAB BOXES -->
@@ -372,7 +382,8 @@ session_start();
                                     <p class="text-gray-text text-base">Normal Range: <?php echo $row['normal_range']; ?></p>
                                 </div>
                             </div>
-                            <?php
+                            <?php   
+                                    }
                                 }
                             ?>
                         </div>
@@ -386,12 +397,13 @@ session_start();
                             </div>
 
                             <?php 
-                                $patientID = $_SESSION['patientID'];
-                                $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                $query = "SELECT * FROM `medication` WHERE doctorID=$doctorID AND userID=$patientID;";
-                                $result = mysqli_query($con, $query);
+                                if($_SESSION['patientID'] != "none"){
+                                    $patientID = $_SESSION['patientID'];
+                                    $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                    $query = "SELECT * FROM `medication` WHERE doctorID=$doctorID AND userID=$patientID;";
+                                    $result = mysqli_query($con, $query);
 
-                                while($row = mysqli_fetch_assoc($result)){ 
+                                    while($row = mysqli_fetch_assoc($result)){ 
                             ?>
 
                             <!-- PATIENT PRESCRIPTION BOXES -->
@@ -407,6 +419,7 @@ session_start();
                                 </div>
                             </div>
                             <?php
+                                    }
                                 }
                             ?>
                         </div>
