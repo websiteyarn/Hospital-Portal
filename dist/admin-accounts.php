@@ -1,3 +1,42 @@
+
+<?php 
+session_start();
+
+include("../dist/backend files/connection.php");
+include("../dist/backend files/functions.php");
+
+if(isset($_GET['delete_doctor'])){
+
+    $delete_id = $_GET['delete_doctor'];
+    $delete_users = $con->prepare("DELETE FROM `admin` WHERE doctorID = ?");
+    $delete_users->execute([$delete_id]);
+    header('location:admin-accounts.php');
+ 
+ }
+
+ $select_doctor = "select * from admin ";
+ $query_doctor = mysqli_query($con, $select_doctor);
+
+
+ if(isset($_GET['delete_patient'])){
+
+    $delete_id = $_GET['delete_patient'];
+    $delete_users = $con->prepare("DELETE FROM `user` WHERE userID = ?");
+    $delete_users->execute([$delete_id]);
+    header('location:admin-accounts.php');
+ 
+ }
+
+ $select_patient = "select * from user ";
+ $query_patient = mysqli_query($con, $select_patient);
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +47,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     
@@ -46,7 +85,7 @@
                 <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
                         <img src="../assets/doctor-sample.png" alt="profile pic" class="rounded-full lg:w-12 lg:h-12"> 
-                        <img id="dropdown-arrow" src="/assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
@@ -81,46 +120,35 @@
                         <!-- When clicked, the background color changes to active  -->
                         
                         <!-- use the id for each doctor account to delete the element -->
-                        <li id="doctorAccount1"> 
-                            <div class="doctorAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
-                                <button onclick="removeElement('doctorAccount1')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
+                            <!-- EACH TR IS A TABLE ROW -->
+                            <?php 
+                            $num = mysqli_num_rows($query_doctor);
+                            if ($num>0) {
+                                while ($result_doctor=mysqli_fetch_assoc($query_doctor)){
+                                    echo "
+                                    <li id='patientAccount1'>
+                                    <div class='patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between'>
+                                        <h1 class='my-auto ml-9 text-2xl'>".$result_doctor['name']."</h1>   
+                                        <a href = 'admin-accounts.php?delete_doctor=".$result_doctor['doctorID']."'>
+                                        <button onclick='removeElement(\"patientAccount1\")'><img src='../assets/delete-btn.png' class='w-5 h-5 mr-9 mt-5 hover:scale-105 transform transition-transform duration-300 items-center'></button>
+                                        </a>
+                                    </div>                               
+                                </li>";
+                                }
+                            }
+                               
+                              ?>    
 
-                        <li id="doctorAccount2"> 
-                            <div class="doctorAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Mat Black</h1>
-                                <button onclick="removeElement('doctorAccount2')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
 
-                        <li id="doctorAccount3"> 
-                            <div class="doctorAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Silvia Scarlet</h1>
-                                <button onclick="removeElement('doctorAccount3')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
 
-                        <li id="doctorAccount4"> 
-                            <div class="doctorAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Ryan Reyrey</h1>
-                                <button onclick="removeElement('doctorAccount4')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
-
-                        <li id="doctorAccount5"> 
-                            <div class="doctorAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Doms Libs</h1>
-                                <button onclick="removeElement('doctorAccount5')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
+                                
+                    
                     </ul>                
                 </div>
 
                 <div class="w-[50%] h-[820px] overflow-auto">
                     <div class="mb-7 ml-4">
-                        <h1 class="text-3xl text-sidebar-text-bold">Doctor Accounts</h1>
+                        <h1 class="text-3xl text-sidebar-text-bold">Patient Accounts</h1>
                     </div>
 
                     <!-- PATIENTS ACCOUNT UN-ORDERED LIST -->
@@ -130,40 +158,25 @@
                         <!-- When clicked, the background color changes to active  -->
                         
                         <!-- use the id for each patient account to delete the element -->
-                        <li id="patientAccount1"> 
-                            <div class="patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
-                                <button onclick="removeElement('patientAccount1')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
 
-                        <li id="patientAccount2"> 
-                            <div class="patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Mat Black</h1>
-                                <button onclick="removeElement('patientAccount2')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
-
-                        <li id="patientAccount3"> 
-                            <div class="patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Silvia Scarlet</h1>
-                                <button onclick="removeElement('patientAccount3')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
-
-                        <li id="patientAccount4"> 
-                            <div class="patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Ryan Reyrey</h1>
-                                <button onclick="removeElement('patientAccount4')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
-
-                        <li id="patientAccount5"> 
-                            <div class="patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between">
-                                <h1 class="my-auto ml-9 text-2xl">Doms Libs</h1>
-                                <button onclick="removeElement('patientAccount5')"><img src="../assets/delete-btn.png" class="w-5 h-5 mr-9 hover:scale-105 transform transition-transform duration-300"></button>
-                            </div>
-                        </li>
+                        <?php 
+                            $num = mysqli_num_rows($query_patient);
+                            if ($num>0) {
+                                while ($result_patient=mysqli_fetch_assoc($query_patient)){
+                                    echo "
+                                    <li id='patientAccount1'>
+                                    <div class='patientAccountAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl justify-between'>
+                                        <h1 class='my-auto ml-9 text-2xl'>".$result_patient['first_name']." <span> </span>".$result_patient['last_name']."</h1>   
+                                        <a href = 'admin-accounts.php?delete_patient=".$result_patient['userID']."'>
+                                        <button onclick='removeElement(\"patientAccount1\")'><img src='../assets/delete-btn.png' class='w-5 h-5 mr-9 mt-5 hover:scale-105 transform transition-transform duration-300 items-center'></button>
+                                        </a>
+                                    </div>                               
+                                </li>";
+                                }
+                            }
+                               
+                              ?>
+                      
                     </ul>                
                 </div>
             </div>
