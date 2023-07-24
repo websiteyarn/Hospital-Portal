@@ -6,7 +6,6 @@ include("../dist/backend files/functions.php");
 
 
     if(isset($_POST['submit'])){
-
         $first_name = $_POST['first-name'];
         $last_name = $_POST['last-name'];
         $email = $_POST['email'];
@@ -25,9 +24,9 @@ include("../dist/backend files/functions.php");
                 echo "<script>alert('Password does not match');</script>";
             }
             else{
-                $query = "insert into user (doctorID,first_name, last_name, email, gender, birth_date, contact_number, password) 
-            values ('1','$first_name','$last_name','$email','$gender','$birth_date','$contact_no','$password')";
-            // lagyan ng 1 sa doctorid for now
+                $query = "insert into user (first_name, last_name, email, gender, birth_date, contact_number, password) 
+            values ('$first_name','$last_name','$email','$gender','$birth_date','$contact_no','$password')";
+            //  null vaue na sya
 
             // Initiate connection to database and execute query
             mysqli_query($con, $query);

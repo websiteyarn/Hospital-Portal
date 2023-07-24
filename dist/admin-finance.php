@@ -1,4 +1,30 @@
+<?php
+include("../dist/backend files/connection.php");
+include("../dist/backend files/functions.php");
+session_start();
+check_root_login($con);
 
+if (isset($_COOKIE['financeID'])){
+    $financePost = $_COOKIE['financeID'];
+}else{
+    $financePost = 1;
+}
+
+if (isset($_COOKIE['financeName'])){
+    $financeName = $_COOKIE['financeName'];
+}else{
+    $financeName = "Juan Dela Cruz";
+}
+
+if (isset($_GET['delete_finance'])){
+
+    $financeID = $_GET['delete_finance'];
+    $delete_finance = $con->prepare("DELETE FROM `finance` WHERE financeID = ?");
+    $delete_finance->execute([$financeID]);
+    header('location:admin-finance.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +77,7 @@
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-md" href="../dist/logout.php">Log out</a></li> 
                     </ul>
                 </div>
 
@@ -62,7 +88,7 @@
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="../dist/logout.php">Log out</a></li> 
                     </ul>
                 </div>
             </div>
@@ -74,54 +100,37 @@
                     <div class="mb-7 ml-4">
                         <h1 class="text-3xl text-sidebar-text-bold">Patient Finance</h1>
                     </div>
-
+                    <?php $finance_query = "select * from user"?>
+                    <?php $finance = mysqli_query($con, $finance_query) or die(mysqli_error($con));?> 
                     <!-- PATIENT BOXES UN-ORDERED LIST -->
                     <ul id="patientFinanceListAdmin" class="space-y-5">
                         <!-- PATIENT FINANCE BOXES  -->
                         <!-- All patient finance boxes have an inactive default background color  -->
                         <!-- When clicked, the background color changes to active  -->
+                        <?php while($financeRow = mysqli_fetch_assoc($finance)){ ?>
                         <li>
-                            
-                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
+                       
+                            <div name="<?php echo $financeRow['userID'] ?>" id="<?php echo $financeRow['first_name'].' '.$financeRow['last_name'] ?>" class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
+                                <h1 id="financeSelect" class="my-auto ml-9 text-2xl"><?php echo $financeRow['first_name'].' '.$financeRow['last_name'] ?></h1>
                             </div>
                         </li>
-
-                        <li>
-                            
-                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
-                            </div>
-                        </li>
-
-                        <li>
-                            
-                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
-                            </div>
-                        </li>
-
-                        <li>
-                            
-                            <div class="patientFinanceAdmin w-[483px] h-[58px] flex bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl">
-                                <h1 class="my-auto ml-9 text-2xl">James Blanco</h1>
-                            </div>
-                        </li>
-
+                        <?php } ?>
                     </ul>                
                 </div>
 
                 <!-- PATIENT FINANCE DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                     <!-- PATIENT'S DETAILS  -->
+                    <?php $findisplay_query = "select * from finance where userID = '$financePost'"?>
+                    <?php $findisplay = mysqli_query($con, $findisplay_query) or die(mysqli_error($con));?> 
                     <div class="flex flex-row items-center">
                         <img src="../assets/profilesample.jpg" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
                         <div class="flex w-full justify-between">
                             <!-- PATIENT'S INFO -->
                             <div class="flex flex-col mt-4">
-                                <h1 class="text-3xl ml-8">Jane Doe</h1>
+                                <h1 class="text-3xl ml-8"><?php echo $financeName ?></h1>
                             </div>
-
+                        
                             <!-- DATE INFO -->
                             <div class="flex flex-col mt-3 mr-8">
                                 <span class="text-sm text-side-navbar-active-text">Patient Number</span>
@@ -132,6 +141,7 @@
 
                     <!-- ACTUAL PATIENT FINANCE LIST (PER BOX)-->
                     <ul id="" class="flex flex-col h-[570px] mx-8 overflow-auto mt-5">
+                        <?php while($display_row = mysqli_fetch_assoc($findisplay)){ ?>
                         <li class="flex flex-row w-full h-fit mt-4">
 
                             <!-- DOCTOR'S DETAILS  -->
@@ -140,59 +150,31 @@
                                 <!-- DR DETAILS -->
                                 <div class="flex flex-col ml-5 my-auto">
                                     <span class="text-xl">Clinical consultation</span>
-                                    <span class="text-xl">Dr. Cha</span>
+                                    <span class="text-xl"><?php echo $display_row['doctor'] ?></span>
                                 </div>
                            </div>
 
                             <!-- DATE -->
                            <div class="w-[25%] h-fit flex my-auto justify-center">
-                                <span class="text-xl text-gray-text">July 20, 2020</span>
+                                <span class="text-xl text-gray-text"><?php echo $display_row['date'] ?></span>
                            </div>
 
                             <!-- AMOUNT AND STATUS-->
                            <div class="w-[25%] h-fit flex items-center justify-center">
                                 <div class="flex flex-col">
-                                    <span class="text-xl">Php 700</span>
-                                    <span class="text-xl text-orange-text">Pending</span>
+                                    <span class="text-xl">₱<?php echo $display_row['amount'] ?></span>
+                                    <span class="text-xl text-orange-text"><?php echo $display_row['status'] ?></span>
                                 </div>
                            </div>
 
                            <!-- DELETE BTN  -->
                            <div class="w-[25%] h-fit flex justify-center items-center my-auto">
+                                <a href="../dist/admin-finance.php?delete_finance=<?php echo $display_row['financeID'] ?>">
                                 <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                </a>
                            </div>
                         </li>
-
-                        <li class="flex flex-row w-full h-fit mt-4">
-
-                            <!-- DOCTOR'S DETAILS  -->
-                           <div class="w-[25%] h-fit flex flex-row">
-                                <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
-                                <!-- DR DETAILS -->
-                                <div class="flex flex-col ml-5 my-auto">
-                                    <span class="text-xl">Clinical consultation</span>
-                                    <span class="text-xl">Dr. Cha</span>
-                                </div>
-                           </div>
-
-                            <!-- DATE -->
-                           <div class="w-[25%] h-fit flex my-auto justify-center">
-                                <span class="text-xl text-gray-text">July 20, 2020</span>
-                           </div>
-
-                            <!-- AMOUNT AND STATUS-->
-                           <div class="w-[25%] h-fit flex items-center justify-center">
-                                <div class="flex flex-col">
-                                    <span class="text-xl">Php 700</span>
-                                    <span class="text-xl text-orange-text">Pending</span>
-                                </div>
-                           </div>
-
-                           <!-- DELETE BTN  -->
-                           <div class="w-[25%] h-fit flex justify-center items-center my-auto">
-                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
-                           </div>
-                        </li>
+                        <?php } ?>
                     </ul>
 
                     <!-- BOTTOM ITEMS  -->

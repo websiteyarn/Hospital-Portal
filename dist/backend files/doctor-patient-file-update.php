@@ -20,7 +20,7 @@ else{
     $pulse = $_POST['pulse-rate-edit'];
     $bp = $_POST['blood-pressure-edit'];
 
-    $query = "UPDATE `patient details` SET `Age` = '".$age."', `Blood` = '".$blood."', `Height` = '".$height."', `Weight` = '".$weight."', `Temperature` = '".$temp."', `Oxygen Level` = '".$o2."', `Pulse Rate` = '".$pulse."', `Blood Pressure` = '".$bp."' WHERE `userID` = '".$patientID."';";
+    $query = "UPDATE `patient_details` SET `Age` = '".$age."', `Blood` = '".$blood."', `Height` = '".$height."', `Weight` = '".$weight."', `Temperature` = '".$temp."', `Oxygen Level` = '".$o2."', `Pulse Rate` = '".$pulse."', `Blood Pressure` = '".$bp."' WHERE `userID` = '".$patientID."';";
     $result = mysqli_query($con, $query);
 
     if($result)
@@ -50,21 +50,25 @@ else{
     $daily = $_POST['daily-basis-edit'];
     $instructions = $_POST['instruction-edit'];
 
+    
+
     if(!empty($diagnosis) && !empty($date) && !empty($status) && !empty($med) && !empty($dosage) && !empty($daily) && !empty($instructions)){
-        $query = "INSERT INTO `illness` (`illnessID`, `Illness`, `date`, `notes`, `userID`, `doctorID`, `status`) VALUES (NULL, '$diagnosis', '$date', '', '$patientID', '$doctorID', '$status');";
+        $query = "INSERT INTO `illness` (`Illness`, `date`, `notes`, `userID`, `doctorID`, `status`) VALUES ('$diagnosis', '$date', '', '$patientID', '$doctorID', '$status');";
         $result = mysqli_query($con, $query); 
         
         if($result){
-            $query = "SELECT max(illnessID) as illnessID FROM `illness` WHERE userID=2 AND doctorID=1;";
+            $query = "SELECT max(illnessID) as illnessID FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
             $result = mysqli_query($con, $query);
 
             if($row = mysqli_fetch_assoc($result)){
                 $illnessID = $row['illnessID'];
-                $query = "INSERT INTO `medication` (`medicineID`, `illnessID`, `userID`, `doctorID`, `medicine`, `dosage`, `notes`, `schedule`, `prescription_date`, `prescription_notes`) 
-                VALUES (NULL, '$illnessID', '$patientID', '$doctorID', '$med', '$dosage', '$daily', '$instructions', '2023-07-12', 'Prescribed');";
+                $query = "INSERT INTO `medication` (`illnessID`, `userID`, `doctorID`, `medicine`, `dosage`, `notes`, `schedule`, `prescription_date`, `prescription_notes`) 
+                VALUES ('$illnessID', ' $patientID', '$doctorID', '$med', '$dosage', '$daily', '$instructions', '2023-07-12', 'Prescribed');";
                 mysqli_query($con, $query); 
             }
         }
+    }else{
+        echo "error";
     }
 
 

@@ -33,6 +33,22 @@ function check_doc_login($con){
     die; 
 }
 
+function check_root_login($con){
+    if(isset($_SESSION['adminID'])){
+        $id = $_SESSION['adminID'];
+        $query = "select * from root where adminID = '$id' limit 1";
+
+        $result = mysqli_query($con, $query);
+        if($result && mysqli_num_rows($result) > 0){
+            $admin_data = mysqli_fetch_assoc($result);
+            return $admin_data;
+        }
+    }
+    // redirect to login
+    header("Location: splash.php");
+    die; 
+}
+
 function page_refresh($location){
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$location.'">';
     exit;

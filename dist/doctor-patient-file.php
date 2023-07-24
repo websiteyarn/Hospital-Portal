@@ -126,7 +126,7 @@ session_start();
                                         <!-- PATIENT NAME  -->
                                         <div class="ml-7 mr-7">
                                             <!-- NAME  -->
-                                            <span class="text-[22px]"><?php echo $row["first_name"]." ".$row["last_name"];?></span>
+                                            <span class="text-[22px]" name="<?php $row['userID'] ?>" id="patientID"><?php echo $row["first_name"]." ".$row["last_name"];?></span>
                                         </div>
                                     </div>
                                 </a>
@@ -144,6 +144,7 @@ session_start();
                     <?php 
                         if($_SESSION['patientID'] != "none"){
                         $patientID = $_SESSION['patientID'];
+                        echo  "userID:".$patientID;
                         $query = "SELECT * FROM `user` WHERE userID=$patientID;";
                         $result = mysqli_query($con, $query);
 
@@ -187,12 +188,12 @@ session_start();
 
                             // only the latest record should show
                             $patientID = $_SESSION['patientID'];
-                            $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
+                            $query = "SELECT * FROM `patient_details` where userID=$patientID ORDER BY patientID DESC limit 1;";
                             $result = mysqli_query($con, $query);
 
                             if(empty($row = mysqli_fetch_assoc($result))){
                                 echo "emty";
-                                $query = "INSERT INTO `patient details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
+                                $query = "INSERT INTO `patient_details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
                                 mysqli_query($con, $query);
                                 echo "<script> location.reload();</script>";
                             }

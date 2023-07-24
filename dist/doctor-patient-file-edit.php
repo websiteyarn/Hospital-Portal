@@ -186,7 +186,7 @@ session_start();
                             if($_SESSION['patientID'] != "none"){
                                 // only the latest record should show
                                 $patientID = $_SESSION['patientID'];
-                                $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
+                                $query = "SELECT * FROM `patient_details` where userID=$patientID ORDER BY patientID DESC limit 1;";
                                 $result = mysqli_query($con, $query);
 
                                 while($row = mysqli_fetch_assoc($result)){ 
@@ -346,7 +346,9 @@ session_start();
                                     <?php 
                                         if($_SESSION['patientID'] != "none"){
                                             $patientID = $_SESSION['patientID'];
+                                            echo  "UserID:".$patientID;
                                             $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                            echo  "DoctorID:".$doctorID;
                                             $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
                                             $result = mysqli_query($con, $query);
 
