@@ -4,8 +4,8 @@ include("../dist/backend files/functions.php");
 session_start();
 check_root_login($con);
 
-if (isset($_COOKIE['financeID'])){
-    $financePost = $_COOKIE['financeID'];
+if (isset($_GET['update_finance'])){
+    $financePost = $_GET['update_finance'];
 }else{
     $financePost = 1;
 }
@@ -14,6 +14,21 @@ if (isset($_COOKIE['financeName'])){
     $financeName = $_COOKIE['financeName'];
 }else{
     $financeName = "Juan Dela Cruz";
+}
+
+
+if(isset($_POST['submit']) && isset($_POST['update_agenda']) && isset($_POST['update_doctor']) 
+&& isset($_POST['update_date']) && isset($_POST['update_amount']) && isset($_POST['update_status'])){
+    $agenda = $_POST['update_agenda'];
+    $doctor = $_POST['update_doctor'];
+    $date = $_POST['update_date'];
+    $amount = $_POST['update_amount'];
+    $status = $_POST['update_status'];
+    if(!empty($agenda) && !empty($doctor) && !empty($date) && !empty($amount) && !empty($status)){
+        $update_finance = $con->prepare("UPDATE `finance` SET `agenda`=?,`doctor`=?,`date`=?,`amount`=?,`status`=? WHERE financeID = ?");
+        $update_finance->execute([$agenda, $doctor, $date, $amount, $status, $financePost]);
+    header('location:admin-finance.php');
+    }
 }
 
 if (isset($_GET['delete_finance'])){
@@ -35,10 +50,9 @@ if (isset($_GET['delete_finance'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
-    
     <div class="flex">
         <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
@@ -120,8 +134,9 @@ if (isset($_GET['delete_finance'])){
 
                 <!-- PATIENT FINANCE DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
+                <form method="post">
                     <!-- PATIENT'S DETAILS  -->
-                    <?php $findisplay_query = "select * from finance where userID = '$financePost'"?>
+                    <?php $findisplay_query = "select * from finance where financeID = '$financePost'"?>
                     <?php $findisplay = mysqli_query($con, $findisplay_query) or die(mysqli_error($con));?> 
                     <div class="flex flex-row items-center">
                         <img src="../assets/profilesample.jpg" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
@@ -141,57 +156,87 @@ if (isset($_GET['delete_finance'])){
 
                     <!-- ACTUAL PATIENT FINANCE LIST (PER BOX)-->
                     <ul id="" class="flex flex-col h-[570px] mx-8 overflow-auto mt-5">
-                        <?php while($display_row = mysqli_fetch_assoc($findisplay)){ ?>
+                    <?php while($display_row = mysqli_fetch_assoc($findisplay)){ ?>
                         <li class="flex flex-row w-full h-fit mt-4">
 
                             <!-- DOCTOR'S DETAILS  -->
                            <div class="w-[25%] h-fit flex flex-row">
                                 <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
                                 <!-- DR DETAILS -->
-                                <div class="flex flex-col ml-5 my-auto">
-                                    <span class="text-xl"><?php echo $display_row['agenda'] ?></span>
-                                    <span class="text-xl"><?php echo $display_row['doctor'] ?></span>
+                                <div class="flex flex-col ml-5 w-full space-y-1">
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type="text"
+                                        name="update_agenda"
+                                        placeholder="<?php echo $display_row['agenda'] ?>"
+                                        value="<?php echo $display_row['agenda'] ?>"
+                                    >
+
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type="text"
+                                        name="update_doctor"
+                                        placeholder="<?php echo $display_row['doctor'] ?>"
+                                        value="<?php echo $display_row['doctor'] ?>"
+                                    >
                                 </div>
                            </div>
 
                             <!-- DATE -->
-                           <div class="w-[25%] h-fit flex my-auto justify-center">
-                                <span class="text-xl text-gray-text"><?php echo $display_row['date'] ?></span>
+                           <div class="w-[25%] h-fit flex justify-center items-center">
+                                <input
+                                    class="w-[200px] h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                    type="date"
+                                    name="update_date"
+                                    placeholder="<?php echo $display_row['date'] ?>"
+                                    value="<?php echo $display_row['date'] ?>"
+                                >
                            </div>
 
                             <!-- AMOUNT AND STATUS-->
                            <div class="w-[25%] h-fit flex items-center justify-center">
-                                <div class="flex flex-col">
-                                    <span class="text-xl">₱<?php echo $display_row['amount'] ?></span>
-                                    <span class="text-xl text-orange-text"><?php echo $display_row['status'] ?></span>
+                                <div class="flex flex-col ml-5 space-y-1">
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type="number"
+                                        name="update_amount"
+                                        placeholder="<?php echo $display_row['amount'] ?>"
+                                        value="<?php echo $display_row['amount'] ?>"
+                                    >
+
+                                    <input
+                                        class="w-full h-[30px] pl-5 pr-3 leading-5 text-black placeholder-edit-text-admin bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type="text"
+                                        name="update_status"
+                                        placeholder="<?php echo $display_row['status'] ?>"
+                                        value="<?php echo $display_row['status'] ?>"
+                                    >
                                 </div>
                            </div>
 
                            <!-- DELETE BTN  -->
-                           <div class="w-[25%] h-fit flex justify-center items-center my-auto gap-2">
-                                <a href="../dist/admin-finance-update.php?update_finance=<?php echo $display_row['financeID'] ?>">
-                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
-                                </button>
-                                </a>
+                           <!-- <div class="w-[25%] h-fit flex justify-center items-center my-auto">
                                 <a href="../dist/admin-finance.php?delete_finance=<?php echo $display_row['financeID'] ?>">
                                 <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
                                 </a>
-                                
-                           </div>
+                           </div> -->
                         </li>
                         <?php } ?>
                     </ul>
 
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-full h-fit py-2 justify-end">
-                        <a href="../dist/admin-finance-edit.php">
-                            <button class="flex w-[90px] h-[45px] mr-10 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
-                                <img src="../assets/edit-btn.png" alt="user-profile-edit">
-                                <span class="ml-1 text-gray-text text-lg">Add</span>
+                        <!-- CANCEL BTN  -->
+                        <a href="../dist/admin-finance.php">
+                            <button type="button" class="flex w-[90px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <span class=" text-gray-text text-lg">Cancel</span>
                             </button>
                         </a>
+                        
+                        <!-- SAVE BTN  -->
+                        <input type="submit" name="submit" value="Save" class="text-gray-text text-lg w-[90px] h-[45px] bg-save-button mx-[30px] justify-center items-center rounded-3xl shadow-custom hover:cursor-pointer hover:scale-105 transform transition-transform duration-300">
                     </div>
-                    
+                </form>    
                 </div>
             </div>
         </div>

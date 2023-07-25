@@ -24,15 +24,25 @@ if (isset($_GET['delete_finance'])){
     header('location:admin-finance.php');
 }
 
-if (isset($_POST['submit'])){
+if(isset($_POST['submit']) && isset($_POST['doctor']) ** isset($_POST['date']) 
+&& isset($_POST['amount']) && isset($_POST['status'])){
     $agenda = $_POST['agenda'];
     $doctor = $_POST['doctor'];
     $date = $_POST['date'];
     $amount = $_POST['amount'];
     $status = $_POST['status'];
-
+    if(!empty($agenda) && !empty($doctor) && !empty($date) && !empty($amount) && !empty($status)){
     $insert_finance = $con->prepare("INSERT INTO `finance`(`userID`, `agenda`, `doctor`, `date`, `amount`, `status`) VALUES (?,?,?,?,?,?)");
     $insert_finance->execute([$financePost, $agenda, $doctor, $date, $amount, $status]);
+    header('location:admin-finance.php');
+    }
+}
+
+if (isset($_GET['delete_finance'])){
+
+    $financeID = $_GET['delete_finance'];
+    $delete_finance = $con->prepare("DELETE FROM `finance` WHERE financeID = ?");
+    $delete_finance->execute([$financeID]);
     header('location:admin-finance.php');
 }
 
@@ -131,7 +141,7 @@ if (isset($_POST['submit'])){
 
                 <!-- PATIENT FINANCE DETAILS -->
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
-                    <form method="post">
+                <form method="post">
                     <!-- PATIENT'S DETAILS  -->
                     <?php $findisplay_query = "select * from finance where userID = '$financePost'"?>
                     <?php $findisplay = mysqli_query($con, $findisplay_query) or die(mysqli_error($con));?> 
@@ -161,7 +171,7 @@ if (isset($_POST['submit'])){
                                 <img src="../assets/Rectangle-yellow.png" class="w-2 h-16">
                                 <!-- DR DETAILS -->
                                 <div class="flex flex-col ml-5 my-auto">
-                                    <span class="text-xl">Clinical consultation</span>
+                                    <span class="text-xl"><?php echo $display_row['agenda'] ?></span>
                                     <span class="text-xl"><?php echo $display_row['doctor'] ?></span>
                                 </div>
                            </div>
@@ -180,11 +190,11 @@ if (isset($_POST['submit'])){
                            </div>
 
                            <!-- DELETE BTN  -->
-                           <div class="w-[25%] h-fit flex justify-center items-center my-auto">
+                           <!-- <div class="w-[25%] h-fit flex justify-center items-center my-auto">
                                 <a href="../dist/admin-finance.php?delete_finance=<?php echo $display_row['financeID'] ?>">
                                 <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
                                 </a>
-                           </div>
+                           </div> -->
                         </li>
                         <?php } ?>
 
@@ -247,8 +257,8 @@ if (isset($_POST['submit'])){
                     <!-- BOTTOM ITEMS  -->
                     <div class="flex w-full h-fit py-2 justify-end">
                         <!-- CANCEL BTN  -->
-                        <a href="#">
-                            <button class="flex w-[90px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                        <a href="../dist/admin-finance.php">
+                            <button type="button" class="flex w-[90px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <span class=" text-gray-text text-lg">Cancel</span>
                             </button>
                         </a>

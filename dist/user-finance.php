@@ -117,13 +117,13 @@ $result = mysqli_query($con, $query);
 
                 <!-- TABLE FOR HEADERS -->
 
-                <div class="flex flex-row w-[1636px] h-fit text-center">
+                <!-- <div class="flex flex-row w-[1636px] h-fit text-center">
                     <span class="ml-[135px] text-2xl text-side-navbar-active-text">Agenda</span>
                     <span class="ml-[237px] text-2xl text-side-navbar-active-text">Doctor</span>
                     <span class="ml-[250px] text-2xl text-side-navbar-active-text">Amount</span>
                     <span class="ml-[240px] text-2xl text-side-navbar-active-text">Date</span>
                     <span class="ml-[280px] text-2xl text-side-navbar-active-text">Status</span>
-                </div>
+                </div> -->
 
                 <!-- TABLE  -->
                 <div class="w-[1680px] h-[750px] overflow-auto">
@@ -132,6 +132,14 @@ $result = mysqli_query($con, $query);
                         <!-- TABLE BODY  -->
                         <tbody class="text-center">
                             <!-- EACH TR IS A TABLE ROW -->
+                                <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
+                                    
+                                            <td class="text-2xl text-side-navbar-active-text"> Agenda </td>
+                                            <td class="text-2xl text-side-navbar-active-text"> Doctor </td>
+                                            <td class="text-2xl text-side-navbar-active-text"> Amount </td>
+                                            <td class="text-2xl text-side-navbar-active-text"> Date </td>
+                                            <td class="text-2xl text-side-navbar-active-text"> Status </td>
+                                </tr>
                             <?php while($row = mysqli_fetch_assoc($result)){?>
                                 <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
                                     

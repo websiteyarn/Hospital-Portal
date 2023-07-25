@@ -83,7 +83,7 @@ $userName = $fName.' '.$lName;
             <div class="flex lg:flex-row">
                 <!-- SEARCH BAR -->
                 <div class="flex flex-grow h-min mb-4 text-xs mt-[30px]">
-                    <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
+                    <!-- <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
                         <input
                         class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                         type="search"
@@ -96,7 +96,7 @@ $userName = $fName.' '.$lName;
                             <path d="M14.0001 14L11.0001 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 
