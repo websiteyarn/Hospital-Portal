@@ -179,13 +179,12 @@ if (isset($_GET['delete_finance'])){
                            <!-- DELETE BTN  -->
                            <div class="w-[25%] h-fit flex justify-center items-center my-auto gap-2">
                                 <a href="../dist/admin-finance-update.php?update_finance=<?php echo $display_row['financeID'] ?>">
-                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
-                                </button>
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
+                                    </button>
                                 </a>
                                 <a href="../dist/admin-finance.php?delete_finance=<?php echo $display_row['financeID'] ?>">
-                                <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
                                 </a>
-                                
                            </div>
                         </li>
                         <?php } ?>

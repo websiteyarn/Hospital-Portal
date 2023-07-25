@@ -5,6 +5,24 @@ include("../dist/backend files/functions.php");
 
 session_start();
 
+if(isset($_POST['laboratory-edit']) && isset($_POST['result-edit']) 
+&& isset($_POST['lab-date-edit']) && isset($_POST['range-edit'])){
+    $labID = $_GET['update_labresult'];
+    $lab_test = $_POST['laboratory-edit'];
+    $lab_result = $_POST['result-edit'];
+    $date = $_POST['lab-date-edit'];
+    $normal_range = $_POST['range-edit'];
+
+    $query = "UPDATE `lab_results` SET `lab_test`='$lab_test',`lab_result`='$lab_result',`date`='$date',`normal_range`='$normal_range' WHERE labresultID=$labID;";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        header("location:../dist/doctor-patient-file.php");
+    }else{
+        header("location:../dist/doctor-patient-file.php?update=error");
+    }
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -181,120 +199,108 @@ session_start();
                         }
                     ?>
 
-                    <form action="./backend files/doctor-patient-file-update.php" method="post">
-                        <?php 
-                            if($_SESSION['patientID'] != "none"){
-                                // only the latest record should show
-                                $patientID = $_SESSION['patientID'];
-                                $query = "SELECT * FROM `patient_details` where userID=$patientID ORDER BY patientID DESC limit 1;";
-                                $result = mysqli_query($con, $query);
+                    <form method="post">
+                    <?php 
+                        if($_SESSION['patientID'] != "none"){
 
-                                while($row = mysqli_fetch_assoc($result)){ 
-                        ?>
-                        <!-- PATIENT INFORMATION -->
-                        <div class="flex flex-row mx-12 mt-2 mb-16">
-                            <div class="flex-col w-1/2">
-                                <table class="w-full h-fit border-collapse">
+                            // only the latest record should show
+                            $patientID = $_SESSION['patientID'];
+                            $query = "SELECT * FROM `patient_details` where userID=$patientID ORDER BY patientID DESC limit 1;";
+                            $result = mysqli_query($con, $query);
 
-                                    <!-- AGE -->
-                                    <tr class="h-10 text-xl font-normal text-left ">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Age</th>
-                                        <!-- AGE VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="number" name="age-edit" placeholder="<?php echo $row["Age"]." years old" ?>" value="<?php echo $row["Age"];?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- BLOOD -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Blood</th>
-                                        <!-- BLOOD VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="text" name="blood-edit" placeholder="<?php echo $row["Blood"]; ?>" value="<?php echo $row["Blood"]; ?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- HEIGHT -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Height</th>
-                                        <!-- HEIGHT VALUE -->
-                                        <td><input
-                                                class="w-[70%]   h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="number" name="height-edit" placeholder="<?php echo $row["Height"]."cm"; ?>" value="<?php echo $row["Height"]; ?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- WEIGHT -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Weight</th>
-                                        <!-- WEIGHT VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="number" name="weight-edit" placeholder="<?php echo $row["Weight"]."kg"; ?>" value="<?php echo $row["Weight"]; ?>">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="flex-col w-1/2">
-                                <table class="w-[95%] h-fit border-collapse">
-
-                                    <!-- TEMPERATURE -->
-                                    <tr class="h-10 text-xl font-normal text-left ">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Temperature</th>
-                                        <!-- TEMPERATURE VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="text" name="temperature-edit" placeholder="<?php echo $row["Temperature"]." °C"; ?>" value="<?php echo $row["Temperature"]; ?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- OXYGEN LEVEL -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Oxygen Level</th>
-                                        <!-- OXYGEN LEVEL VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="number" name="oxygen-edit" placeholder="<?php echo $row["Oxygen Level"]."%"; ?>" value="<?php echo $row["Oxygen Level"]; ?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- PULSE RATE -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Pulse Rate</th>
-                                        <!-- PULSE RATE VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="number" name="pulse-rate-edit" placeholder="<?php echo $row["Pulse Rate"]; ?>" value="<?php echo $row["Pulse Rate"]; ?>">
-                                        </td>
-                                    </tr>
-
-                                    <!-- BLOOD PRESSURE -->
-                                    <tr class="h-10 text-xl font-normal text-left">
-                                        <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
-                                            Blood Pressure</th>
-                                        <!-- BLOOD PRESSURE VALUE -->
-                                        <td><input
-                                                class="w-[70%]  h-[35px] pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                                type="text" name="blood-pressure-edit" placeholder="<?php echo $row["Blood Pressure"]; ?>" value="<?php echo $row["Blood Pressure"]; ?>">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <?php   
-                                }
+                            if(empty($row = mysqli_fetch_assoc($result))){
+                                echo "emty";
+                                $query = "INSERT INTO `patient_details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
+                                mysqli_query($con, $query);
+                                echo "<script> location.reload();</script>";
                             }
-                        ?>
+                            else{
+                                while($row){ 
+                    ?>
+
+                    <!-- PATIENT INFORMATION -->
+                    <div class="flex flex-row mx-12 mt-2 mb-16">
+                        <div class="flex-col w-1/2">
+                            <table class="w-full h-fit border-collapse">
+
+                                <!-- AGE -->
+                                <tr class="h-10 text-xl font-normal text-left ">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Age</th>
+                                    <!-- AGE VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Age"]." years old" ?></td>
+                                </tr>
+
+                                <!-- BLOOD -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Blood</th>
+                                    <!-- BLOOD VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Blood"]; ?></td>
+                                </tr>
+
+                                <!-- HEIGHT -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Height</th>
+                                    <!-- HEIGHT VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Height"]."cm"; ?></td>
+                                </tr>
+
+                                <!-- WEIGHT -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Weight</th>
+                                    <!-- WEIGHT VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Weight"]."kg"; ?></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="flex-col w-1/2">
+                            <table class="w-full h-fit border-collapse">
+
+                                <!-- TEMPERATURE -->
+                                <tr class="h-10 text-xl font-normal text-left ">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Temperature</th>
+                                    <!-- TEMPERATURE VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Temperature"]." °C"; ?> </td>
+                                </tr>
+
+                                <!-- OXYGEN LEVEL -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Oxygen Level</th>
+                                    <!-- OXYGEN LEVEL VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Oxygen Level"]."%"; ?></td>
+                                </tr>
+
+                                <!-- PULSE RATE -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Pulse Rate</th>
+                                    <!-- PULSE RATE VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Pulse Rate"]; ?></td>
+                                </tr>
+
+                                <!-- BLOOD PRESSURE -->
+                                <tr class="h-10 text-xl font-normal text-left">
+                                    <th class="w-[30%] text-lg text-side-navbar-active-text font-normal">
+                                        Blood Pressure</th>
+                                    <!-- BLOOD PRESSURE VALUE -->
+                                    <td class="w-[70%] text-lg font-medium"><?php echo $row["Blood Pressure"]; ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <?php
+                            $row = mysqli_fetch_assoc($result);
+                            }
+                        }
+                    }
+                    ?>
                         
 
                         <!-- PATIENT NOTE & DIAGNOSIS -->
@@ -321,18 +327,19 @@ session_start();
                                     <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
                                     <p class="text-lg"><?php echo $row['notes'] ?></p>
                                 </div>
+                                <!-- EDIT PATIENT NOTE BOXES-->
+                                <!-- <div class="flex flex-row items-center w-4/5">
+                                    <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
+                                    <input
+                                        class="w-full  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                        type="text" name="note-edit" placeholder="">
+                                </div> -->
                                 <?php
                                         }
                                     }
                                 ?>
 
-                                <!-- EDIT PATIENT NOTE BOXES-->
-                                <div class="flex flex-row items-center w-4/5">
-                                    <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
-                                    <input
-                                        class="w-full  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                                        type="text" name="note-edit" placeholder="Note">
-                                </div>
+                                
                             </div>
 
                             <div class="flex-col w-1/2">
@@ -346,21 +353,40 @@ session_start();
                                     <?php 
                                         if($_SESSION['patientID'] != "none"){
                                             $patientID = $_SESSION['patientID'];
-                                            // echo  "UserID:".$patientID;
                                             $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                            // echo  "DoctorID:".$doctorID;
+                                            // get the max date from user
+                                            // then get the row 
                                             $query = "SELECT * FROM `illness` WHERE userID=$patientID AND doctorID=$doctorID;";
                                             $result = mysqli_query($con, $query);
 
                                             while($row = mysqli_fetch_assoc($result)){ 
                                     ?>
+                                <div class="flex flex-row items-center">
+                                    <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
+                                    <div>
+                                        <p class="text-2xl"><?php echo $row["Illness"]; ?></p>
+                                        <p class="text-gray-text text-base"><?php echo date("m-d-Y", strtotime($row['date']))." | ".$row['status']; ?> </p>
+                                    </div>                     
+                                </div>
+                                <!-- <div class="flex flex-row">
                                     <div class="flex flex-row items-center">
-                                        <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
+                                        <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[56px] mr-[12px]">
                                         <div>
-                                            <p class="text-2xl"><?php echo $row["Illness"]; ?></p>
-                                            <p class="text-gray-text text-base"><?php echo date("m-d-Y", strtotime($row['date']))." | ".$row['status']; ?> </p>
+                                            <input
+                                                class="w-[200px]  h-[35px] pl-5 pr-3 mb-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                type="text" name="diagnosis-edit" placeholder="<?php echo $row["Illness"]; ?>" value="<?php echo $row['Illness'] ?>">
+                                            <div class="flex flex-row">
+                                                <input
+                                                    class="w-[90px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                    type="date" name="date-edit" value="<?php echo $row['date']?>">
+                                                <span class="mr-2 ml-2">|</span>
+                                                <input
+                                                    class="w-[90px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                    type="text" name="treatment-edit" placeholder="<?php echo $row['status']?>" value="<?php echo $row['status'] ?>">
+                                            </div>
                                         </div>
                                     </div>
+                                </div> -->
                                     <?php
                                             }
                                         }
@@ -368,7 +394,7 @@ session_start();
                                 </div>
 
                                 <!--EDIT PATIENT DIAGNOSIS BOXES-->
-                                <div class="flex flex-row">
+                                <!-- <div class="flex flex-row">
                                     <div class="flex flex-row items-center">
                                         <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[56px] mr-[12px]">
                                         <div>
@@ -386,7 +412,7 @@ session_start();
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>
@@ -402,17 +428,17 @@ session_start();
                                 </div>
 
                                 <?php 
-                                    if($_SESSION['patientID'] != "none"){
-                                        $patientID = $_SESSION['patientID'];
-                                        $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
-                                        $query = "SELECT * FROM `lab_results` WHERE userid=$patientID AND doctorID = $doctorID;";
+                                    if($_GET['update_labresult'] != "none"){
+                                        $labID = $_GET['update_labresult'];
+                                        // $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
+                                        $query = "SELECT * FROM `lab_results` WHERE labresultID=$labID;";
                                         $result = mysqli_query($con, $query);
 
                                         while($row = mysqli_fetch_assoc($result)){ 
                                 ?>
 
                                 <!-- PATIENT LAB BOXES -->
-                                <div class="flex flex-row items-center mb-[19px]">
+                                <!-- <div class="flex flex-row items-center mb-[19px]">
                                     <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[80px] mr-[12px]">
                                     <div class="flex flex-col">
                                         <div class="flex flex-row justify-between w-[350px]">
@@ -422,6 +448,25 @@ session_start();
                                         <p class="text-gray-text text-base"><?php echo date("m-d-Y", strtotime($row['date'])); ?></p>
                                         <p class="text-gray-text text-base">Normal Range: <?php echo $row['normal_range']; ?></p>
                                     </div>
+                                </div> -->
+                                <div class="flex flex-row items-center mb-[19px]">
+                                    <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[80px] mr-[12px]">
+                                    <div class="flex flex-col">
+                                        <div class="flex flex-row justify-between w-[350px] mb-2">
+                                            <input
+                                                class="w-[170px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                type="text" name="laboratory-edit" placeholder="<?php echo $row['lab_test']; ?>" value="<?php echo $row['lab_test']; ?>">
+                                            <input
+                                                class="w-[170px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                type="text" name="result-edit" placeholder="<?php echo $row['lab_result']; ?>" value="<?php echo $row['lab_result']; ?>">
+                                        </div>
+                                        <input
+                                            class="w-[100px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                            type="date" name="lab-date-edit" placeholder="<?php echo $row['date'] ?>" value="<?php echo $row['date'] ?>">
+                                        <p class="text-gray-text text-base">Normal Range: <input
+                                                class="w-[250px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
+                                                type="text" name="range-edit" placeholder="<?php echo $row['normal_range']; ?>" value="<?php echo $row['normal_range']; ?>"></p>
+                                    </div>
                                 </div>
                                 <?php
                                         }
@@ -429,7 +474,7 @@ session_start();
                                 ?>
 
                                 <!-- EDIT  PATIENT LAB BOXES -->
-                                <div class="flex flex-row items-center mb-[19px]">
+                                <!-- <div class="flex flex-row items-center mb-[19px]">
                                     <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[80px] mr-[12px]">
                                     <div class="flex flex-col">
                                         <div class="flex flex-row justify-between w-[350px] mb-2">
@@ -447,7 +492,7 @@ session_start();
                                                 class="w-[250px]  h-[35px] pl-5 pr-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                                 type="text" name="range-edit" placeholder="Range"></p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
 
@@ -486,7 +531,7 @@ session_start();
                                 ?>
 
                                 <!-- EDIT PATIENT PRESCRIPTION BOXES -->
-                                <div class="flex flex-row items-center mb-[19px]">
+                                <!-- <div class="flex flex-row items-center mb-[19px]">
                                     <img src="../assets/Rectangle-gray.png" class="w-[6px] h-[86px] mr-[12px]">
                                     <div class="flex flex-col">
                                         <input
@@ -505,7 +550,7 @@ session_start();
                                             class="w-full  h-[35px] pl-5 pr-3 mb-3 leading-5 text-black placeholder-gray-500 bg-form-fill border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                                             type="text" name="instruction-edit" placeholder="Instruction">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

@@ -5,6 +5,32 @@ include("../dist/backend files/functions.php");
 
 session_start();
 
+if (isset($_GET['delete_note'])){
+    $noteID = $_GET['delete_note'];
+    $query = "DELETE FROM `notes` WHERE `notes`.`noteID` = $noteID";
+    mysqli_query($con, $query);
+    header ("location: doctor-patient-file.php");
+}
+if (isset($_GET['delete_diagnosis'])){
+    $illnessID = $_GET['delete_diagnosis'];
+    $query = "DELETE FROM `illness` WHERE `illness`.`illnessID` = $illnessID";
+    mysqli_query($con, $query);
+    header ("location: doctor-patient-file.php");
+}
+if (isset($_GET['delete_labresult'])){
+    $labresultID = $_GET['delete_labresult'];
+    $query = "DELETE FROM `lab_results` WHERE `lab_results`.`labresultID` = $labresultID";
+    mysqli_query($con, $query);
+    header ("location: doctor-patient-file.php");
+}
+if (isset($_GET['delete_prescription'])){
+    $medicineID = $_GET['delete_prescription'];
+    $query = "DELETE FROM `medication` WHERE `medication`.`medicineID` = $medicineID";
+    mysqli_query($con, $query);
+    header ("location: doctor-patient-file.php");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -276,6 +302,7 @@ session_start();
                                 </tr>
                             </table>
                         </div>
+                        
                     </div>
                     <?php
                             $row = mysqli_fetch_assoc($result);
@@ -307,7 +334,16 @@ session_start();
                             <!-- PATIENT NOTE BOXES-->
                             <div class="flex flex-row items-center w-4/5">
                                 <img src="../assets/bullet-point.png" class="w-3 h-3 mr-[27px]">
-                                <p class="text-lg"><?php echo $row["notes"]; ?></p>
+                                <p class="text-lg mb-2"><?php echo $row["notes"]; ?></p> 
+                            </div>
+                            <div class="flex justify-end mr-5 gap-2">
+                                <a href="../dist/doctor-patient-file-note-update.php?update_note=<?php echo $row['noteID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
+                                    </button>
+                                </a>
+                                <a href="../dist/doctor-patient-file.php?delete_note=<?php echo $row['noteID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                </a>
                             </div>
                             <?php
                                     }
@@ -320,10 +356,7 @@ session_start();
                             <div class="mb-3">
                                 <span class="text-lg text-side-navbar-active-text font-normal">Diagnosis</span>
                             </div>
-
-                            <!-- PATIENT DIAGNOSIS BOXES-->
-                            <div class="flex flex-row flex-wrap gap-2">
-                                <?php 
+                            <?php 
                                     if($_SESSION['patientID'] != "none"){
                                         $patientID = $_SESSION['patientID'];
                                         $doctorID = $_SESSION['doctorID']; // change to $_SESSION['doctorID'];
@@ -334,18 +367,30 @@ session_start();
 
                                         while($row = mysqli_fetch_assoc($result)){ 
                                 ?>
+                            <!-- PATIENT DIAGNOSIS BOXES-->
+                            <div class="flex flex-row flex-wrap gap-2 mb-2">
+                                
                                 <div class="flex flex-row items-center">
                                     <img src="../assets/Rectangle-yellow.png" class="w-[6px] h-[56px] mr-[12px]">
                                     <div>
                                         <p class="text-2xl"><?php echo $row["Illness"]; ?></p>
                                         <p class="text-gray-text text-base"><?php echo date("m-d-Y", strtotime($row['date']))." | ".$row['status']; ?> </p>
-                                    </div>
-                                </div>
-                                <?php
+                                    </div>                     
+                                </div>         
+                                
+                            </div>
+                            <div class="flex justify-end">
+                                <a href="../dist/doctor-patient-file-diagnosis-update.php?update_diagnosis=<?php echo $row['illnessID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit</button>
+                                </a>
+                                <a href="../dist/doctor-patient-file.php?delete_diagnosis=<?php echo $row['illnessID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                </a>
+                            </div> 
+                            <?php
                                         }
                                     }
-                                ?>
-                            </div>
+                                ?>            
                         </div>
 
                     </div>
@@ -383,6 +428,13 @@ session_start();
                                     <p class="text-gray-text text-base">Normal Range: <?php echo $row['normal_range']; ?></p>
                                 </div>
                             </div>
+                            <a href="../dist/doctor-patient-file-labres-update.php?update_labresult=<?php echo $row['labresultID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
+                                    </button>
+                                </a>
+                                <a href="../dist/doctor-patient-file.php?delete_labresult=<?php echo $row['labresultID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                </a>
                             <?php   
                                     }
                                 }
@@ -418,6 +470,13 @@ session_start();
                                     </div>
                                     <p class="text-lg"><?php echo $row['notes'] ?></p>
                                 </div>
+                                <a href="../dist/doctor-patient-file-prescription-update.php?update_prescription=<?php echo $row['medicineID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Edit
+                                    </button>
+                                </a>
+                                <a href="../dist/doctor-patient-file.php?delete_prescription=<?php echo $row['medicineID'] ?>">
+                                    <button class="w-24 h-10 rounded-3xl bg-form-fill text-delete-btn hover:scale-105 transform transition-transform duration-300">Delete</button>
+                                </a>
                             </div>
                             <?php
                                     }
@@ -434,7 +493,7 @@ session_start();
                             <button
                                 class="flex w-[90px] h-[45px] mr-5 mb-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                 <img src="../assets/edit-btn.png" alt="user-profile-edit">
-                                <span class="ml-1 text-gray-text text-lg">Edit</span>
+                                <span class="ml-1 text-gray-text text-lg">Add</span>
                             </button>
                         </a>
                     </div>
