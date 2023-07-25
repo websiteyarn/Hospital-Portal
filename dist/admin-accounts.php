@@ -89,7 +89,7 @@ if(isset($_GET['delete_doctor'])){
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-md" href="../dist/logout.php">Log out</a></li> 
                     </ul>
                 </div>
 
@@ -100,7 +100,7 @@ if(isset($_GET['delete_doctor'])){
                     </button> 
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="#">Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="../dist/logout.php">Log out</a></li> 
                     </ul>
                 </div>
             </div>

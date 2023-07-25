@@ -79,8 +79,8 @@ if(isset($_POST['submit'])){
                         text-center text-2xl mb-3 leading-tight focus:outline-none focus:shadow-outline" name="submit"  type="submit" placeholder="">
                     </div>
                 </form>
-                <a class="inline-block align-baseline font-bold text-md text-gray-500  hover:text-gray-900 " href="#">
-                    Forgot Password?
+                <a class="inline-block align-baseline font-bold text-md text-gray-500  hover:text-gray-900 " href="splash.php">
+                    Back to splash?
                 </a>
                 <p class="font-Commissioner pt-20 w-[60%] text-center text-gray-500 ">By using this service, you understood and agree to the ISY Online Services Terms of Use and Privacy Statement</p>
             </div>
