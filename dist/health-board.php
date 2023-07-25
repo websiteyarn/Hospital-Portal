@@ -284,7 +284,7 @@ $userName = $fName.' '.$lName;
                             <!-- APPOINTMENT'S DETAILS  -->
                             <div class="flex flex-col w-full h-fit">
                                 <div class="flex flex-row w-full h-fit mt-2 justify-between">
-                                    <span class="text-2xl ml-10"></span>
+                                    <span class="text-2xl ml-10"><?php echo $apmt_row['status'] ?></span>
                                     <span class="text-sm mr-10 mt-2 text-gray-text">Clinic Consultation</span>
                                 </div> 
                                 
