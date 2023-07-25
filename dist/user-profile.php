@@ -17,7 +17,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
 </head>
 <body class="bg-custom-color p-0 m-0 font-Commissioner flex-nowrap">
     <div class="flex">

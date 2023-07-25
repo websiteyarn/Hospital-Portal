@@ -17,8 +17,6 @@
                     <img class="items-center w-[130px] sm:w-[180px] lg:w-[200px] h-[150px] sm:h-[200px]  lg:h-[200px] " src="../assets/Logo Enhanced.png">
                     <p class="text-[40px] sm:text-[48px] lg:text-[80px] leading-tight text-login-font-clr w-[40%] ">I SEE YOU</p>
             </div>
-
-
             <!-- RIGHT SIDE -->
             <div class=" flex flex-col w-[100%] xl:w-[60%] p-5 justify-center items-center gap-2">
                 <h class="font-Commissioner text-[30px] md:text-[38px] xl:text-5xl mt-[30px] mb-4 w-full text-gray-500 text-center leading-tight">Welcome to your gateway to wellness!</h>
