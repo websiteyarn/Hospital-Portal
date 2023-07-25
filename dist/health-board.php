@@ -80,58 +80,28 @@ $userName = $fName.' '.$lName;
         <div class="flex-col flex-grow lg:ml-[60px]">
 
             <!-- TOP ITEMS (SEARCHBAR AND USER-DROPDOWN) -->
-            <div class="flex lg:flex-row">
-                <!-- SEARCH BAR -->
-                <div class="flex flex-grow h-min mb-4 text-xs mt-[30px]">
-                    <!-- <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
-                        <input
-                        class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
-                        type="search"
-                        name="search"
-                        placeholder="Search"
-                        >
-                        <div class="absolute top-2 left-0 flex items-center justify-center pl-3">
-                        <svg class="w-5 h-5 text-search-bar" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 12C9.53757 12 12 9.53757 12 6.5C12 3.46243 9.53757 1 6.5 1C3.46243 1 1 3.46243 1 6.5C1 9.53757 3.46243 12 6.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M14.0001 14L11.0001 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        </div>
-                    </div> -->
-                </div>
-                
-                
+            <div class="flex w-full justify-end">
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
-                    <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
+                <div id="dropdown-button" class=" mr-3 mt-6 z-50">
+                    <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-10 h-10">
                         <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
-                    </button> 
-                    <!--profile dropdown-->                
-                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="user-profile.php">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
+                    </button>
+                    <!--profile dropdown-->
+                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
+                                href="user-profile.php">Profile</a></li>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap"
+                                href="user-change-pass.php">Change Password</a></li>
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
-                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
+                                href="splash.php">
+                                <?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out
+                            </a></li>
                     </ul>
                 </div>
 
-                <!-- USER PROFILE MOBILE  -->
-                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
-                    <button class=""> 
-                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
-                    </button> 
-                    <!-- profile dropdown -->
-                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"href="user-profile.php">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
-                        <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
-                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
-                    </ul>
-                </div>
-            </div>
-           
             <!-- MAIN CONTENT  -->
             <div class="flex flex-col">
                 <!-- UPPER BOXES  -->
@@ -171,7 +141,7 @@ $userName = $fName.' '.$lName;
                         <?php $illness_query = "select * from illness where userID = '$userID'"?>
                         <?php $illness = mysqli_query($con, $illness_query) or die(mysqli_error($con));?>
                         
-                        <div class="w-full h-[224px] lg:w-[638px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
+                        <div class=" w-full h-[224px] lg:w-[638px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
                             <div class="w-full h-fit my-2"><h1 class="text-start ml-5 font-medium text-side-navbar lg:text-2xl">Diagnosis</h1></div>
                             <hr>
                             
@@ -227,7 +197,7 @@ $userName = $fName.' '.$lName;
                 </div>
                 
                 <!-- LOWER BOXES  -->
-                <div class="flex flex-col lg:flex-row">
+                <div class="hidden lg:flex flex-col lg:flex-row">
                     <!-- NOTIFICATIONS SECTION -->
                     <div class="w-full h-[282px] lg:w-[483px] lg:h-[515px] mt-[18px] rounded-3xl shadow-custom lg:mr-7 overflow-auto hover:scale-105 transform transition-transform duration-300">
                         <?php $meds_query = "select * from medication where userID = '$userID'"?>
