@@ -6,6 +6,10 @@ include("../dist/backend files/functions.php");
 
 $user_data = check_user_login($con); //collect user data and check connection
 $userID = $user_data['userID'];
+$fName = $user_data['first_name'];
+$lName = $user_data['last_name'];
+
+$userName = $fName.' '.$lName;
 
 
 ?>
@@ -79,7 +83,7 @@ $userID = $user_data['userID'];
             <div class="flex lg:flex-row">
                 <!-- SEARCH BAR -->
                 <div class="flex flex-grow h-min mb-4 text-xs mt-[30px]">
-                    <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
+                    <!-- <div class="relative w-[70%] sm:w-[60%] md:w-[50%] lg:w-[826px] ">
                         <input
                         class="block w-full py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-white border border-gray-200 rounded-full focus:outline-none sm:text-sm"
                         type="search"
@@ -92,7 +96,7 @@ $userID = $user_data['userID'];
                             <path d="M14.0001 14L11.0001 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 
@@ -135,12 +139,14 @@ $userID = $user_data['userID'];
                     <!-- PROFILE SECTION -->
                     <a href="../dist/user-profile.php">
                         <div class="w-full h-[179px] lg:w-[483px] lg:h-[274px] mt-[20px] rounded-3xl shadow-custom lg:mr-7 hover:scale-105 transform transition-transform duration-300">
-                            
+                            <?php $profile_query = "select * from patient_details where userID = '$userID'"?>
+                            <?php $profile = mysqli_query($con, $profile_query) or die(mysqli_error($con));?>
                             <!-- USER NAME AND ICON  -->
+                            <?php while($profile_row = mysqli_fetch_assoc($profile)){?>
                             <div class="flex flex-col justify-center items-center w-full h-[50%]">
                                 <img src="../assets/profilesample.jpg" alt="user" class="absolute w-24 h-24 rounded-full -mt-[100px] left-[190px]">
-                                <h1 class="mt-[60px] text-2xl">Jane Doe</h1>
-                                <span class="text-gray-text">21 years old</span>
+                                <h1 class="mt-[60px] text-2xl"><?php echo $userName?></h1>
+                                <span class="text-gray-text"><?php echo $profile_row['Age'] ?> years old</span>
                             </div>  
 
                             <!-- USER WEIGHT, HEIGHT, BLOOD  -->
@@ -152,10 +158,11 @@ $userID = $user_data['userID'];
 
                             <!-- USER WEIGHT, HEIGHT, BLOOD VALUES -->                            
                             <div class="flex w-full h-fit justify-around mt-4">
-                                <span class="text-2xl">O+</span>
-                                <span class="text-2xl">174cm</span>
-                                <span class="text-2xl">65kg</span>
+                                <span class="text-2xl"><?php echo $profile_row['Blood'] ?></span>
+                                <span class="text-2xl"><?php echo $profile_row['Height'].' cm' ?></span>
+                                <span class="text-2xl"><?php echo $profile_row['Weight'].' kg' ?></span>
                             </div>
+                            <?php } ?>
                         </div>
                     </a>
 
@@ -262,11 +269,7 @@ $userID = $user_data['userID'];
                         <hr>
                         
                         <?php while($apmt_row = mysqli_fetch_assoc($apmt)){?>
-                        <?php $apmt_doc_id = $apmt_row['doctorID'] ?>
-                        <?php $apmt_illness_query = "select * from illness where userID = '$userID' and doctorID = '$apmt_doc_id'"?>
-                        
-                        <?php $apmt__illness = mysqli_query($con, $apmt_illness_query) or die(mysqli_error($con));?>
-                        <?php while($apmt_illness_row = mysqli_fetch_assoc($apmt__illness)){ ?>
+                       
                            
                         <!-- APPOINTMENT BULLET POINT  -->
                         <div class="flex flex-col w-full h-fit pb-2">
@@ -281,7 +284,7 @@ $userID = $user_data['userID'];
                             <!-- APPOINTMENT'S DETAILS  -->
                             <div class="flex flex-col w-full h-fit">
                                 <div class="flex flex-row w-full h-fit mt-2 justify-between">
-                                    <span class="text-2xl ml-10"><?php echo $apmt_illness_row['Illness'] ?></span>
+                                    <span class="text-2xl ml-10"></span>
                                     <span class="text-sm mr-10 mt-2 text-gray-text">Clinic Consultation</span>
                                 </div> 
                                 
@@ -299,7 +302,7 @@ $userID = $user_data['userID'];
                             </div>
                         </div>
                         <hr>
-                        <?php }} ?>
+                        <?php } ?>
                     </div>
                     
                     <!-- LABORATORY RESULTS SECTION -->

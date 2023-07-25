@@ -6,9 +6,15 @@ include("../dist/backend files/functions.php");
 
 $user_data = check_user_login($con);
 $user_id = $user_data['userID'];
-$docID = $_SESSION['docID'];
+
 $query = "select * from appointment where userID = '$user_id'";
 $result = mysqli_query($con, $query);
+
+if (isset($_SESSION['docID'])){
+    $docID = $_SESSION['docID'];
+}else{
+    $docID = 1;
+}
 
 
 if(isset($_POST['submit'])){
@@ -26,6 +32,16 @@ if(isset($_POST['submit'])){
     $verify = mysqli_query($con, $appointment_query);
     $tc_query = "update time set status = 'disabled' where time = '$timeSelect' and doctorID = '$docID'";
     $tc_result = mysqli_query($con, $tc_query);
+
+    //bind user to doctor
+    $bind_query = "update user set doctorID = '$doctorID' where userID = '$user_id'";
+    $bind_verify = mysqli_query($con, $bind_query);
+    if ($bind_verify){
+
+    }else{
+        $new_bind_query = "insert into user (doctorID) values  ('$doctorID') where userID = '$user_id'";
+        mysqli_query($con, $new_bind_query);   
+    }
 
     if($verify){
         echo "<script>alert('Appointment booked successfully!');</script>";
@@ -238,7 +254,8 @@ if(isset($_POST['submit'])){
                             <!-- DIVISION FOR THE LIST OF THE TIME BTNS -->
                             <div class="w-full h-fit">
                                 <!-- TIME BOXES LIST -->
-                                <?php $time_query = "select time from time where status = 'enabled' and doctorID = '$docID'"; 
+                                <?php
+                                $time_query = "select time from time where status = 'enabled' and doctorID = '$docID'"; 
                                 $time_result = mysqli_query($con,$time_query)?>
                                 <ul id="timeSlotList" class="w-full h-full flex flex-row flex-wrap space-y-5 justify-normal items-center">
                                     <?php while($time_row = mysqli_fetch_assoc($time_result)){?>

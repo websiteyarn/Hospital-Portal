@@ -32,6 +32,7 @@ var doctorSel = document.getElementById("doctorBox");
 listItemsTime.forEach(function(time) {
   time.addEventListener('click', function() {
     // Toggle the active class for the clicked item
+    // time.classList.add('bg-time-active');
     time.classList.remove('bg-form-fill');
     time.classList.add('bg-time-active');
     timeSelect.value = time.getAttribute('value');
@@ -97,13 +98,20 @@ listItemsPatientMessage.forEach(function(patientMessage) {
 toggleActivePatientMessage();
 
 function toggleActivePatientFinance() {
-var listItemsPatientFinanceAdmin = document.querySelectorAll('#patientFinanceListAdmin .patientFinanceAdmin');
+var listItemsPatientFinanceAdmin = document.querySelectorAll('#patientFinanceListAdmin .patientFinanceAdmin ');
 
 listItemsPatientFinanceAdmin.forEach(function(patientFinanceAdmin) {
   patientFinanceAdmin.addEventListener('click', function() {
     // Toggle the active class for the clicked item
     patientFinanceAdmin.classList.remove('bg-background-inactive');
     patientFinanceAdmin.classList.add('bg-white');
+    divName = patientFinanceAdmin.getAttribute('name');
+    divID = patientFinanceAdmin.getAttribute('id');
+    var value = divName;  // JavaScript variable value
+    var valueID = divID;
+    document.cookie = "financeID=" + encodeURIComponent(value);  // Set the cookie 
+    document.cookie = "financeName=" + encodeURIComponent(valueID);  // Set the cookie
+    location.reload();
 
     // Remove active class from all list items except the clicked item
     listItemsPatientFinanceAdmin.forEach(function(li) {

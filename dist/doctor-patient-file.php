@@ -29,7 +29,7 @@ session_start();
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="doctor-patient-file.php">
+            <a href="../dist/doctor-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/patient-active.png" alt="health-board-active">
@@ -38,7 +38,7 @@ session_start();
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="doctor-appointment.php">
+            <a href="../dist/doctor-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment.png" alt="appointment">
@@ -47,7 +47,7 @@ session_start();
             </a>
 
             <!-- MESSAGE  -->
-            <a href="doctor-massage.html">
+            <a href="../dist/doctor-message.html">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
@@ -70,11 +70,11 @@ session_start();
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
                                 href="doctor-profile.php">Profile</a></li>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="doctor-change-pass.php">Change
                                 Password</a></li>
                         <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
-                                href="splash.php">Log out</a></li>
+                                href="../dist/logout.php">Log out</a></li>
                     </ul>
                 </div>
 
@@ -87,12 +87,12 @@ session_start();
                     <!-- profile dropdown -->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
-                                href="#">Profile</a></li>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="#">Change
+                                href="doctor-profile.php">Profile</a></li>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="doctor-change-pass.php">Change
                                 Password</a></li>
                         <hr>
                         <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
-                                href="#">Log out</a></li>
+                                href="../dist/logout.php">Log out</a></li>
                     </ul>
                 </div>
             </div>
@@ -126,7 +126,7 @@ session_start();
                                         <!-- PATIENT NAME  -->
                                         <div class="ml-7 mr-7">
                                             <!-- NAME  -->
-                                            <span class="text-[22px]"><?php echo $row["first_name"]." ".$row["last_name"];?></span>
+                                            <span class="text-[22px]" name="<?php $row['userID'] ?>" id="patientID"><?php echo $row["first_name"]." ".$row["last_name"];?></span>
                                         </div>
                                     </div>
                                 </a>
@@ -144,6 +144,7 @@ session_start();
                     <?php 
                         if($_SESSION['patientID'] != "none"){
                         $patientID = $_SESSION['patientID'];
+                        echo  "userID:".$patientID;
                         $query = "SELECT * FROM `user` WHERE userID=$patientID;";
                         $result = mysqli_query($con, $query);
 
@@ -187,12 +188,12 @@ session_start();
 
                             // only the latest record should show
                             $patientID = $_SESSION['patientID'];
-                            $query = "SELECT * FROM `patient details` where userID=$patientID ORDER BY patientID DESC limit 1;";
+                            $query = "SELECT * FROM `patient_details` where userID=$patientID ORDER BY patientID DESC limit 1;";
                             $result = mysqli_query($con, $query);
 
                             if(empty($row = mysqli_fetch_assoc($result))){
                                 echo "emty";
-                                $query = "INSERT INTO `patient details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
+                                $query = "INSERT INTO `patient_details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES (NULL, '$patientID', '', '', '', '', '', '', '', '');";
                                 mysqli_query($con, $query);
                                 echo "<script> location.reload();</script>";
                             }

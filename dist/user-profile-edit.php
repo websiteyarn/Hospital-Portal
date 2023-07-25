@@ -27,7 +27,7 @@ session_start();
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="">
+            <a href="../dist/health-board.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/health-board-active.png" alt="health-board-active">
                     <h1 class="text-side-navbar-active-text">Health Board</h1> 
@@ -35,7 +35,7 @@ session_start();
             </a>
 
             <!-- MEDICINE  -->
-            <a href="">
+            <a href="../dist/user-medication.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/medicine.png" alt="medicine">
                     <h1 class="text-white">Medicine</h1> 
@@ -43,7 +43,7 @@ session_start();
             </a>
             
             <!-- APPOINTMENT  -->
-            <a href="">
+            <a href="../dist/user-appoitment.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment.png" alt="appointment">
                     <h1 class="text-white">Appointment</h1> 
@@ -51,7 +51,7 @@ session_start();
             </a>
 
             <!-- MESSAGE  -->
-            <a href="">
+            <a href="../dist/user-message.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1> 
@@ -59,7 +59,7 @@ session_start();
             </a>
            
             <!-- FINANCE  -->
-            <a href="">
+            <a href="../dist/user-finance.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/finance.png" alt="finance">
                     <h1 class="text-white">Finance</h1> 
