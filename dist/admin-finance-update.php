@@ -70,6 +70,15 @@ if (isset($_GET['delete_finance'])){
                 </div>
             </a>
 
+            <!-- APPOINTMENT  -->
+            <a href="../dist/admin-appointment.php">
+                <div
+                    class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
+                    <img src="../assets/sidebar/appointment.png" alt="appointment">
+                    <h1 class="text-white">Appointment</h1>
+                </div>
+            </a>
+
             <!-- ACCOUNTS -->
             <a href="../dist/admin-accounts.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
