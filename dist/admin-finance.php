@@ -17,7 +17,7 @@
         <!-- SIDEBAR NAV -->
         <div class="sticky hidden lg:block lg:w-[172px] lg:h-screen bg-side-navbar rounded-tr-3xl rounded-br-3xl">
             <!-- logo -->
-            <a href="health-board.php">
+            <a href="../dist/admin-finance.php">
             <img src="../assets/logo.png" alt="logo" class="mx-auto pt-[34px]">
             </a>
             <!-- nav -->

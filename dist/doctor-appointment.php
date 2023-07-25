@@ -32,7 +32,7 @@ $doc_id = $doc_data['doctorID'];
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="admin-patient-file.php">
+            <a href="doctor-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/patient.png" alt="health-board-active">
@@ -41,7 +41,7 @@ $doc_id = $doc_data['doctorID'];
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="admin-appointment.php">
+            <a href="doctor-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment-active.png" alt="appointment">
@@ -50,7 +50,7 @@ $doc_id = $doc_data['doctorID'];
             </a>
 
             <!-- MESSAGE  -->
-            <a href="admin-message.php">
+            <a href="doctor-message.html">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
