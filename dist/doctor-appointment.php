@@ -132,7 +132,9 @@ $doc_id = $doc_data['doctorID'];
                                 <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['username']?></td>
                                 <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['contactnumber']?></td>
                                 <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['useremail']?></td>
-                                <td class="text-teal-500  w-[100px] h-[50px]"><?php echo $appointmentRow['time']?></td>
+                                <td class="w-[100px] h-[50px]"><?php echo $appointmentRow['time']?></td>
+                                <td class="text-teal-500  w-[100px] h-[50px]"><?php echo $appointmentRow['status']?></td>
+                                
                             </tr>
                         </tbody>
                     </table>

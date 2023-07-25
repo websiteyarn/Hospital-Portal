@@ -1038,6 +1038,10 @@ video {
   height: 100px;
 }
 
+.h-\[110px\] {
+  height: 110px;
+}
+
 .h-\[112px\] {
   height: 112px;
 }
@@ -1482,6 +1486,15 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .gap-x-12 {
@@ -2022,10 +2035,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-search-bar {
-  --tw-text-opacity: 1;
-  color: rgb(46 185 185 / var(--tw-text-opacity));
-}
 
 .placeholder-edit-text-admin::-moz-placeholder {
   --tw-placeholder-opacity: 1;

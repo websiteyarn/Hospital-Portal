@@ -27,8 +27,8 @@ if(isset($_POST['submit'])){
     $contactNumSelect = $_POST['contact-number'];
     $emailSelect = $_POST['user-email'];
 
-    $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
-    '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect')";
+    $appointment_query = "insert into appointment (userID, doctorID, date, time, doctorName, specialty, username, useremail, contactnumber, status) values ('$user_id', '$doctorID', '$bookingSelect', '$timeSelect', 
+    '$doctorSelect', '$specialtySelect', '$usernameSelect', '$emailSelect', '$contactNumSelect', 'Pending')";
     $verify = mysqli_query($con, $appointment_query);
     $tc_query = "update time set status = 'disabled' where time = '$timeSelect' and doctorID = '$docID'";
     $tc_result = mysqli_query($con, $tc_query);
@@ -175,7 +175,7 @@ if(isset($_POST['submit'])){
                             <?php while($row = mysqli_fetch_assoc($result)){?>
                                 <!-- APPOINTMENT BOXES  -->
                                 <!-- All appointment boxes have an inactive default background color  -->
-                                <div class="item w-[483px] h-[87px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
+                                <div class="item w-[483px] h-[123px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
                                     <!-- DOCTOR AND DATE  -->
                                     <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
                                         <!-- DOCTOR  -->
@@ -190,6 +190,12 @@ if(isset($_POST['submit'])){
                                         <span class="text-lg text-gray-text"><?php echo $row['specialty'] ?></span>
                                         <!-- TIME  -->
                                         <span class="text-lg text-appointment-date"><?php echo $row['time'] ?></span>
+                                    </div>
+
+                                    <!-- STATUS  -->
+                                    <div class="flex flex-row justify-between ml-7 mr-7">
+                                        <!-- STATUS  -->
+                                        <span class="text-lg text-blue-text"><?php echo $row['status'] ?></span>
                                     </div>
                                 </div>
                             <?php } ?>
