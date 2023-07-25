@@ -18,7 +18,6 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
         $docName = 1;
         $illnessName = 1;
 }   
-        echo $user_id, $docName, $illnessName;
         $highlight_query = "select * from medication where userID = '$user_id' and doctorID = '$docName'";
         $highlight_result = mysqli_query($con, $highlight_query);
 
