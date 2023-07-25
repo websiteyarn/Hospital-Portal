@@ -29,7 +29,7 @@ session_start();
 
             <!-- nav -->
             <!-- HEALTH BOARD  -->
-            <a href="../dist/doctor-patient-file.php">
+            <a href="doctor-patient-file.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] bg-white rounded-3xl mx-auto mt-[61px] justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/patient-active.png" alt="health-board-active">
@@ -38,7 +38,7 @@ session_start();
             </a>
 
             <!-- APPOINTMENT  -->
-            <a href="../dist/doctor-appointment.php">
+            <a href="doctor-appointment.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/appointment.png" alt="appointment">
@@ -47,7 +47,7 @@ session_start();
             </a>
 
             <!-- MESSAGE  -->
-            <a href="../dist/doctor-message.html">
+            <a href="doctor-massage.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">

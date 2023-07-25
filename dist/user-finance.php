@@ -157,7 +157,7 @@ $result = mysqli_query($con, $query);
         </div>
     </div>
 
-    <script src="/dist/JS animations/profile-dropdown.js"></script>
+    <script src="../dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
 
