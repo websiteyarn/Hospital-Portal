@@ -4,8 +4,8 @@ include("../dist/backend files/functions.php");
 session_start();
 check_root_login($con);
 
-if (isset($_COOKIE['financeID'])){
-    $appPost = $_COOKIE['financeID'];
+if (isset($_GET['financeID'])){
+    $appPost = $_GET['financeID'];
 }else{
     $appPost = 1;
 }
@@ -31,6 +31,7 @@ if(isset($_POST['submit']) && isset($_POST['update_username']) && isset($_POST['
         echo "<script>window.location.href = '../dist/admin-appointment.php'</script>";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

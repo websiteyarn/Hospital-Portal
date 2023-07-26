@@ -21,7 +21,7 @@ if (isset($_GET['delete_appointment'])){
     $appointmentID = $_GET['delete_appointment'];
     $delete_appointment = $con->prepare("DELETE FROM `appointment` WHERE appointmentID = ?");
     $delete_appointment->execute([$appointmentID]);
-    header('location:admin-appontment.php');
+    header('location:admin-appointment.php');
 }
 ?>
 <!DOCTYPE html>
