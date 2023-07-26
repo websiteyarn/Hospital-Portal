@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 09:07 PM
+-- Generation Time: Jul 26, 2023 at 04:01 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -74,8 +74,9 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`appointmentID`, `userID`, `doctorID`, `date`, `time`, `doctorName`, `specialty`, `username`, `useremail`, `contactnumber`, `status`) VALUES
-(1, 1, 1, '2023-07-25', '9:00 am', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '09612649728', 'Approved'),
-(8, 1, 1, '2023-07-31', '5:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647', 'Pending');
+(1, 1, 1, '2023-07-25', '9:00 am', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647', 'Pending'),
+(9, 1, 1, '2023-07-31', '3:00 pm', 'Dr Cha', 'Internal Medicine', 'Mathew James Muyco', 'mjmuyco13@gmail.com', '2147483647', 'Pending'),
+(15, 17, 1, '2023-07-27', '4:00 pm', 'Dr Cha', 'Internal Medicine', 'Root Finn', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', '09612649728', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -92,14 +93,6 @@ CREATE TABLE `finance` (
   `date` date NOT NULL,
   `status` enum('Paid','Pending') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `finance`
---
-
-INSERT INTO `finance` (`financeID`, `userID`, `agenda`, `doctor`, `amount`, `date`, `status`) VALUES
-(29, 2, 'mat', 'ewan ko', 50, '2023-07-21', 'Paid'),
-(30, 2, 'test', 'test', 1, '2023-07-28', 'Paid');
 
 -- --------------------------------------------------------
 
@@ -122,10 +115,7 @@ CREATE TABLE `illness` (
 --
 
 INSERT INTO `illness` (`illnessID`, `Illness`, `date`, `notes`, `userID`, `doctorID`, `status`) VALUES
-(1, 'check', '2023-07-18', 'Prescribed by Dr. Cha', 1, 1, 'ongoing'),
-(2, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 1, 2, 'Ongoing Treatment'),
-(4, 'Diabetes', '2023-07-20', 'Prescribed by Dr. Cha', 2, 1, 'Ongoing Treatment'),
-(5, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 2, 2, 'Ongoing Treatment');
+(2, 'PCOS', '2023-07-15', 'Prescribed by Dr.Atlas', 1, 2, 'Ongoing Treatment');
 
 -- --------------------------------------------------------
 
@@ -142,14 +132,6 @@ CREATE TABLE `lab_results` (
   `lab_result` varchar(255) NOT NULL,
   `normal_range` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `lab_results`
---
-
-INSERT INTO `lab_results` (`labresultID`, `doctorID`, `userID`, `date`, `lab_test`, `lab_result`, `normal_range`) VALUES
-(2, 2, 2, '2023-07-21', 'FBS(Glucose)', '7.78 mmol/L', '30.9 - 6.4 mmol/L'),
-(7, 1, 1, '2023-07-28', 'check', 'check', 'check');
 
 -- --------------------------------------------------------
 
@@ -175,11 +157,8 @@ CREATE TABLE `medication` (
 --
 
 INSERT INTO `medication` (`medicineID`, `illnessID`, `userID`, `doctorID`, `medicine`, `dosage`, `notes`, `schedule`, `prescription_date`, `prescription_notes`) VALUES
-(1, 1, 1, 1, 'test', '50/500mg', 'check', 'Everyday ', '2023-07-12', 'Prescribed'),
 (3, 2, 1, 2, '(Utrogestan)', '200mg', 'Take one (1) tablet after breakfast. Only for 10 days before expected menstruation ', '10 days, everyday, before menstruation', '2023-07-12', 'Prescribed'),
-(4, 2, 1, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed'),
-(7, 5, 2, 2, '(Utrogestan)', '200mg', 'Take one (1) tablet after breakfast. Only for 10 days before expected menstruation ', '10 days, everyday, before menstruation', '2023-07-12', 'Prescribed'),
-(8, 5, 2, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed');
+(4, 2, 1, 2, 'Multivitamins + Minerals', '500mg', 'Take one (1) tablet a day', 'Everyday', '2023-07-12', 'Prescribed');
 
 -- --------------------------------------------------------
 
@@ -193,14 +172,6 @@ CREATE TABLE `notes` (
   `doctorID` int(11) NOT NULL,
   `notes` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `notes`
---
-
-INSERT INTO `notes` (`noteID`, `userID`, `doctorID`, `notes`) VALUES
-(1, 1, 1, 'check'),
-(3, 2, 2, 'Due to your medication, you might get dehydrated so drink lots of water.');
 
 -- --------------------------------------------------------
 
@@ -226,8 +197,7 @@ CREATE TABLE `patient_details` (
 --
 
 INSERT INTO `patient_details` (`patientID`, `userID`, `Age`, `Blood`, `Height`, `Weight`, `Temperature`, `Oxygen Level`, `Pulse Rate`, `Blood Pressure`) VALUES
-(1, 1, 20, 'O+', 174, 60, 37, 90, 180, '180/110'),
-(2, 2, 0, '', 0, 0, 0, 0, 0, '');
+(1, 1, 20, 'O+', 174, 60, 37, 90, 180, '180/110');
 
 -- --------------------------------------------------------
 
@@ -286,21 +256,21 @@ CREATE TABLE `time` (
 --
 
 INSERT INTO `time` (`timeID`, `time`, `status`, `doctorID`) VALUES
-(1, '8:00 am', 'enabled', 1),
+(1, '8:00 am', 'disabled', 1),
 (2, '9:00 am', 'disabled', 1),
 (3, '10:00 am', 'disabled', 1),
 (4, '11:00 am', 'disabled', 1),
 (5, '2:00 pm', 'disabled', 1),
-(6, '3:00 pm', 'enabled', 1),
-(7, '4:00 pm', 'enabled', 1),
+(6, '3:00 pm', 'disabled', 1),
+(7, '4:00 pm', 'disabled', 1),
 (8, '5:00 pm', 'disabled', 1),
-(9, '6:00 pm', 'enabled', 1),
+(9, '6:00 pm', 'disabled', 1),
 (10, '7:00 pm', 'enabled', 1),
 (11, '8:00 am', 'enabled', 2),
 (12, '9:00 am', 'enabled', 2),
 (13, '10:00 am', 'disabled', 2),
 (14, '11:00 am', 'enabled', 2),
-(15, '2:00 pm', 'enabled', 2),
+(15, '2:00 pm', 'disabled', 2),
 (16, '3:00 pm', 'enabled', 2),
 (17, '4:00 pm', 'enabled', 2),
 (18, '5:00 pm', 'enabled', 2),
@@ -334,7 +304,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `doctorID`, `first_name`, `last_name`, `email`, `gender`, `birth_date`, `contact_number`, `password`, `address`, `family`, `family_number`) VALUES
 (1, 1, 'Mathew James', 'Muyco', 'mjmuyco13@gmail.com', 'Male', '2023-07-11', '2147483647', 'finn', 'Blk 11 Lot 5 Phase O (old) Brgy Narra Francisco Homes San Jose Del Monte Bulacan', 'Mathew James Palma Muyco', '2147483647'),
-(2, 1, 'Finn', 'Steiner', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', 'Male', '2023-07-06', '11111', 'finn', '', '', '0');
+(17, 1, 'Root', 'Finn', 'mathewjamespmuyco@iskolarngbayan.pup.edu.ph', 'Male', '2023-07-27', '09612649728', 'finn', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -442,13 +412,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `appointmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `finance`
 --
 ALTER TABLE `finance`
-  MODIFY `financeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `financeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `illness`
@@ -502,7 +472,7 @@ ALTER TABLE `time`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
