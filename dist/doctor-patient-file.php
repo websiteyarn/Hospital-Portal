@@ -170,7 +170,7 @@ if (isset($_GET['delete_prescription'])){
                     <?php 
                         if($_SESSION['patientID'] != "none"){
                         $patientID = $_SESSION['patientID'];
-                        echo  "userID:".$patientID;
+                        // echo  "userID:".$patientID;
                         $query = "SELECT * FROM `user` WHERE userID=$patientID;";
                         $result = mysqli_query($con, $query);
 
