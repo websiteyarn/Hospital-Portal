@@ -61,13 +61,13 @@ if(isset($_POST['note-edit'])){
             </a>
 
             <!-- MESSAGE  -->
-            <a href="doctor-message.php">
+            <!-- <a href="doctor-message.php">
                 <div
                     class="flex flex-col lg:w-[125px] lg:h-[144px]  rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1>
                 </div>
-            </a>
+            </a> -->
         </div>
 
         <!-- MAIN CONTENT -->
