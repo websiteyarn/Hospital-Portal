@@ -614,6 +614,11 @@ video {
   margin-bottom: auto;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .-mt-4 {
   margin-top: -1rem;
 }
@@ -952,6 +957,14 @@ video {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .block {
@@ -1373,6 +1386,14 @@ video {
   width: 100vw;
 }
 
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-\[\] {
+  width: ;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -1645,6 +1666,16 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -1715,6 +1746,11 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .pb-2 {
@@ -2100,6 +2136,10 @@ video {
     margin-bottom: 1rem;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:hidden {
     display: none;
   }
@@ -2158,21 +2198,41 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:float-left {
+    float: left;
+  }
+
   .md\:mx-2 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
 
-  .md\:ml-2 {
-    margin-left: 0.5rem;
-  }
-
-  .md\:ml-0 {
-    margin-left: 0px;
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:block {
     display: block;
+  }
+
+  .md\:inline-block {
+    display: inline-block;
+  }
+
+  .md\:inline {
+    display: inline;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:table {
+    display: table;
+  }
+
+  .md\:table-cell {
+    display: table-cell;
   }
 
   .md\:hidden {
@@ -2187,8 +2247,21 @@ video {
     width: 70%;
   }
 
+  .md\:w-\[1636px\] {
+    width: 1636px;
+  }
+
+  .md\:w-\[1680px\] {
+    width: 1680px;
+  }
+
   .md\:text-\[38px\] {
     font-size: 38px;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -2205,16 +2278,16 @@ video {
     margin-bottom: 1.5rem;
   }
 
+  .lg\:ml-7 {
+    margin-left: 1.75rem;
+  }
+
   .lg\:ml-\[60px\] {
     margin-left: 60px;
   }
 
   .lg\:mr-7 {
     margin-right: 1.75rem;
-  }
-
-  .lg\:ml-7 {
-    margin-left: 1.75rem;
   }
 
   .lg\:block {

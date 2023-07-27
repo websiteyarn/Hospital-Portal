@@ -101,7 +101,7 @@ $result = mysqli_query($con, $query);
             </div>
 
             <!-- MAIN CONTENT -->
-            <div class="hidden flex-col">
+            <div class="flex flex-col">
                 <!-- TOP CONTENT  -->
                 <div class="mt-4">
                     <h1 class="text-3xl text-sidebar-text-bold ml-4">Finance</h1>
@@ -118,8 +118,8 @@ $result = mysqli_query($con, $query);
                 </div> -->
 
                 <!-- TABLE  -->
-                <div class="w-[1680px] h-[750px] overflow-auto">
-                    <table class="w-[1636px] h-fit mt-4 ml-4 rounded-3xl shadow-custom bg-white">
+                <div class="w-[100%] md:w-[1680px] h-fit overflow-auto">
+                    <table class="w-full md:w-[1636px] h-fit mt-4 md:ml-4 rounded-3xl shadow-custom bg-white">
                     
                         <!-- TABLE BODY  -->
                         <tbody class="text-center">
@@ -127,18 +127,18 @@ $result = mysqli_query($con, $query);
                                 <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
                                     
                                             <td class="text-2xl text-side-navbar-active-text"> Agenda </td>
-                                            <td class="text-2xl text-side-navbar-active-text"> Doctor </td>
-                                            <td class="text-2xl text-side-navbar-active-text"> Amount </td>
-                                            <td class="text-2xl text-side-navbar-active-text"> Date </td>
+                                            <td class="hidden md:table-cell text-2xl text-side-navbar-active-text"> Doctor </td>
+                                            <td class="hidden md:table-cell text-2xl text-side-navbar-active-text"> Amount </td>
+                                            <td class="hidden md:table-cell text-2xl text-side-navbar-active-text"> Date </td>
                                             <td class="text-2xl text-side-navbar-active-text"> Status </td>
                                 </tr>
                             <?php while($row = mysqli_fetch_assoc($result)){?>
                                 <tr class="h-20 border-b-gray-400 border-b-2 font-Commissioner">
                                     
                                             <td> <?php echo $row['agenda']; ?> </td>
-                                            <td> <?php echo $row['doctor']; ?> </td>
-                                            <td> <?php echo $row['amount']; ?> </td>
-                                            <td> <?php echo $row['date']; ?> </td>
+                                            <td class="hidden md:table-cell"> <?php echo $row['amount']; ?> </td>
+                                            <td class="hidden md:table-cell"> <?php echo $row['date']; ?> </td>
+                                            <td class="hidden md:table-cell"> <?php echo $row['doctor']; ?> </td>
                                             <td> <?php echo $row['status']; ?> </td>
                                 </tr>
                             <?php ;} ?>         
@@ -146,9 +146,46 @@ $result = mysqli_query($con, $query);
                     </table>
                 </div>
             </div>
+
+            <div class="flex flex-row lg:hidden w-full fixed h-20 left-0 text-white bottom-0 mt-auto z-50 bg-side-navbar">
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="health-board.php">
+                        <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Health Board</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-medication.php">
+                        <img src="../assets/sidebar/medicine.png" alt="medicine">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Medicine</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-appointment.php">
+                        <img src="../assets/sidebar/appointment.png" alt="appointment">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Appointment</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-message.php">
+                        <img src="../assets/sidebar/message.png" alt="message">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Message</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-finance.php">
+                        <img src="../assets/sidebar/finance.png" alt="finance">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Finance</span>
+                </div>
+            </div>
+
         </div>
     </div>
-
     <script src="../dist/JS animations/profile-dropdown.js"></script>
 </body>
 </html>
