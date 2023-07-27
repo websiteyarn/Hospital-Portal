@@ -33,23 +33,24 @@ if(isset($_POST['submit'])){
     $tc_query = "update time set status = 'disabled' where time = '$timeSelect' and doctorID = '$docID'";
     $tc_result = mysqli_query($con, $tc_query);
 
+    if($verify){
+        echo "<script>alert('Appointment booked successfully!');</script>";
+    }
+    else{
+        echo "<script>alert('Appointment booking failed!');</script>";
+    }
+
     //bind user to doctor
     $bind_query = "update user set doctorID = '$doctorID' where userID = '$user_id'";
     $bind_verify = mysqli_query($con, $bind_query);
     if ($bind_verify){
-
+        echo "<script>alert('Appointment booked successfully!');</script>";
     }else{
         $new_bind_query = "insert into user (doctorID) values  ('$doctorID') where userID = '$user_id'";
         mysqli_query($con, $new_bind_query);   
     }
 
-    if($verify){
-        echo "<script>alert('Appointment booked successfully!');</script>";
-        header("Refresh: 0");
-    }
-    else{
-        echo "<script>alert('Appointment booking failed!');</script>";
-    }
+   
 }
 ?>
 
@@ -103,12 +104,12 @@ if(isset($_POST['submit'])){
             </a>
 
             <!-- MESSAGE  -->
-            <a href="user-message.php">
+            <!-- <a href="user-message.php">
                 <div class="flex flex-col lg:w-[125px] lg:h-[144px] rounded-3xl mx-auto justify-center items-center space-y-3 hover:scale-105 transform transition-transform duration-300">
                     <img src="../assets/sidebar/message.png" alt="message">
                     <h1 class="text-white">Message</h1> 
                 </div>
-            </a>
+            </a> -->
            
             <!-- FINANCE  -->
             <a href="user-finance.php">
@@ -124,10 +125,10 @@ if(isset($_POST['submit'])){
             <!-- TOP ITEMS (USER-DROPDOWN) -->
             <div class="flex justify-end">
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
+                <div id="dropdown-button" class="lg:block sm:hidden md:hidden mr-3 mt-6 z-50 "> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
-                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
-                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10 lg:block sm:hidden md:hidden"> 
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180 lg:block sm:hidden">
                     </button> 
                     <!--profile dropdown-->                
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 

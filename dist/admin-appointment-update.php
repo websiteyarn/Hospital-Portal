@@ -4,8 +4,8 @@ include("../dist/backend files/functions.php");
 session_start();
 check_root_login($con);
 
-if (isset($_COOKIE['financeID'])){
-    $appPost = $_COOKIE['financeID'];
+if (isset($_GET['update_appointment'])){
+    $appPost = $_GET['update_appointment'];
 }else{
     $appPost = 1;
 }
@@ -31,6 +31,7 @@ if(isset($_POST['submit']) && isset($_POST['update_username']) && isset($_POST['
         echo "<script>window.location.href = '../dist/admin-appointment.php'</script>";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +139,7 @@ if(isset($_POST['submit']) && isset($_POST['update_username']) && isset($_POST['
                 <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
                 <form method="post">
                     <!-- PATIENT'S DETAILS  -->
-                    <?php $appdisplay_query = "select * from appointment where doctorID = '$appPost'"?>
+                    <?php $appdisplay_query = "select * from appointment where appointmentID = '$appPost'"?>
                     <?php $appdisplay = mysqli_query($con, $appdisplay_query) or die(mysqli_error($con));?> 
                     <div class="flex flex-row items-center">
                         <img src="../assets/profilesample.jpg" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">

@@ -956,6 +956,7 @@ video {
 
 .mt-auto {
   margin-top: auto;
+  
 }
 
 .ml-\[1350px\] {
@@ -972,6 +973,7 @@ video {
 
 .mb-6 {
   margin-bottom: 1.5rem;
+
 }
 
 .block {
@@ -1038,16 +1040,16 @@ video {
   height: 100px;
 }
 
-.h-\[110px\] {
-  height: 110px;
-}
-
 .h-\[112px\] {
   height: 112px;
 }
 
 .h-\[120px\] {
   height: 120px;
+}
+
+.h-\[123px\] {
+  height: 123px;
 }
 
 .h-\[130px\] {
@@ -1194,7 +1196,6 @@ video {
 .h-min {
   height: -moz-min-content;
   height: min-content;
-}
 
 .w-1 {
   width: 0.25rem;
@@ -1488,15 +1489,6 @@ video {
   gap: 0.5rem;
 }
 
-
-.gap-5 {
-  gap: 1.25rem;
-}
-
-.gap-3 {
-  gap: 0.75rem;
-}
-
 .gap-x-12 {
   -moz-column-gap: 3rem;
        column-gap: 3rem;
@@ -1530,12 +1522,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .overflow-auto {
@@ -1975,6 +1961,11 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-blue-text {
+  --tw-text-opacity: 1;
+  color: rgb(61 152 170 / var(--tw-text-opacity));
+}
+
 .text-custom-time {
   --tw-text-opacity: 1;
   color: rgb(117 117 117 / var(--tw-text-opacity));
@@ -2034,7 +2025,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-
 
 .placeholder-edit-text-admin::-moz-placeholder {
   --tw-placeholder-opacity: 1;
@@ -2164,9 +2154,21 @@ video {
     margin-bottom: 1rem;
   }
 
+
+  .sm\:hidden {
+    display: none;
+  }
+
+
   .sm\:h-\[200px\] {
     height: 200px;
   }
+
+
+  .sm\:h-\[60px\] {
+    height: 60px;
+  }
+
 
   .sm\:w-1\/2 {
     width: 50%;
@@ -2174,6 +2176,11 @@ video {
 
   .sm\:w-\[180px\] {
     width: 180px;
+  }
+
+
+  .sm\:w-\[60\%\] {
+    width: 60%;
   }
 
   .sm\:w-\[65\%\] {
@@ -2188,8 +2195,9 @@ video {
     width: 90%;
   }
 
-  .sm\:w-\[60\%\] {
-    width: 60%;
+  .sm\:w-\[100px\] {
+    width: 100px;
+
   }
 
   .sm\:flex-row {
@@ -2218,12 +2226,17 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:w-\[70\%\] {
-    width: 70%;
+  .md\:hidden {
+    display: none;
+
   }
 
   .md\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .md\:w-\[70\%\] {
+    width: 70%;
   }
 
   .md\:text-\[38px\] {
