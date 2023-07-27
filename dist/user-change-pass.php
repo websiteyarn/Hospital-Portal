@@ -146,7 +146,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- CHANGE PASSWORD BOX  -->
-                <div class="flex flex-col w-[90%] mt-[30px] px-5 py-5  bg-white rounded-[30px] shadow-custom ustify-center items-center">
+                <div class="flex flex-col w-full lg:w-[90%] mt-[30px] px-5 py-5  bg-white rounded-[30px] shadow-custom ustify-center items-center">
                     <form method="post" class=" w-full">
 
                         <!-- OLD PASSWORD -->
