@@ -95,7 +95,7 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
             <!-- TOP ITEMS (USER-DROPDOWN) -->
             <div class="flex justify-end">
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
+                <div id="dropdown-button" class="hidden lg:block mr-3 mt-6 z-50"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
                         <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
@@ -127,11 +127,11 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
             </div>
             
             <!-- MAIN CONTENT -->
-            <div class="flex flex-row w-fit">
+            <div class="flex flex-col lg:flex-row w-fit">
                 <!-- MEDICATION LIST -->
-                <div class="w-[600px] h-[820px] overflow-auto">
-                    <div class="mb-7 ml-4">
-                        <h1 class="text-3xl text-sidebar-text-bold">Medication</h1>
+                <div class="lg:w-[600px] lg:h-[820px] lg:overflow-auto">
+                    <div class="mb-7 ml-4 sm:ml-10">
+                        <h1 class="text-xl lg:text-3xl text-sidebar-text-bold">Medication</h1>
                     </div>
 
                     <!-- MEDICATION BOXES UN-ORDERED LIST -->
@@ -141,21 +141,21 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                             <!-- MEDICATION BOXES  -->
                             <!-- All medication boxes have an inactive default background color  -->
                             <!-- When clicked, the background color changes to active  -->
-                            <div id="click-medicine" name=<?php echo $row['doctorID'] ?> class="item w-[483px] h-[120px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
+                            <div id="click-medicine" name=<?php echo $row['doctorID'] ?> class="item w-[310px] h-[79px] sm:w-[700px] lg:w-[483px] lg:h-[120px] bg-background-inactive cursor-pointer shadow-custom mx-2 sm:ml-8 lg:ml-4 rounded-3xl mb-5">
                                 <!-- FOR AND DATE  -->
-                                <div name=<?php echo $row['illnessID'] ?> class="flex flex-row justify-between ml-7 mr-7 pt-4">
-                                    <span class="text-side-navbar-active-text text-lg">FOR</span>
-                                    <span id="click-date"  class="text-lg text-gray-text"><?php echo $row['date'] ?></span>
+                                <div name=<?php echo $row['illnessID'] ?> class="flex flex-row justify-between ml-7 mr-7 pt-2 lg:pt-4">
+                                    <span class="text-side-navbar-active-text text-xs lg:text-lg">FOR</span>
+                                    <span id="click-date"  class="text-xs lg:text-lg text-gray-text"><?php echo $row['date'] ?></span>
                                 </div>
 
                                 <!-- ILLNESS  -->
                                 <div name=<?php echo $row['illnessID'] ?> class="flex flex-row justify-between ml-7 mr-7">
-                                    <span id="click-illness" class="text-3xl"><?php echo $row['Illness'] ?></span>
+                                    <span id="click-illness" class="text-lg lg:text-3xl"><?php echo $row['Illness'] ?></span>
                                 </div>
 
                                 <!-- PRESCRIBED BY  -->
                                 <div name=<?php echo $row['illnessID'] ?> class="flex flex-row justify-between ml-7 mr-7">
-                                    <span id="click-notes" class="text-xl text-gray-text"><?php echo $row['notes'] ?></span>
+                                    <span id="click-notes" class="text-sm lg:text-xl text-gray-text"><?php echo $row['notes'] ?></span>
                                 </div>
                             </div>
                             <?php ;} ?>
@@ -164,24 +164,24 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                 </div>
 
                 <!-- MEDICATION DETAILS -->
-                <div class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
+                <div class="flex flex-col w-[310px] min-h-fit sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mx-2 sm:ml-8 mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
                         <?php while($highlight_row = mysqli_fetch_assoc($highlight_result)){
                             while($doctor_row = mysqli_fetch_assoc($doctor_result)){
                             ?>
-                            <img src="../assets/doctor-sample.png" alt="doctor" class="w-20 h-20 rounded-full mt-5 ml-5">
+                            <img src="../assets/doctor-sample.png" alt="doctor" class="w-16 h-16 lg:w-20 lg:h-20 rounded-full mt-5 ml-5">
                             <div class="flex w-full justify-between">
                                 <!-- DOCTOR'S INFO -->
                                 <div class="flex flex-col mt-4">
-                                    <h1 id="display-doc" class="text-3xl"><?php echo $doctor_row['name'] ?></h1>
-                                    <span id="display-spec" class="text-sm text-gray-text ml-0.5"><?php echo $doctor_row['specialty'] ?></span>
+                                    <h1 id="display-doc" class="text-base lg:text-3xl"><?php echo $doctor_row['name'] ?></h1>
+                                    <span id="display-spec" class="text-xs lg:text-sm text-gray-text ml-0.5"><?php echo $doctor_row['specialty'] ?></span>
                                 </div>
 
                                 <!-- DATE INFO -->
-                                <div class="flex flex-col mt-8 mr-8">
-                                    <span id="display-notes" class="text-sm text-gray-text"><?php echo $highlight_row['prescription_notes'] ?></span>
-                                    <span id="display-date" class="text-sm text-gray-text"><?php echo $highlight_row['prescription_date'] ?></span>
+                                <div class="flex flex-col mt-5 lg:mt-8 mr-8">
+                                    <span id="display-notes" class="text-[10px] lg:text-sm text-gray-text"><?php echo $highlight_row['prescription_notes'] ?></span>
+                                    <span id="display-date" class="text-[10px] lg:text-sm text-gray-text"><?php echo $highlight_row['prescription_date'] ?></span>
                                 </div>
                             </div>
                         <?php ;} 
@@ -193,21 +193,21 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                         <li>
                             <?php while($medicine_row = mysqli_fetch_assoc($medicine_result)){?>
                                 <!-- MEDICATION BOX -->
-                                <div class="flex w-[482px] h-[300px]">
+                                <div class="flex w-[482px] h-fit lg:h-[300px]">
                                     <img src="../assets/Rectangle-green.png" alt="normal" class="w-1.5 h-full py-10 ml-5">
 
                                     <!-- MEDICATION DETAILS -->
-                                    <div class="flex flex-col mt-14">
+                                    <div class="flex flex-col mt-10 lg:mt-14">
                                         <!-- MEDICATION DETAILS -->
-                                        <div class="flex flex-col w-fit h-fit ml-6 mb-12">
-                                            <h1 id="display-dosage" class="text-3xl"><?php echo $medicine_row['medicine'] ?></h1>
-                                            <span class="text-xl"><?php echo $medicine_row['dosage'] ?></span>
-                                            <span class="text-lg text-side-navbar-active-text"><?php echo $medicine_row['schedule'] ?></span>
+                                        <div class="flex flex-col w-fit h-fit ml-6 mb-3 lg:mb-12">
+                                            <h1 id="display-dosage" class="text-lg lg:text-3xl"><?php echo $medicine_row['medicine'] ?></h1>
+                                            <span class="text-xs lg:text-xl"><?php echo $medicine_row['dosage'] ?></span>
+                                            <span class="text-[10px] lg:text-lg text-side-navbar-active-text"><?php echo $medicine_row['schedule'] ?></span>
                                         </div>
 
                                         <!-- MEDICATION NOTES -->
                                         <div class="flex w-fit h-fit ml-6">
-                                            <span id="display-schedule" class="text-sm"><?php echo $medicine_row['notes'] ?></span>
+                                            <span id="display-schedule" class="text-xs lg:text-sm"><?php echo $medicine_row['notes'] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -219,9 +219,9 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                     </ul>
 
                     
-                    <div class="flex flex-col ml-8 mt-10 mb-5">
-                        <span class="text-xs text-gray-text">License No: XXXXX </span>
-                        <span class="text-xs text-gray-text">PTR No: XXXXXXX </span>
+                    <div class="flex flex-col ml-8 mt-5 lg:mt-10 mb-5">
+                        <span class="text-[10px] lg:text-xs text-gray-text">License No: XXXXX </span>
+                        <span class="text-[10px] lg:text-xs text-gray-text">PTR No: XXXXXXX </span>
                     </div>
                 </div>
             </div>
