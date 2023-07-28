@@ -558,12 +558,40 @@ video {
   top: 0.5rem;
 }
 
+.right-0 {
+  right: 0px;
+}
+
+.right-20 {
+  right: 5rem;
+}
+
+.-right-20 {
+  right: -5rem;
+}
+
+.left-20 {
+  left: 5rem;
+}
+
+.left-60 {
+  left: 15rem;
+}
+
 .z-30 {
   z-index: 30;
 }
 
 .z-50 {
   z-index: 50;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-40 {
+  z-index: 40;
 }
 
 .order-last {
@@ -612,11 +640,6 @@ video {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .-mt-4 {
@@ -957,10 +980,6 @@ video {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mr-1 {
-  margin-right: 0.25rem;
 }
 
 .mt-20 {
@@ -1386,14 +1405,6 @@ video {
   width: 100vw;
 }
 
-.w-\[90\%\] {
-  width: 90%;
-}
-
-.w-\[\] {
-  width: ;
-}
-
 .flex-grow {
   flex-grow: 1;
 }
@@ -1671,11 +1682,6 @@ video {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -1746,11 +1752,6 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 .pb-2 {
@@ -2136,10 +2137,6 @@ video {
     margin-bottom: 1rem;
   }
 
-  .sm\:block {
-    display: block;
-  }
-
   .sm\:hidden {
     display: none;
   }
@@ -2198,10 +2195,6 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:float-left {
-    float: left;
-  }
-
   .md\:mx-2 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
@@ -2215,36 +2208,12 @@ video {
     display: block;
   }
 
-  .md\:inline-block {
-    display: inline-block;
-  }
-
-  .md\:inline {
-    display: inline;
-  }
-
-  .md\:flex {
-    display: flex;
-  }
-
-  .md\:table {
-    display: table;
-  }
-
   .md\:table-cell {
     display: table-cell;
   }
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:w-\[50\%\] {
-    width: 50%;
-  }
-
-  .md\:w-\[70\%\] {
-    width: 70%;
   }
 
   .md\:w-\[1636px\] {
@@ -2255,13 +2224,16 @@ video {
     width: 1680px;
   }
 
-  .md\:text-\[38px\] {
-    font-size: 38px;
+  .md\:w-\[50\%\] {
+    width: 50%;
   }
 
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  .md\:w-\[70\%\] {
+    width: 70%;
+  }
+
+  .md\:text-\[38px\] {
+    font-size: 38px;
   }
 }
 

@@ -115,10 +115,10 @@ if(isset($_POST['submit'])){
             <!-- TOP ITEMS (USER-DROPDOWN) -->
             <div class="flex justify-end">
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class=" mr-3 mt-6 z-50">
+                <div id="dropdown-button" class="mr-3 mt-6 z-50">
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center">
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-10 h-10">
-                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
+                        <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="hidden md:block md:mx-2 lg:ml-7 rotate-180">
                     </button>
                     <!--profile dropdown-->
                     <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
@@ -134,8 +134,6 @@ if(isset($_POST['submit'])){
                             </a></li>
                     </ul>
                 </div>
-
-
             </div>
 
             <!-- MAIN CONTENT -->
