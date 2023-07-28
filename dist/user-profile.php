@@ -175,7 +175,7 @@ session_start();
                         </div>
 
                         <!-- RIGHT ITEMS  -->
-                        <div class="w-fit lg:w-[60%] h-[40%] lg:h-full sm:mt-10 mt-2">
+                        <div class="w-fit lg:w-[60%] h-[40%] lg:h-full sm:mt-6 mt-10">
                             <!-- EMAIL -->
                             <div class="w-fit h-fit ml-10 mt-3 lg:mt-14">
                                 <span class="text-lg text-side-navbar-active-text">Email: </span>
