@@ -125,7 +125,7 @@ if(isset($_POST['submit'])){
             <!-- TOP ITEMS (USER-DROPDOWN) -->
             <div class="flex justify-end">
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="lg:block sm:hidden md:hidden mr-3 mt-6 z-50 "> 
+                <div id="dropdown-button" class="lg:block hidden sm:hidden md:hidden mr-3 mt-6 z-50 "> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10 lg:block sm:hidden md:hidden"> 
                         <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180 lg:block sm:hidden">
@@ -141,7 +141,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- USER PROFILE MOBILE  -->
-                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
+                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg bg-red-300"> 
                     <button class=""> 
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
@@ -157,16 +157,17 @@ if(isset($_POST['submit'])){
             </div>
 
             <!-- MAIN CONTENT -->
-            <div class="flex flex-row w-fit">
+            <div class="flex flex-col lg:flex-row w-fit bg-green-200">
                 <!-- APPOINTMENT LIST -->
-                <div class="w-[600px] h-[820px] overflow-auto">
+                <div class="lg:w-[600px] lg:h-[820px] lg:overflow-auto">
                     <div class="mb-7 ml-4">
-                        <h1 class="text-3xl text-sidebar-text-bold">Appointment</h1>
+                        <h1 class="text-xl lg:text-3xl text-sidebar-text-bold">Appointment</h1>
                     </div>
 
                     <!-- BUTTON FOR NEW APPOINTMENT -->
-                    <button class="item flex flex-row items-center space-x-5 item w-[483px] h-[87px] bg-white cursor-pointer shadow-custom ml-4 rounded-3xl " onclick="showAppointment()">
-                        <img src="../assets/add-btn.png" alt="add-btn" class="w-[21px] h-[21px] ml-4">
+                    <div class="flex-col lg:flex-row">
+                    <button class="item flex lg:flex-row items-center space-x-5 item w-[318px] h-[52px] lg:w-[483px] lg:h-[87px] bg-white cursor-pointer shadow-custom mx-2 lg:ml-4 rounded-3xl " onclick="showAppointment()">
+                        <img src="../assets/add-btn.png" alt="add-btn" class="w-[17px] h-[17px] lg:w-[21px] lg:h-[21px] ml-4">
                         <h1 class="text-2xl text-sidebar-text-bold font-medium">Add</h1>
                     </button>
 
@@ -176,21 +177,21 @@ if(isset($_POST['submit'])){
                             <?php while($row = mysqli_fetch_assoc($result)){?>
                                 <!-- APPOINTMENT BOXES  -->
                                 <!-- All appointment boxes have an inactive default background color  -->
-                                <div class="item w-[483px] h-[123px] bg-background-inactive cursor-pointer shadow-custom ml-4 rounded-3xl mb-5">
+                                <div class="item w-[318px] h-[52px] lg:w-[483px] lg:h-[123px] bg-background-inactive cursor-pointer shadow-custom mx-2 lg:ml-4 rounded-3xl mb-2 lg:mb-5">
                                     <!-- DOCTOR AND DATE  -->
-                                    <div class="flex flex-row justify-between ml-7 mr-7 pt-4">
+                                    <div class="flex flex-row justify-between ml-7 mr-7 pt-2 lg:pt-4">
                                         <!-- DOCTOR  -->
-                                        <span class="text-3xl"><?php echo $row['doctorName'] ?></span>
+                                        <span class="text-base lg:text-3xl"><?php echo $row['doctorName'] ?></span>
                                         <!-- DATE  -->
-                                        <span class="text-lg text-appointment-date pt-1"><?php echo $row['date'] ?></span>
+                                        <span class="text-base lg:text-lg text-appointment-date lg:pt-1"><?php echo $row['date'] ?></span>
                                     </div>
 
                                     <!-- TYPE AND TIME  -->
                                     <div class="flex flex-row justify-between ml-7 mr-7">
                                         <!-- TYPE  -->
-                                        <span class="text-lg text-gray-text"><?php echo $row['specialty'] ?></span>
+                                        <span class="text-xs lg:text-lg text-gray-text"><?php echo $row['specialty'] ?></span>
                                         <!-- TIME  -->
-                                        <span class="text-lg text-appointment-date"><?php echo $row['time'] ?></span>
+                                        <span class="text-xs lg:text-lg text-appointment-date"><?php echo $row['time'] ?></span>
                                     </div>
 
                                     <!-- STATUS  -->
@@ -201,24 +202,25 @@ if(isset($_POST['submit'])){
                                 </div>
                             <?php } ?>
                         </li>
-                    </ul>                
+                    </ul>  
+                    </div>              
                 </div>
 
                 <!-- APPOINTMENT DETAILS -->
-                <div id="appointmentDetails" class="flex flex-col w-[1050px] h-[800px] rounded-xl bg-white mt-5 shadow-custom">
+                <div id="appointmentDetails" class="flex flex-col w-[318px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mt-3 mx-2 lg:mt-5 shadow-custom">
                     <!-- TOP ITEMS -->
                     <!-- THIS INCLUDES SPECIALTY, DOCTOR, THE THE CALENDAR -->
-                    <div class="flex flex-row w-full h-[70%]">
+                    <div class="flex flex-col lg:flex-row w-full h-[70%]">
                         <!-- FIRST HALF IS FOR THE DROPDOWNS  -->
                         <div class="w-[50%] h-full">
                             <!-- DOCTOR SPECIALTY  -->
-                            <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Specialty</h1>
+                            <h1 class="mt-6 lg:mt-11 ml-8 lg:ml-10 mb-3 text-side-navbar-active-text text-sm lg:text-2xl">Specialty</h1>
                             <?php $specialty_query = "select specialty from admin";
                             $specialty_result = mysqli_query($con, $specialty_query);
                             
                             ?>
-                            <div class="relative ml-10 z-50">
-                                <button id="specialtyMenu" class="w-[400px] h-10 rounded-full">
+                            <div class="relative ml-2 lg:ml-10 z-50">
+                                <button id="specialtyMenu" class="w-[289px] lg:w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="specialty-select" type="text" id="specialtyBox" placeholder="Select">
                                     <select class="hidden" name="fetchDoc" id="fetchDoc"></select>
                                 </button>
@@ -230,11 +232,11 @@ if(isset($_POST['submit'])){
                             </div>          
                             
                             <!-- DOCTOR  -->
-                            <h1 class="mt-11 ml-10 mb-3 text-side-navbar-active-text text-2xl">Doctor</h1>
+                            <h1 class="mt-11 ml-8 lg:ml-10 mb-3 text-side-navbar-active-text text-sm lg:text-2xl">Doctor</h1>
                             <?php $doctor_query = "select name from admin";
                             $doctor_result = mysqli_query($con, $doctor_query);?>
-                            <div class="relative ml-10 z-30">
-                                <button id="doctorMenu" class="w-[400px] h-10 rounded-full">
+                            <div class="relative ml-2 lg:ml-10 z-30">
+                                <button id="doctorMenu" class="w-[289px] lg:w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="doctor-select" type="text" id="doctorBox" placeholder="Select">
                                 </button>
                                 <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl" onclick="setDate()">
@@ -243,21 +245,21 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
-                        <div class="w-[50%] h-full">
-                            <h1 class="mt-11 mb-3 text-side-navbar-active-text text-2xl">Date</h1>
+                        <div class="w-[50%] h-full mx-2">
+                            <h1 class="mt-6 lg:mt-11 mb-3 ml-6 lg:ml-0 text-side-navbar-active-text text-sm lg:text-2xl">Date</h1>
                             <!-- CALENDAR -->
                             <input class="hidden" id="book1"></input>
                             <input class="hidden" id="book2"></input>
                             <input class="hidden" id="book3"></input>
-                            <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 ml-4 lg:ml-0 mb-2 lg:mb-0 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
 
                     <!-- BOTTOM ITEMS -->
                     <div class="w-full h-[50%]">
                         <!-- TIME BTNS  -->
-                        <div class="w-full h-[80%]">
-                            <h1 class="text-side-navbar-active-text text-2xl mb-5 mx-10">Time</h1>
+                        <div class="w-full h-[80%] mt-8 lg:mt-0">
+                            <h1 class="text-side-navbar-active-text text-sm lg:text-2xl mb-5 mx-10">Time</h1>
                             <!-- DIVISION FOR THE LIST OF THE TIME BTNS -->
                             <div class="w-full h-fit">
                                 <!-- TIME BOXES LIST -->
@@ -270,7 +272,7 @@ if(isset($_POST['submit'])){
                                             <!-- TIME SLOT BTNS -->
                                             <!-- All timeslot boxes have an inactive default background color  -->
                                             <!-- When clicked, the background color changes to active  -->
-                                            <button value="<?php echo $time_row['time'] ?>" class="time flex w-[150px] h-[45px] ml-5 mt-5 justify-center items-center rounded-3xl bg-form-fill mb-2 text-custom-time text-lg">
+                                            <button value="<?php echo $time_row['time'] ?>" class="time flex w-[85px] h-[30px] lg:w-[150px] lg:h-[45px] ml-5 mt-3 lg:mt-5 justify-center items-center rounded-3xl bg-form-fill mb-2 text-custom-time text-base lg:text-lg">
                                                <?php echo $time_row['time'] ?>
                                             </button>
                                         </li>
@@ -280,10 +282,10 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- CANCEL AND SUBMIT BTNS  -->
-                        <div class="flex w-full h-[20%] justify-end items-center">
+                        <div class="flex w-full h-[20%] justify-end items-center mt-4 lg:mt-0">
                             <!-- CANCEL BTN  -->
                             <a href="user-appointment.php">
-                                <button class="flex w-[150px] h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                <button class="flex w-[85px] h-[33px] lg:w-[150px] lg:h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                     <span class=" text-gray-text text-lg">Cancel</span>
                                 </button>
                             </a>
@@ -303,7 +305,7 @@ if(isset($_POST['submit'])){
                                     <input type="text" name="username" id="username" class="hidden" value = "<?php echo $userRow['first_name'].' '.$userRow['last_name'] ?>">
                                     <input type="text" name="contact-number" id="contact-number" class="hidden" value = "<?php echo $userRow['contact_number'] ?>">
                                     <input type="text" name="user-email" id="user-email" class="hidden" value = "<?php echo $userRow['email'] ?>">
-                                    <button class="flex w-[150px] h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
+                                    <button class="flex w-[85px] h-[33px] lg:w-[150px] lg:h-[45px] bg-save-button ml-[30px] mr-5 justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
                                         <input class=" text-gray-text text-lg" type="submit" name="submit"></input>
                                     </button>
                                 </form>
