@@ -101,7 +101,7 @@ $userName = $fName.' '.$lName;
                 
                 
                 <!-- USER PROFILE -->
-                <div id="dropdown-button" class="mr-3 mt-6 z-50"> 
+                <div id="dropdown-button" class="mr-3 mt-6 z-50 hidden lg:block"> 
                     <button class="flex flex-row lg:w-28 lg:h-12 bg-white justify-center rounded-3xl items-center"> 
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full lg:w-10 lg:h-10"> 
                         <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
@@ -133,7 +133,7 @@ $userName = $fName.' '.$lName;
             </div>
            
             <!-- MAIN CONTENT  -->
-            <div class="flex flex-col">
+            <div class="flex flex-col mx-3 lg:mx-0">
                 <!-- UPPER BOXES  -->
                 <div class="flex flex-col lg:flex-row">
                     <!-- PROFILE SECTION -->
@@ -144,7 +144,7 @@ $userName = $fName.' '.$lName;
                             <!-- USER NAME AND ICON  -->
                             <?php while($profile_row = mysqli_fetch_assoc($profile)){?>
                             <div class="flex flex-col justify-center items-center w-full h-[50%]">
-                                <img src="../assets/profilesample.jpg" alt="user" class="absolute w-24 h-24 rounded-full -mt-[100px] left-[190px]">
+                                <img src="../assets/profilesample.jpg" alt="user" class="absolute w-24 h-24 rounded-full -mt-[100px] lg:left-[190px]">
                                 <h1 class="mt-[60px] text-2xl"><?php echo $userName?></h1>
                                 <span class="text-gray-text"><?php echo $profile_row['Age'] ?> years old</span>
                             </div>  
@@ -157,10 +157,10 @@ $userName = $fName.' '.$lName;
                             </div>
 
                             <!-- USER WEIGHT, HEIGHT, BLOOD VALUES -->                            
-                            <div class="flex w-full h-fit justify-around mt-4">
-                                <span class="text-2xl"><?php echo $profile_row['Blood'] ?></span>
-                                <span class="text-2xl"><?php echo $profile_row['Height'].' cm' ?></span>
-                                <span class="text-2xl"><?php echo $profile_row['Weight'].' kg' ?></span>
+                            <div class="flex w-full h-fit justify-around lg:mt-4">
+                                <span class="lg:text-2xl"><?php echo $profile_row['Blood'] ?></span>
+                                <span class="lg:text-2xl"><?php echo $profile_row['Height'].' cm' ?></span>
+                                <span class="lg:text-2xl"><?php echo $profile_row['Weight'].' kg' ?></span>
                             </div>
                             <?php } ?>
                         </div>
@@ -188,7 +188,7 @@ $userName = $fName.' '.$lName;
     
                                         <!-- DIAGNOSIS  -->
                                         <div class="flex flex-row w-full h-fit justify-between">
-                                            <span class="text-3xl ml-5"><?php echo $ill_row['Illness'] ?></span>
+                                            <span class="text-lg lg:text-3xl ml-5"><?php echo $ill_row['Illness'] ?></span>
                                         </div>
             
                                         <!-- STATUS -->
@@ -236,23 +236,23 @@ $userName = $fName.' '.$lName;
                         <hr>
                         <?php while($meds_row = mysqli_fetch_assoc($meds)){?>
                         <!-- MEDICINE BULLET POINT -->
-                        <div class="flex flex-row w-full h-[130px]">
-                            <img src="../assets/bullet-point.png" alt="bullet" class="mt-[35px] ml-5 w-5 h-5"> 
+                        <div class="flex flex-row w-full lg:h-[130px]">
+                            <img src="../assets/bullet-point.png" alt="bullet" class="mt-[35px] ml-5 w-3 h-3 lg:w-5 lg:h-5"> 
                             <div class="w-full h-fit">
                                 <!-- MEDICINE  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5 mt-[27px]"><?php echo $meds_row['medicine'] ?></span>
-                                    <span class="text-xl mr-5 mt-[32px]"><?php echo $meds_row['dosage'] ?></span>
+                                    <span class="text-lg lg:text-3xl ml-5 mt-[27px]"><?php echo $meds_row['medicine'] ?></span>
+                                    <span class="lg:text-xl mr-5 mt-[32px]"><?php echo $meds_row['dosage'] ?></span>
                                 </div>
     
                                 <!-- SCHEDULE  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-base ml-5 text-gray-text"><?php echo $meds_row['notes'] ?></span>
+                                    <span class="text:sm lg:text-base ml-5 text-gray-text"><?php echo $meds_row['notes'] ?></span>
                                 </div>
 
                                 <!-- REPITITIONS  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-base ml-5 text-side-navbar"><?php echo $meds_row['schedule'] ?></span>
+                                    <span class="text-sm lg:text-base ml-5 text-side-navbar"><?php echo $meds_row['schedule'] ?></span>
                                 </div>
                             </div>
                         </div>
@@ -274,30 +274,30 @@ $userName = $fName.' '.$lName;
                         <!-- APPOINTMENT BULLET POINT  -->
                         <div class="flex flex-col w-full h-fit pb-2">
                             <div class="flex flex-row w-full h-fit">
-                                <img src="../assets/profilesample.jpg" alt="doctor's_profile" class="w-20 h-20 rounded-full ml-5 mt-5">
+                                <img src="../assets/profilesample.jpg" alt="doctor's_profile" class="w-10 h-10 lg:w-20 lg:h-20 rounded-full ml-5 mt-5">
                                 <!-- DOCTOR'S DETAILS  -->
                                 <div class="flex flex-col w-full h-fit mt-7">
-                                    <span class="text-2xl ml-5"><?php echo $apmt_row['doctorName']?></span>
+                                    <span class="lg:text-2xl ml-5"><?php echo $apmt_row['doctorName']?></span>
                                     <span class="text-sm ml-5 text-gray-text"><?php echo $apmt_row['specialty'] ?></span>
                                 </div>
                             </div>
                             <!-- APPOINTMENT'S DETAILS  -->
                             <div class="flex flex-col w-full h-fit">
                                 <div class="flex flex-row w-full h-fit mt-2 justify-between">
-                                    <span class="text-2xl ml-10"><?php echo $apmt_row['status'] ?></span>
+                                    <span class="lg:text-2xl ml-10"><?php echo $apmt_row['status'] ?></span>
                                     <span class="text-sm mr-10 mt-2 text-gray-text">Clinic Consultation</span>
                                 </div> 
                                 
                                 <!-- DATE AND TIME  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
                                     <span class="text-sm ml-10 mt-1 text-side-navbar">Date</span>
-                                    <span class="text-sm mr-32 mt-1 text-side-navbar">Time</span>
+                                    <span class="text-sm mr-10 lg:mr-32 mt-1 text-side-navbar">Time</span>
                                 </div>
 
                                 <!-- DATE AND TIME VALUES -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-2xl ml-10"><?php echo $apmt_row['date'] ?></span>
-                                    <span class="text-2xl mr-auto ml-28"><?php echo $apmt_row['time'] ?></span>
+                                    <span class="lg:text-2xl ml-10 mr-10 lg:mr-0"><?php echo $apmt_row['date'] ?></span>
+                                    <span class="lg:text-2xl mr-10 lg:mr-auto lg:ml-28"><?php echo $apmt_row['time'] ?></span>
                                 </div>
                             </div>
                         </div>
@@ -323,8 +323,8 @@ $userName = $fName.' '.$lName;
 
                                 <!-- LAB TEST  -->
                                 <div class="flex flex-row w-full h-fit justify-between">
-                                    <span class="text-3xl ml-5"><?php echo $lab_row['lab_test'] ?></span>
-                                    <span class="text-2xl mr-5 text-side-navbar"><?php echo $lab_row['lab_result'] ?></span>
+                                    <span class="text-xl lg:text-3xl ml-5"><?php echo $lab_row['lab_test'] ?></span>
+                                    <span class="text-lg lg:text-2xl mr-5 text-side-navbar"><?php echo $lab_row['lab_result'] ?></span>
                                 </div>
     
                                 <!-- NORMAL RANGE  -->
