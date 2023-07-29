@@ -141,7 +141,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- USER PROFILE MOBILE  -->
-                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg bg-red-300"> 
+                <div id="dropdown-button" class="lg:hidden mr-3 mt-6 rounded-lg"> 
                     <button class=""> 
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
@@ -157,7 +157,7 @@ if(isset($_POST['submit'])){
             </div>
 
             <!-- MAIN CONTENT -->
-            <div class="flex flex-col lg:flex-row w-fit bg-green-200">
+            <div class="flex flex-col lg:flex-row w-fit">
                 <!-- APPOINTMENT LIST -->
                 <div class="lg:w-[600px] lg:h-[820px] lg:overflow-auto">
                     <div class="mb-7 ml-4">
@@ -166,7 +166,7 @@ if(isset($_POST['submit'])){
 
                     <!-- BUTTON FOR NEW APPOINTMENT -->
                     <div class="flex-col lg:flex-row">
-                    <button class="item flex lg:flex-row items-center space-x-5 item w-[318px] h-[52px] lg:w-[483px] lg:h-[87px] bg-white cursor-pointer shadow-custom mx-2 lg:ml-4 rounded-3xl " onclick="showAppointment()">
+                    <button class="item flex lg:flex-row items-center space-x-5 item w-[318px] h-[52px] sm:w-[700px] lg:w-[483px] lg:h-[87px] bg-white cursor-pointer shadow-custom mx-2 sm:ml-8 lg:ml-4 rounded-3xl " onclick="showAppointment()">
                         <img src="../assets/add-btn.png" alt="add-btn" class="w-[17px] h-[17px] lg:w-[21px] lg:h-[21px] ml-4">
                         <h1 class="text-2xl text-sidebar-text-bold font-medium">Add</h1>
                     </button>
@@ -177,7 +177,7 @@ if(isset($_POST['submit'])){
                             <?php while($row = mysqli_fetch_assoc($result)){?>
                                 <!-- APPOINTMENT BOXES  -->
                                 <!-- All appointment boxes have an inactive default background color  -->
-                                <div class="item w-[318px] h-[52px] lg:w-[483px] lg:h-[123px] bg-background-inactive cursor-pointer shadow-custom mx-2 lg:ml-4 rounded-3xl mb-2 lg:mb-5">
+                                <div class="item w-[318px] h-[52px] sm:w-[700px] lg:w-[483px] lg:h-[123px] bg-background-inactive cursor-pointer shadow-custom mx-2 sm:ml-8 lg:ml-4 rounded-3xl mb-2 lg:mb-5">
                                     <!-- DOCTOR AND DATE  -->
                                     <div class="flex flex-row justify-between ml-7 mr-7 pt-2 lg:pt-4">
                                         <!-- DOCTOR  -->
@@ -207,7 +207,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- APPOINTMENT DETAILS -->
-                <div id="appointmentDetails" class="flex flex-col w-[318px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mt-3 mx-2 lg:mt-5 shadow-custom">
+                <div id="appointmentDetails" class="flex flex-col w-[318px] sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mt-3 mx-2 sm:ml-8 lg:mt-5 shadow-custom">
                     <!-- TOP ITEMS -->
                     <!-- THIS INCLUDES SPECIALTY, DOCTOR, THE THE CALENDAR -->
                     <div class="flex flex-col lg:flex-row w-full h-[70%]">
@@ -220,7 +220,7 @@ if(isset($_POST['submit'])){
                             
                             ?>
                             <div class="relative ml-2 lg:ml-10 z-50">
-                                <button id="specialtyMenu" class="w-[289px] lg:w-[400px] h-10 rounded-full">
+                                <button id="specialtyMenu" class="w-[289px] sm:w-[650px] lg:w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="specialty-select" type="text" id="specialtyBox" placeholder="Select">
                                     <select class="hidden" name="fetchDoc" id="fetchDoc"></select>
                                 </button>
@@ -236,7 +236,7 @@ if(isset($_POST['submit'])){
                             <?php $doctor_query = "select name from admin";
                             $doctor_result = mysqli_query($con, $doctor_query);?>
                             <div class="relative ml-2 lg:ml-10 z-30">
-                                <button id="doctorMenu" class="w-[289px] lg:w-[400px] h-10 rounded-full">
+                                <button id="doctorMenu" class="w-[289px] sm:w-[650px] lg:w-[400px] h-10 rounded-full">
                                     <input class="w-full h-full bg-form-fill rounded-full indent-6" name="doctor-select" type="text" id="doctorBox" placeholder="Select">
                                 </button>
                                 <div id="doctorDropdown" class="hidden absolute mt-2 w-[400px] bg-white border border-gray-300 rounded-xl shadow-xl" onclick="setDate()">
@@ -245,12 +245,12 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
-                        <div class="w-[50%] h-full mx-2">
+                        <div class="sm:w-[93%] w-[50%] lg:w-[50%] h-full mx-2 flex justify-center flex-col ">
                             <h1 class="mt-6 lg:mt-11 mb-3 ml-6 lg:ml-0 text-side-navbar-active-text text-sm lg:text-2xl">Date</h1>
                             <!-- CALENDAR -->
-                            <input class="hidden" id="book1"></input>
-                            <input class="hidden" id="book2"></input>
-                            <input class="hidden" id="book3"></input>
+                            <input class="hidden" id="book1" ></input>
+                            <input class="hidden" id="book2" ></input>
+                            <input class="hidden" id="book3" ></input>
                             <input type="text" name="booking-date" id="booking-date" placeholder="Select a date" class="px-6 py-2 ml-4 lg:ml-0 mb-2 lg:mb-0 rounded-lg border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
@@ -282,7 +282,7 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- CANCEL AND SUBMIT BTNS  -->
-                        <div class="flex w-full h-[20%] justify-end items-center mt-4 lg:mt-0">
+                        <div class="flex w-full h-[20%] justify-end items-center mt-4 mb-10 lg:mb-0 lg:mt-0">
                             <!-- CANCEL BTN  -->
                             <a href="user-appointment.php">
                                 <button class="flex w-[85px] h-[33px] lg:w-[150px] lg:h-[45px] justify-center items-center rounded-3xl shadow-custom hover:scale-105 transform transition-transform duration-300">
@@ -313,6 +313,43 @@ if(isset($_POST['submit'])){
                         </div>
                     </div>
                 </div>
+                <div class="flex flex-row lg:hidden w-full fixed h-20 left-0 text-white bottom-0 mt-auto z-50 bg-side-navbar">
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="health-board.php">
+                        <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Health Board</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-medication.php">
+                        <img src="../assets/sidebar/medicine.png" alt="medicine">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Medicine</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-appointment.php">
+                        <img src="../assets/sidebar/appointment.png" alt="appointment">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Appointment</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-message.php">
+                        <img src="../assets/sidebar/message.png" alt="message">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Message</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-finance.php">
+                        <img src="../assets/sidebar/finance.png" alt="finance">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Finance</span>
+                </div>
+            </div>
+
             </div>
              
         </div>
