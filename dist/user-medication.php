@@ -101,12 +101,17 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                         <img id="dropdown-arrow" src="../assets/arrow.png" alt="dropdown-arrow" class="ml-7 rotate-180">
                     </button> 
                     <!--profile dropdown-->                
-                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md" href="user-profile.php">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
+                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
+                                href="user-profile.php">Profile</a></li>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap"
+                                href="user-change-pass.php">Change Password</a></li>
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
-                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
+                                href="splash.php">
+                                <?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out
+                            </a></li>
                     </ul>
                 </div>
 
@@ -116,12 +121,17 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                         <img src="../assets/profilesample.jpg" alt="profile pic" class="rounded-full w-7 h-7 lg:w-10 lg:h-10"> 
                     </button> 
                     <!-- profile dropdown -->
-                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1"> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"href="user-profile.php">Profile</a></li> 
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap" href="user-change-pass.php">Change Password</a></li> 
+                    <ul id="dropdown-menu" class="absolute hidden w-40 right-3 mt-1">
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-t-md"
+                                href="user-profile.php">Profile</a></li>
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap"
+                                href="user-change-pass.php">Change Password</a></li>
                         <hr>
-                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md" href="splash.php"><?session_start();unset($_SESSION);
-                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out</a></li> 
+                        <li><a class="bg-white hover:bg-side-navbar py-2 px-4 block whitespace-no-wrap rounded-b-md"
+                                href="splash.php">
+                                <?session_start();unset($_SESSION);
+                        session_destroy();session_write_close();header('Location: splash.php');die;?>Log out
+                            </a></li>
                     </ul>
                 </div>
             </div>
@@ -164,7 +174,7 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                 </div>
 
                 <!-- MEDICATION DETAILS -->
-                <div class="flex flex-col w-[310px] min-h-fit sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mx-2 sm:ml-8 mt-5 shadow-custom">
+                <div class="flex flex-col w-[310px] min-h-fit sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mx-2 sm:ml-8 ml-4 mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
                         <?php while($highlight_row = mysqli_fetch_assoc($highlight_result)){
@@ -223,6 +233,42 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                         <span class="text-[10px] lg:text-xs text-gray-text">License No: XXXXX </span>
                         <span class="text-[10px] lg:text-xs text-gray-text">PTR No: XXXXXXX </span>
                     </div>
+                </div>
+            </div>
+            <div class="flex flex-row lg:hidden w-full fixed h-20 left-0 text-white bottom-0 mt-auto z-50 bg-side-navbar">
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="health-board.php">
+                        <img src="../assets/sidebar/health-board.png" alt="health-board-active">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Health Board</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-medication.php">
+                        <img src="../assets/sidebar/medicine.png" alt="medicine">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Medicine</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-appointment.php">
+                        <img src="../assets/sidebar/appointment.png" alt="appointment">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Appointment</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-message.php">
+                        <img src="../assets/sidebar/message.png" alt="message">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Message</span>
+                </div>
+
+                <div class="w-[20%] flex flex-col justify-center items-center">
+                    <a href="user-finance.php">
+                        <img src="../assets/sidebar/finance.png" alt="finance">
+                    </a>
+                    <span class="text-[8px] sm:text-xs">Finance</span>
                 </div>
             </div>
         </div>
