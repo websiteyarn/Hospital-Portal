@@ -174,7 +174,7 @@ if(isset($_COOKIE['docName']) && isset($_COOKIE['illnessName'])){
                 </div>
 
                 <!-- MEDICATION DETAILS -->
-                <div class="flex flex-col w-[310px] min-h-fit sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mx-2 sm:ml-8 mt-5 shadow-custom">
+                <div class="flex flex-col w-[310px] min-h-fit sm:w-[700px] lg:w-[1050px] lg:h-[800px] rounded-xl bg-white mx-2 sm:ml-8 ml-4 mt-5 shadow-custom">
                     <!-- DOCTOR'S DETAILS  -->
                     <div class="flex flex-row items-center">
                         <?php while($highlight_row = mysqli_fetch_assoc($highlight_result)){
