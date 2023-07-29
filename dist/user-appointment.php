@@ -245,7 +245,7 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <!-- SECOND HALF IS FOR THE INLINE CALENDAR -->
-                        <div class="sm:w-[93%] w-[50%] lg:w-[50%] h-full mx-2 bg-red-100 flex justify-center flex-col ">
+                        <div class="sm:w-[93%] w-[50%] lg:w-[50%] h-full mx-2 flex justify-center flex-col ">
                             <h1 class="mt-6 lg:mt-11 mb-3 ml-6 lg:ml-0 text-side-navbar-active-text text-sm lg:text-2xl">Date</h1>
                             <!-- CALENDAR -->
                             <input class="hidden" id="book1" ></input>
