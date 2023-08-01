@@ -3,7 +3,7 @@ This is a comprehensive web portal that will serve as an interface between patie
 
 
 # Branch Introduction
-This is a consolidation branch made for merging the updates for the development of the project
+This is a master branch made for showing the final output  of the project
 
 ## Branch Description
 The languages being used in this course is Hypertext Markup Language (HTML), Cascading Style Sheets (CSS), and Javascript (JS). This is a consolidation branch for merging updates.
@@ -18,12 +18,13 @@ HP is a hospital web application that aims to provide families of patients acces
 ## DEVELOPERS:
 | Name  | Role |
 | ------------- | ------------- |
-| Dominique Libardo  |   |
-| James Luis Blanco  |   |
-| Mathew James Muyco  |   |
-| Danica Garcia  |   |
-
-last edited: May 17, 2023
+| Dominique Libardo  | Project Manager  |
+| James Luis Blanco  | Team Leader / Lead Frontend Developer |
+| Mathew James Muyco  | Lead Backend Developer |
+| Danica Garcia  | UI/UX Designer   |
+| Mary Grace Arboladura  | Developer |
+| Bea Nicole Juanillas  | Developer |
+last edited: August 1, 2023
 
 
 
